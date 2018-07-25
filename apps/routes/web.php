@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "IndexController@index");
+Route::post("/app", "AppController@index");
+Route::get("/dekan", "DekanController@index");
+Route::get("/admin", "AdminController@index");
