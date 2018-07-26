@@ -13,7 +13,15 @@ class Verifikator extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('verifikator', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer("layanan_surat_id");
+            $table->integer("user_id");
+            $table->integer("urutan");
+            $table->timestamps();
+            $table->softDeletes();
+            //
+        });
     }
 
     /**

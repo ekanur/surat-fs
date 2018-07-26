@@ -13,5 +13,5 @@
 
 Route::get('/', "IndexController@index");
 Route::post("/app", "AppController@index");
-Route::get("/dekan", "DekanController@index");
+Route::get("/user", "UserController@index");
 Route::get("/admin", "AdminController@index");

@@ -13,7 +13,17 @@ class Verifikasi extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('verifikasi', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer("layanan_surat_id");
+            $table->integer("mahasiswa_id");
+            $table->integer("user_id");
+            $table->enum("status", ["setuju", "tolak"]);
+            $table->string("catatan", 200);
+            $table->timestamps();
+            $table->softDeletes();
+            //
+        });
     }
 
     /**

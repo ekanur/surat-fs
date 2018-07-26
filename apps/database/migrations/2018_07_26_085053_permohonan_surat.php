@@ -13,7 +13,15 @@ class PermohonanSurat extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('permohonan_surat', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer("mahasiswa_id");
+            $table->integer("layanan_surat_id");
+            $table->enum("status", ["verifikasi", "siap_cetak"]);
+            $table->timestamps();
+            $table->softDeletes();
+            //
+        });
     }
 
     /**

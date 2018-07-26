@@ -13,7 +13,14 @@ class LayananSurat extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('layanan_surat', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string("judul", 75);
+            $table->string("format_nomor", 75);
+            $table->timestamps();
+            $table->softDeletes();
+            //
+        });
     }
 
     /**

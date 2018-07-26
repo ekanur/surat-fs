@@ -35,15 +35,7 @@
         </a>
       </div>
       <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="active ">
-            <a href="{{ url("/dekan") }}">
-              <i class="now-ui-icons design_app"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          
-        </ul>
+        @yield("menu")
       </div>
     </div>
     <div class="main-panel">

@@ -1,4 +1,8 @@
-@extends("dekan.layout")
+@extends("user.layout")
+
+@section("menu")
+	@include("user.menus.default")
+@endsection
 
 @section("content")
 
