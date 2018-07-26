@@ -20,8 +20,8 @@
 							<thead>
 								<tr>
 									<th class="text-center" width="10%">#</th>
-									<th width="50%">Surat</th>
-									<th width="30%">Pemohon</th>
+									<th width="45%">Surat</th>
+									<th width="35%">Pemohon</th>
 									<th class="text-right">Verifikasi</th>
 								</tr>
 							</thead>
@@ -88,7 +88,7 @@
 										Ibnu Suhaemy (112373790)
 									</td>
 									<td class="td-actions text-right">
-										
+
 										<button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
 											<i class="now-ui-icons ui-1_check"></i>
 										</button>
