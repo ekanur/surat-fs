@@ -102,7 +102,7 @@
 						<!-- </div> -->
 					</div>
 					<div class="card-footer ">
-						<hr>
+						{{-- <hr> --}}
 						<div class="stats">
 							<button class="btn btn-success">Verifikasi (2 Surat)</button>
 						</div>
