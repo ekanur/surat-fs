@@ -28,10 +28,10 @@
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-      <div class="logo">
+      <div class="logo text-center">
         
         <a href="" class="simple-text logo-normal">
-          Surat-FS
+          {User} | Surat-FS
         </a>
       </div>
       <div class="sidebar-wrapper">
