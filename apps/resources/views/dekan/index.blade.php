@@ -22,7 +22,7 @@
 									<th class="text-center" width="10%">#</th>
 									<th width="50%">Surat</th>
 									<th width="30%">Pemohon</th>
-									<th class="text-right">Aksi</th>
+									<th class="text-right">Verifikasi</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -44,9 +44,9 @@
 										<button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
 											<i class="now-ui-icons ui-1_check"></i>
 										</button>
-										{{-- <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+										<button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
 											<i class="now-ui-icons ui-1_simple-remove"></i>
-										</button> --}}
+										</button>
 									</td>
 								</tr>
 								<tr>
@@ -67,9 +67,9 @@
 										<button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
 											<i class="now-ui-icons ui-1_check"></i>
 										</button>
-										{{-- <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+										<button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
 											<i class="now-ui-icons ui-1_simple-remove"></i>
-										</button> --}}
+										</button>
 									</td>
 								</tr>
 								<tr>
@@ -88,12 +88,13 @@
 										Ibnu Suhaemy (112373790)
 									</td>
 									<td class="td-actions text-right">
+										
 										<button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
 											<i class="now-ui-icons ui-1_check"></i>
 										</button>
-										{{-- <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+										<button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
 											<i class="now-ui-icons ui-1_simple-remove"></i>
-										</button> --}}
+										</button>
 									</td>
 								</tr>
 							</tbody>

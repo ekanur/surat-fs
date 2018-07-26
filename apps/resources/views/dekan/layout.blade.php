@@ -16,8 +16,8 @@
   <!-- CSS Files -->
   <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" />
   <link href="{{ asset("css/now-ui-dashboard.css?v=1.1.0") }}" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="{{ asset("demo/demo.css") }}" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{{ asset("demo/demo.css") }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset("/plugin/datatable/datatables.min.css") }}">
 
   @stack("css")
 </head>
@@ -135,9 +135,12 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset("js/now-ui-dashboard.min.js?v=1.1.0") }}" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="{{ asset("demo/demo.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("demo/demo.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("plugin/datatable/datatables.min.js") }}"></script>
   <script>
     $(document).ready(function() {
+
+      $("table.table").DataTable();
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
 
