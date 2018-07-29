@@ -83,7 +83,7 @@
                                 <input type="text" class="form-control" placeholder="Masukan NIM">
                             </div> -->
                             <div class="input-group mb-3">
-                              <input type="text" class="form-control" placeholder="Masukan NIM" aria-label="Masukan NIM" aria-describedby="button-addon2">
+                              <input type="text" class="form-control" placeholder="Masukan NIM" aria-label="Masukan NIM" name="nim" aria-describedby="button-addon2">
                               <div class="input-group-append">
                                 <button class="btn  btn-outline-secondary btn-primary btn-round" name="simpan" type="submit" style="margin:0px;border-radius:0 20% 20% 0 !important">Go</button>
                             </div>

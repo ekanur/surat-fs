@@ -16,7 +16,8 @@ class LayananSurat extends Migration
         Schema::create('layanan_surat', function (Blueprint $table) {
             $table->increments('id');
             $table->string("judul", 75);
-            $table->string("format_nomor", 75);
+            $table->string("kode_layanan", 10)->unique();
+            $table->string("format_nomor", 75)->nullable();
             $table->timestamps();
             $table->softDeletes();
             //
