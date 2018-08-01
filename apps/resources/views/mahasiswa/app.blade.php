@@ -101,25 +101,7 @@
         					</div>
         				</div>
 
-        				<div class="col-md-3 col-lg-3 col-xl-3">
-        					<!-- Nav tabs -->
-        					<div class="card">
-        						<div class="header text-center">
-        							<h4 class="title title-up">Ijin PKP</h4>
-
-        						</div>
-
-        						<div class="card-body">
-        							<!-- Tab panes -->
-        							<div class="tab-content">
-        								<div class="tab-pane active" id="home" role="tabpanel">
-        									<h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
-        									<p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
-        								</div>
-        							</div>
-        						</div>
-        					</div>
-        				</div>
+        				
 
         				<div class="col-md-3 col-lg-3 col-xl-3">
         					<!-- Nav tabs -->
@@ -141,8 +123,129 @@
         					</div>
         				</div>
 
+                        
 
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="header text-center">
+                                    <h4 class="title title-up">Judul Skripsi</h4>
 
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home" role="tabpanel">
+                                            <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
+                                            <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="header text-center">
+                                    <h4 class="title title-up">Dosen Pembimbing</h4>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home" role="tabpanel">
+                                            <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
+                                            <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="header text-center">
+                                    <h4 class="title title-up">Ujian Skripsi</h4>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home" role="tabpanel">
+                                            <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
+                                            <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="header text-center">
+                                    <h4 class="title title-up">Penjajakan</h4>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home" role="tabpanel">
+                                            <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
+                                            <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="header text-center">
+                                    <h4 class="title title-up">Peminjaman Barang</h4>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home" role="tabpanel">
+                                            <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Segera hadir..</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="header text-center">
+                                    <h4 class="title title-up">Peminjaman Gedung</h4>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home" role="tabpanel">
+                                            <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Segera hadir..</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
         			</div>
         		</div>
