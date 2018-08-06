@@ -17,6 +17,7 @@ class PermohonanSurat extends Migration
             $table->increments('id');
             $table->integer("mahasiswa_id");
             $table->integer("layanan_surat_id");
+            $table->string("konten", 500);
             $table->enum("status", ["verifikasi", "siap_cetak"]);
             $table->timestamps();
             $table->softDeletes();

@@ -46,9 +46,9 @@
 										<span class="text-success">Disetujui</span>
 									</td>
 									<td class="td-actions text-right">
-										<button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
+										<a target="_blank" href="{{ url("/aktif-kuliah") }}" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
 											<i class="now-ui-icons arrows-1_cloud-download-93"></i>
-										</button>
+										</a>
 										{{-- <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
 											<i class="now-ui-icons ui-1_simple-remove"></i>
 										</button> --}}
