@@ -23,82 +23,46 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th class="text-center" width="10%">#</th>
+									{{-- <th class="text-center" width="10%">#</th> --}}
 									<th width="45%">Surat</th>
 									<th width="35%">Pemohon</th>
-									<th class="text-right">Verifikasi</th>
+									<th class="text-right">Usia Surat</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>
-										<div class="form-check">
-											<label class="form-check-label">
-												<input class="form-check-input" type="checkbox" checked>
-												<span class="form-check-sign"></span>
-											</label>
-										</div>
-									</td>
+									
 
 									<td class="text-left"><a href="">Permohonan Aktif Kuliah</a> </td>
 									<td>
 										Ibnu Suhaemy (112373790)
 									</td>
 									<td class="td-actions text-right">
-										<button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
-											<i class="now-ui-icons ui-1_check"></i>
-										</button>
-										<button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-											<i class="now-ui-icons ui-1_simple-remove"></i>
-										</button>
+										1 hari
 									</td>
 								</tr>
 								<tr>
-									<td>
-										<div class="form-check">
-											<label class="form-check-label">
-												<input class="form-check-input" type="checkbox">
-												<span class="form-check-sign"></span>
-											</label>
-										</div>
-									</td>
+									
 
 									<td class="text-left"><a href="">Permohonan KKP</a></td>
 									<td>
 										Ibnu Suhaemy (112373790)
 									</td>
 									<td class="td-actions text-right">
-										<button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
-											<i class="now-ui-icons ui-1_check"></i>
-										</button>
-										<button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-											<i class="now-ui-icons ui-1_simple-remove"></i>
-										</button>
+										1 hari
 									</td>
 								</tr>
 								<tr>
-									<td>
-										<div class="form-check">
-											<label class="form-check-label">
-												<input class="form-check-input" type="checkbox" checked>
-												<span class="form-check-sign"></span>
-											</label>
-										</div>
-									</td>
+									
 
-									<td class="text-left"><a href="">Permohonan Judul Skripsi</a>
+									<td class="text-left"><a href="#" data-toggle="modal" data-target="detail_surat">Permohonan Judul Skripsi</a>
 									</td>
 									<td>
 										Ibnu Suhaemy (112373790)
 									</td>
 									<td class="td-actions text-right">
 
-										<button type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
-											<i class="now-ui-icons ui-1_check"></i>
-										</button>
-										<button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-											<i class="now-ui-icons ui-1_simple-remove"></i>
-										</button>
+										1 hari
 									</td>
 								</tr>
 							</tbody>
@@ -107,9 +71,9 @@
 					</div>
 					<div class="card-footer ">
 						{{-- <hr> --}}
-						<div class="stats">
+						{{-- <div class="stats">
 							<button class="btn btn-success">Verifikasi (2 Surat)</button>
-						</div>
+						</div> --}}
 					</div>
 			</div>
 		</div>
