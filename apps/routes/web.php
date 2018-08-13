@@ -11,13 +11,20 @@
 |
 */
 
-Route::get('/', "IndexController@index");
-Route::post("/app", "AppController@index");
-Route::get("/user", "UserController@index");
-Route::get("/admin", "AdminController@index");
+
+
+// Route::get("/user", "UserController@index")->name("user.dashboard");
+Route::get("/admin", "AdminController@index")->name("admin.dashboard");
+Route::post("/admin/logout", "Auth\LoginController@adminLogout")->name("admin.logout");
 Route::get('/aktif-kuliah', "AktifKuliahController@view");
 Route::post("/aktif-kuliah", "AktifKuliahController@index");
 
 Auth::routes();
+// Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/mahasiswa', "Auth\MahasiswaLoginController@showLoginForm")->name("mahasiswa.login");
+Route::post('/mahasiswa', "Auth\MahasiswaLoginController@login")->name("mahasiswa.login.submit");
+Route::post('/mahasiswa/logout', "Auth\MahasiswaLoginController@logout")->name("mahasiswa.logout");
+Route::get("/", "AppController@index")->name("mahasiswa.dashboard");
+

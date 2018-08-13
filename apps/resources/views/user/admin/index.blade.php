@@ -128,5 +128,9 @@
 @endsection
 
 @section("menu")
-	@include("user.menus.admin")
+	@if(Auth::user()->tipe == 'admin')
+		@include("user.menus.admin")
+	@else
+		@include("user.menus.default")
+	@endif
 @endsection

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+	function __construct()
+	{
+		$this->middleware("auth");
+	}
     function index(){
     	return view("user.dekan.index");
     }

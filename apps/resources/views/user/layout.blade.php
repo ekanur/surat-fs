@@ -31,7 +31,7 @@
       <div class="logo text-center">
         
         <a href="" class="simple-text logo-normal">
-          {User} | Surat-FS
+          {{ Auth::user()->tipe }} | Surat-FS
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -65,11 +65,22 @@
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
+                    {{ Auth::guard("web")->user()->name }}
                     <span class="d-lg-none d-md-block">Account</span>
+                    
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Logout</a>
+                  <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();" class="dropdown-item text-danger">
+                            <i class="now-ui-icons media-1_button-power"></i>
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                 </div>
               </li>
               

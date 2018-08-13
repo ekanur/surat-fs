@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('nama_lengkap');
+            // $table->string('nama_lengkap');
             $table->string('nip');
             $table->enum("tipe", ["admin", "dekan", "kajur", "wd1"]);
             $table->string("scan_ttd");

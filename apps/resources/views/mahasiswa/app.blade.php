@@ -11,7 +11,7 @@
                     
 				</a>
              --}}
-             <span style="text-align: left">Durasi Layanan : 03 Menit 00 Detik</span>
+             {{-- <span style="text-align: left">Durasi Layanan : 03 Menit</span> --}}
 
              <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-bar bar1"></span>
@@ -30,7 +30,7 @@
                     <li class="nav-item dropdown">
                     	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                     		<i class="now-ui-icons users_single-02"></i>
-                    		{{-- <p>{{ session('nim') }}</p> --}}
+                    		<p>{{ Auth::guard("mahasiswa")->user()->nim }}</p>
                     	</a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="" class="dropdown-item">Ganti Password</a>
@@ -42,7 +42,7 @@
                             Logout
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('mahasiswa.logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </div>
@@ -107,30 +107,6 @@
         					</div>
         				</div>
 
-        				
-
-        				<div class="col-md-3 col-lg-3 col-xl-3">
-        					<!-- Nav tabs -->
-        					<div class="card">
-        						<div class="header text-center">
-        							<h4 class="title title-up">Cuti Kuliah</h4>
-
-        						</div>
-
-        						<div class="card-body">
-        							<!-- Tab panes -->
-        							<div class="tab-content">
-        								<div class="tab-pane active" id="home" role="tabpanel">
-        									<h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
-        									<p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
-        								</div>
-        							</div>
-        						</div>
-        					</div>
-        				</div>
-
-
-
                         <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
                             <div class="card">
@@ -151,6 +127,30 @@
                             </div>
                         </div>
 
+        				<div class="col-md-3 col-lg-3 col-xl-3">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="header text-center">
+                                    <h4 class="title title-up">Keluhan</h4>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home" role="tabpanel">
+                                            <h1 class=" text-center"><i class="now-ui-icons ui-2_chat-round"></i></h1>
+                                            <p><button data-toggle="modal" data-target="#keluhan" class="btn btn-primary">Proses</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+        				
+
+                        
+
                         <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
                             <div class="card">
@@ -164,7 +164,7 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
                                             <h1 class=" text-center"><i class="now-ui-icons users_circle-08"></i></h1>
-                                            <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Segera Hadir</button></p>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +184,7 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
                                             <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
-                                            <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p>
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +206,7 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
                                             <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
-                                            <p><button data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p>
                                         </div>
                                     </div>
                                 </div>
@@ -217,7 +217,7 @@
                             <!-- Nav tabs -->
                             <div class="card">
                                 <div class="header text-center">
-                                    <h4 class="title title-up">Keluhan</h4>
+                                    <h4 class="title title-up">Cuti Kuliah</h4>
 
                                 </div>
 
@@ -225,8 +225,8 @@
                                     <!-- Tab panes -->
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
-                                            <h1 class=" text-center"><i class="now-ui-icons ui-2_chat-round"></i></h1>
-                                            <p><button data-toggle="modal" data-target="#keluhan" class="btn btn-primary">Proses</button></p>
+                                            <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p>
                                         </div>
                                     </div>
                                 </div>
