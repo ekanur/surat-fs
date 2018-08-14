@@ -15,11 +15,11 @@ class Verifikasi extends Migration
     {
         Schema::create('verifikasi', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("layanan_surat_id");
+            $table->integer("permohonan_surat_id");
             $table->integer("mahasiswa_id");
             $table->integer("user_id");
-            $table->enum("status", ["setuju", "tolak"]);
-            $table->string("catatan", 200);
+            $table->enum("status", ["setuju", "tolak", "diajukan"]);
+            $table->string("catatan", 200)->nullable();
             $table->timestamps();
             $table->softDeletes();
             //

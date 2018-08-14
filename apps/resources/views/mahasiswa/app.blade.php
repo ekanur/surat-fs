@@ -499,7 +499,6 @@ Laporan Keluhan Pelayanan
                 <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
                 <form action="{{ url("/aktif-kuliah") }}" method="post">
                     {{ csrf_field() }}
-                    <input type="hidden" name="mahasiswa_id">
                     <input type="hidden" name="layanan_surat_id" value="1">
                     <button type="submit" class="btn btn-success">Ya</button>
                 </form>

@@ -16,8 +16,9 @@
 // Route::get("/user", "UserController@index")->name("user.dashboard");
 Route::get("/admin", "AdminController@index")->name("admin.dashboard");
 Route::post("/admin/logout", "Auth\LoginController@adminLogout")->name("admin.logout");
-Route::get('/aktif-kuliah', "AktifKuliahController@view");
-Route::post("/aktif-kuliah", "AktifKuliahController@index");
+Route::get("/admin/verifikasi", "Admin\VerifikasiController@index");
+Route::get('/aktif-kuliah', "PermohonanSuratController@viewAktifKuliah");
+Route::post("/aktif-kuliah", "PermohonanSuratController@prosesAktifKuliah");
 
 Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
