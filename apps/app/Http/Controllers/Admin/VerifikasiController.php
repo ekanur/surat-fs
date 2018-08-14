@@ -16,9 +16,15 @@ class VerifikasiController extends Controller
     }
 
     function index(){
-    	$verifikasi = Verifikasi::where("user_id", Auth::user()->id)->get();
+   		$path_view  = 'admin';
+    	if (Auth::user()->tipe == 'admin') {
+    		$verifikasi = Verifikasi::all();
+    	} else {
+    		$path_view = 'default';
+    		$verifikasi = Verifikasi::where("user_id", Auth::user()->id)->get();
+    	}
 
-    	dd($verifikasi);
-    	return view("user.".Auth::user()->tipe.".index", compact($verifikasi));
+
+    	return view("user.".$path_view.".index", compact('verifikasi'));
     }
 }

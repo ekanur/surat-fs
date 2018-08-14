@@ -25,7 +25,7 @@ class PermohonanSuratController extends Controller
 
     	$is_created = $this->kirimVerifikasi($request->layanan_surat_id, $permohonan_surat->id);
 
-    	dd($is_created);
+    	// dd($is_created);
     	return ($is_created) ? redirect()->back()->with("success", ["Berhasil diproses, silakan diperika di bagian Admin"]) : redirect()->back()->with("error", ["Gagal membuat permohonan surat"]) ;;
     }
 

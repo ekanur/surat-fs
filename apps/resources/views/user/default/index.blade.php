@@ -30,41 +30,17 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									
-
-									<td class="text-left"><a href="">Permohonan Aktif Kuliah</a> </td>
-									<td>
-										Ibnu Suhaemy (112373790)
-									</td>
-									<td class="td-actions text-right">
-										1 hari
-									</td>
-								</tr>
-								<tr>
-									
-
-									<td class="text-left"><a href="">Permohonan KKP</a></td>
-									<td>
-										Ibnu Suhaemy (112373790)
-									</td>
-									<td class="td-actions text-right">
-										1 hari
-									</td>
-								</tr>
-								<tr>
-									
-
-									<td class="text-left"><a href="#" data-toggle="modal" data-target="detail_surat">Permohonan Judul Skripsi</a>
-									</td>
-									<td>
-										Ibnu Suhaemy (112373790)
-									</td>
-									<td class="td-actions text-right">
-
-										1 hari
-									</td>
-								</tr>
+								@foreach($verifikasi as $verifikasi)
+									<tr>
+										<td class="text-left"><a href="" data-toggle="modal" data-target="#detailSurat" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a> </td>
+										<td>
+											{{ $verifikasi->mahasiswa->nama }}
+										</td>
+										<td class="td-actions text-right">
+											{{ 1 }} hari
+										</td>
+									</tr>
+								@endforeach
 							</tbody>
 						</table>
 						<!-- </div> -->
@@ -82,3 +58,17 @@
 </div>
 
 @endsection
+
+@push("modal")
+
+@component("user.component.modal")
+@slot("id")
+detailSurat
+@endslot
+
+@slot("title")
+Surat Aktif Kuliah
+@endslot
+@endcomponent
+
+@endpush

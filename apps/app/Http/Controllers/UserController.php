@@ -11,6 +11,6 @@ class UserController extends Controller
 		$this->middleware("auth");
 	}
     function index(){
-    	return view("user.dekan.index");
+    	return view("user.default.index");
     }
 }

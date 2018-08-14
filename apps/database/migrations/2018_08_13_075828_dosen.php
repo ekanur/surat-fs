@@ -16,7 +16,7 @@ class Dosen extends Migration
         Schema::create('dosen', function (Blueprint $table) {
             $table->increments('id');
             $table->string("nama", 50);
-            $table->string("nip", 32);
+            $table->string("nip", 20);
             $table->enum("jurusan", ['sastra_indonesia','sastra_inggris','sastra_arab','sastra_jerman','seni_desain']);
             $table->timestamps();
             $table->softDeletes();

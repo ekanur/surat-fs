@@ -65,7 +65,7 @@
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
-                    {{ Auth::guard("web")->user()->name }}
+                    {{ Auth::guard("web")->user()->username }}
                     <span class="d-lg-none d-md-block">Account</span>
                     
                   </p>
