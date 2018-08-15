@@ -69,6 +69,10 @@ detailSurat
 @slot("title")
 Surat Aktif Kuliah
 @endslot
+
+@slot("content")
+
+@endslot
 @endcomponent
 
 @endpush
