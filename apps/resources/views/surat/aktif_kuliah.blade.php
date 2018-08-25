@@ -126,17 +126,17 @@
 <div id="ta_1" class="t s2_1">/UN32.2.1/KM/2018 </div>
 <div id="tb_1" class="t s2_1">Dekan Fakultas Sastra Universitas Negeri Malang menerangkan: </div>
 <div id="tc_1" class="t s2_1">Nama </div>
-<div id="td_1" class="t s2_1">: </div>
+<div id="td_1" class="t s2_1">: {{ $verifikasi->mahasiswa->nama }}</div>
 <div id="te_1" class="t s2_1">NIM </div>
-<div id="tf_1" class="t s2_1">: </div>
-<div id="tg_1" class="t s2_1">pada semester Genap 2017/2018 terdaftar sebagai mahasiswa Program Studi S1 Bahasa dan </div>
-<div id="th_1" class="t s2_1">Sastra Inggris, Jurusan Sastra Inggris Fakultas Sastra Universitas Negeri Malang </div>
+<div id="tf_1" class="t s2_1">: {{ $verifikasi->mahasiswa->nim }}</div>
+<div id="tg_1" class="t s2_1">pada semester {{ semester() }} terdaftar sebagai mahasiswa Program Studi  </div>
+<div id="th_1" class="t s2_1">{{ $verifikasi->mahasiswa->prodi }}, Jurusan {{ $verifikasi->mahasiswa->jurusan }} Universitas Negeri Malang </div>
 <div id="ti_1" class="t s2_1">Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya. </div>
-<div id="tj_1" class="t s2_1">23  Juli 2018 </div>
+<div id="tj_1" class="t s2_1">{{ date("d") }} {{ bulan() }} {{date("Y")}} </div>
 <div id="tk_1" class="t s2_1">a.n. Dekan </div>
 <div id="tl_1" class="t s2_1">Wakil Dekan 1, </div>
-<div id="tm_1" class="t s3_1">Dr. Primardiana.H.W., M.Pd. </div>
-<div id="tn_1" class="t s2_1">NIP 19640917 198802 2 001 </div>
+<div id="tm_1" class="t s3_1"><strong>{{ $verifikasi->user->dosen->nama }}</strong></div>
+<div id="tn_1" class="t s2_1">NIP {{ $verifikasi->user->dosen->nip }}</div>
 
 <!-- End text definitions -->
 

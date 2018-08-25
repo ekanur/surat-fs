@@ -15,4 +15,8 @@ class Verifikasi extends Model
     function mahasiswa(){
     	return $this->belongsTo("App\Mahasiswa");
     }
+
+    function user(){
+    	return $this->belongsTo("App\User");
+    }
 }

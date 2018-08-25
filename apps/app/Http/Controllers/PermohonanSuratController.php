@@ -13,7 +13,7 @@ class PermohonanSuratController extends Controller
 {
     function __construct()
     {
-    	$this->middleware("auth:mahasiswa");
+    	$this->middleware("auth:mahasiswa")->except("viewAktifKuliah");
     }
 
     public function prosesAktifKuliah(Request $request){
@@ -45,5 +45,13 @@ class PermohonanSuratController extends Controller
     	}
 
     	return Verifikasi::insert($data_verifikasi);
+    }
+
+    function viewAktifKuliah($permohonan_surat_id){
+        $verifikasi = Verifikasi::with("mahasiswa", "user.dosen")->where("permohonan_surat_id", $permohonan_surat_id)->first();
+
+        // dd($verifikasi);
+
+        return view("surat/aktif_kuliah", compact('verifikasi'));
     }
 }

@@ -16,8 +16,8 @@
 // Route::get("/user", "UserController@index")->name("user.dashboard");
 Route::get("/admin", "AdminController@index")->name("admin.dashboard");
 Route::post("/admin/logout", "Auth\LoginController@adminLogout")->name("admin.logout");
-Route::get("/admin/verifikasi", "Admin\VerifikasiController@index");
-Route::get('/aktif-kuliah', "PermohonanSuratController@viewAktifKuliah");
+// Route::get("/admin/aktif-kuliah", "Admin\AktifKuliahController@index");
+Route::get('/aktif-kuliah/{permohonan_surat_id}', "PermohonanSuratController@viewAktifKuliah")->name("view.aktif_kuliah");
 Route::post("/aktif-kuliah", "PermohonanSuratController@prosesAktifKuliah");
 
 Auth::routes();
@@ -28,4 +28,6 @@ Route::get('/mahasiswa', "Auth\MahasiswaLoginController@showLoginForm")->name("m
 Route::post('/mahasiswa', "Auth\MahasiswaLoginController@login")->name("mahasiswa.login.submit");
 Route::post('/mahasiswa/logout', "Auth\MahasiswaLoginController@logout")->name("mahasiswa.logout");
 Route::get("/", "AppController@index")->name("mahasiswa.dashboard");
+
+Route::post("/verifikasi-aktif-kuliah", "Admin\VerifikasiController@aktifKuliah")->name("verifikasi.aktif-kuliah");
 

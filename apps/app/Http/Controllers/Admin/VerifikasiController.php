@@ -27,4 +27,10 @@ class VerifikasiController extends Controller
 
     	return view("user.".$path_view.".index", compact('verifikasi'));
     }
+
+    function aktifKuliah(Request $request){
+        $verifikasi = Verifikasi::where("permohonan_surat_id", $request->permohonan_surat_id)->update(["status" => $request->status]);
+
+        return redirect()->back();
+    }
 }
