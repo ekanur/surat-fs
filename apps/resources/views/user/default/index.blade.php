@@ -81,7 +81,7 @@ Surat Aktif Kuliah
 @slot("content")
 <input type="hidden" name="permohonan_surat_id">
 <div id="iframe_container embed-responsive embed-responsive-1by1">
-<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style=""></iframe>	
+<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>	
 </div>
 <div class="form-group row">
     <label for="verifikasi" class="col-sm-2 col-form-label">Setuju/Tolak</label>

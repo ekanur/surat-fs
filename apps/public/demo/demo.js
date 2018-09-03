@@ -580,19 +580,19 @@ demo = {
     marker.setMap(map);
   },
 
-  showNotification: function(from, align) {
-    color = 'primary';
+  showNotification: function(message, status='primary') {
+    // color = ()?'primary';
 
     $.notify({
       icon: "now-ui-icons ui-1_bell-53",
-      message: "Welcome to <b>Now Ui Dashboard</b> - a beautiful freebie for every web developer."
+      message: message
 
     }, {
-      type: color,
-      timer: 8000,
+      type: status,
+      timer: 4000,
       placement: {
-        from: from,
-        align: align
+        from: 'top',
+        align: 'right'
       }
     });
   }

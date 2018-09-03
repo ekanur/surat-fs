@@ -12,4 +12,8 @@ class Permohonan_surat extends Model
     function layanan_surat(){
     	return $this->belongsTo("App\Layanan_surat");
     }
+
+    function mahasiswa(){
+    	return $this->belongsTo("App\Mahasiswa");
+    }
 }

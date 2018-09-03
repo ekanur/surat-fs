@@ -20,103 +20,47 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th class="text-center" width="10%">#</th>
 									<th width="45%">Surat</th>
 									<th width="35%">Pemohon</th>
 									<th width="35%">Status</th>
+									<th width="35%">Usia Surat</th>
 									<th class="text-right">Cetak</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>
-										<div class="form-check">
-											<label class="form-check-label">
-												<input class="form-check-input" type="checkbox" checked>
-												<span class="form-check-sign"></span>
-											</label>
-										</div>
-									</td>
-
-									<td class="text-left"><a href="">Permohonan Aktif Kuliah</a> </td>
-									<td>
-										Ibnu Suhaemy (112373790)
-									</td>
-									<td>
-										<span class="text-success">Disetujui</span>
-									</td>
-									<td class="td-actions text-right">
-										<a target="_blank" href="{{ url("/aktif-kuliah") }}" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
-											<i class="now-ui-icons arrows-1_cloud-download-93"></i>
-										</a>
-										{{-- <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-											<i class="now-ui-icons ui-1_simple-remove"></i>
-										</button> --}}
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="form-check">
-											<label class="form-check-label">
-												<input class="form-check-input" type="checkbox" disabled="">
-												<span class="form-check-sign"></span>
-											</label>
-										</div>
-									</td>
-
-									<td class="text-left"><a href="">Permohonan KKP</a></td>
-									<td>
-										Ibnu Suhaemy (112373790)
-									</td>
-									<td>
-										<span class="text-danger">Tolak</span>
-									</td>
-									<td class="td-actions text-right">
-										<button disabled type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
-											<i class="now-ui-icons arrows-1_cloud-download-93"></i>
-										</button>
-										{{-- <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-											<i class="now-ui-icons ui-1_simple-remove"></i>
-										</button> --}}
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="form-check">
-											<label class="form-check-label">
-												<input class="form-check-input" type="checkbox" disabled>
-												<span class="form-check-sign"></span>
-											</label>
-										</div>
-									</td>
-
-									<td class="text-left"><a href="">Permohonan Judul Skripsi</a>
-									</td>
-									<td>
-										Ibnu Suhaemy (112373790)
-									</td>
-									<td>
-										<span class="text-info">Diverifikasi</span>
-									</td>
-									<td class="td-actions text-right">
-
-										<button disabled type="button" rel="tooltip" title="" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Verifikasi">
-											<i class="now-ui-icons arrows-1_cloud-download-93"></i>
-										</button>
-										{{-- <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-											<i class="now-ui-icons ui-1_simple-remove"></i>
-										</button> --}}
-									</td>
-								</tr>
+								@foreach($permohonan_surat as $permohonan_surat)
+									<tr>
+										<td class="text-left"><a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id) }}" target="_blank">{{ $permohonan_surat->layanan_surat->judul }}</a> </td>
+										<td>
+											{{ $permohonan_surat->mahasiswa->nama }}
+										</td>
+										<td>
+											{{ $permohonan_surat->status }}
+										</td>
+										<td class="td-actions text-right">
+											{{ 1 }} hari
+										</td>
+										<td>
+											@if($permohonan_surat->status == 'siap_cetak')
+												<a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id."/print") }}" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" target="_blank">
+												<i class="now-ui-icons arrows-1_cloud-download-93"></i>
+											</a>
+											@else
+												<button class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" disabled=""><i class="now-ui-icons arrows-1_cloud-download-93"></i></button>
+											@endif
+											
+										</td>
+									</tr>
+								@endforeach
 							</tbody>
 						</table>
 						<!-- </div> -->
 					</div>
 					<div class="card-footer ">
 						{{-- <hr> --}}
-						<div class="stats">
+						{{-- <div class="stats">
 							<button class="btn btn-success">Cetak (1 Surat)</button>
-						</div>
+						</div> --}}
 					</div>
 			</div>
 		</div>
@@ -134,3 +78,4 @@
 		@include("user.menus.default")
 	@endif
 @endsection
+

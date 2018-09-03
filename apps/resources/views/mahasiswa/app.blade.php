@@ -341,24 +341,67 @@ Surat Ijin Penelitian
 @endslot
 
 @slot('form_field')
-<form action="{{ url("/ijin-penelitian") }}" method="post">
+<form action="{{ url("/permohonan-surat") }}" method="post">
     {{ csrf_field() }}
+    <input type="hidden" name="layanan_surat_id" value='2'>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="inputPassword4">Jenis</label><br/>
+          {{-- <select name="jenis" id="" class="form-control">
+              <option value="penelitian">Penelitian</option>
+              <option value="observasi">Observasi</option>
+              <option value="pkl">PKL</option>
+              <option value="pkmm">PKMM</option>
+              <option value="kkp">KKP</option>
+          </select> --}}
+          <div class="form-check form-check-radio form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="penelitian"> Penelitian
+            <span class="form-check-sign"></span>
+          </label>
+        </div>
+        <div class="form-check form-check-radio form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="observasi"> Observasi
+            <span class="form-check-sign"></span>
+          </label>
+        </div>
+        <div class="form-check form-check-radio form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="pkl"> PKL
+            <span class="form-check-sign"></span>
+          </label>
+        </div>
+        <div class="form-check form-check-radio form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="pkmm"> PKMM
+            <span class="form-check-sign"></span>
+          </label>
+        </div>
+        <div class="form-check form-check-radio form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="kkp"> KKP
+            <span class="form-check-sign"></span>
+          </label>
+        </div>
+      </div>
+    </div>
     <div class="form-row">
       <div class="form-group col-md-5">
           <label for="inputPassword4">Mata Kuliah</label>
-          <input type="text" class="form-control" name="matakuliah" id="" placeholder="Matakuliah">
+          <input type="text" class="form-control" name="matakuliah" id="" required="" placeholder="Matakuliah">
       </div>
       <div class="form-group col-md-4">
           <label for="inputPassword4">Dosen Pengampu</label>
-          <select name="lama_pelaksanaan" id="" class="form-control">
-            @for($i = 1; $i<=7; $i++)
-            <option value="{{ $i }}">Dosen {{ $i }} </option>
-            @endfor
+          <select name="dosen" id="" class="form-control" required="" >
+            @foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
+            @endforeach
         </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputEmail4">Tahun Akademik</label>
-      <select name="tahun_ajar" id="" class="form-control">
+      <select name="tahun_ajar" id="" class="form-control" required="" >
           <option value="20161">Gasal 2016</option>
           <option value="20162">Genap 2016</option>
           <option value="20171">Gasal 2017</option>
@@ -371,34 +414,34 @@ Surat Ijin Penelitian
 
 <div class="form-group">
   <label for="inputPassword4">Nama Instansi</label>
-  <input type="text" class="form-control" name="nama_instansi" id="" placeholder="Matakuliah">
+  <input type="text" class="form-control" name="nama_instansi" id=""  required=""  placeholder="Instansi">
 </div>
 <div class="form-group">
   <label for="inputPassword4">Alamat Instansi</label>
-  <textarea name="alamat_instansi" id="" cols="30" rows="1" class="form-control"></textarea>
+  <textarea name="alamat_instansi" id="" cols="30"  required=""  rows="1" class="form-control"></textarea>
 </div>
 <div class="form-group">
     <label for="">Judul Penelitian</label>
-    <textarea name="judul_penelitian" id="" cols="30" rows="1" class="form-control"></textarea>
+    <textarea name="judul_penelitian" id=""  required=""  cols="30" rows="1" class="form-control"></textarea>
 </div>
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="">Populasi</label>
-        <input type="text" class="form-control" name="populasi" placeholder="Populasi penelitian">
+        <input type="text" class="form-control"  required=""  name="populasi" placeholder="Populasi penelitian">
     </div>
     <div class="form-group col-md-6">
         <label for="">Tempat</label>
-        <input type="text" class="form-control" name="tempat" placeholder="Tempat penelitian">
+        <input type="text" class="form-control"  required=""  name="tempat" placeholder="Tempat penelitian">
     </div>
 </div>
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="">Tanggal Mulai</label>
-        <input type="date" class="form-control" name="tanggal_mulai" placeholder="">
+        <input type="date" class="form-control"  required=""  name="tanggal_mulai" placeholder="">
     </div>
     <div class="form-group col-md-6">
         <label for="">Tanggal Selesai</label>
-        <input type="date" class="form-control" name="tanggal_selesai" placeholder="">
+        <input type="date" class="form-control"  required=""  name="tanggal_selesai" placeholder="">
     </div>
 </div>
 
@@ -419,7 +462,7 @@ Pengajuan Judul Skripsi
 @endslot
 
 @slot('form_field')
-<form action="{{ url("/judul-skripsi") }}" method="post">
+<form action="{{ url("/permohonan-surat") }}" method="post">
     {{ csrf_field() }}
     
     <div class="form-group">
@@ -433,18 +476,18 @@ Pengajuan Judul Skripsi
   <div class="form-row">
     <div class="form-group col-md-6">
         <label for="">Dosen Pembimbing 1</label>
-        <select name="dosen_pembimbing1[]" id="" class="form-control">
-            @for($i = 1; $i<=7; $i++)
-            <option value="{{ $i }}">Nama Dosen </option>
-            @endfor
+        <select name="dosen_pembimbing1" id="" class="form-control">
+            @foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
+            @endforeach
         </select>
     </div>
     <div class="form-group col-md-6">
         <label for="">Dosen Pembimbing 2</label>
-        <select name="dosen_pembimbing2[]" id="" class="form-control">
-            @for($i = 1; $i<=7; $i++)
-            <option value="{{ $i }}">Nama Dosen </option>
-            @endfor
+        <select name="dosen_pembimbing2" id="" class="form-control">
+            @foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
+            @endforeach
         </select>
     </div>
 </div>
@@ -473,10 +516,11 @@ Laporan Keluhan Pelayanan
     
     <div class="form-group">
       <label for="inputPassword4">Keluhan</label>
-      <textarea name="keluhan" id="" cols="30" rows="3" class="form-control"></textarea>
+      <textarea name="isi" id="" cols="30" rows="3" class="form-control"></textarea>
+      <small class="help-block">Maksimal 230 huruf</small>
   </div>
 
-  <button type="submit" class="btn btn-success pull-right">Proses</button>
+  <button type="submit" class="btn btn-success pull-right" name="keluhan">Proses</button>
 </form>
 @endslot
 
@@ -497,7 +541,7 @@ Laporan Keluhan Pelayanan
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
-                <form action="{{ url("/aktif-kuliah") }}" method="post">
+                <form action="{{ url("/permohonan-surat") }}" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="layanan_surat_id" value="1">
                     <button type="submit" class="btn btn-success">Ya</button>
@@ -530,4 +574,19 @@ Laporan Keluhan Pelayanan
       </div>
   </div>
 </div>
+@endpush
+
+@push("js")
+
+<script src="{{ asset("js/plugins/bootstrap-notify.js") }}" type="text/javascript"></script>
+<script src="{{ asset("demo/demo.js") }}" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        @if(null != session('message'))
+            demo.showNotification('{{ session('message') }}', '{{ session('status') }}');
+        @endif
+        
+    });
+</script>
+
 @endpush

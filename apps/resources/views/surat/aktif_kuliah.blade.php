@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 </head>
 
-<body style="margin: 0;">
+<body style="margin: 0;"  @if($print == "print") onload="window.print();" @endif>
 
 <div id="p1" style="overflow: hidden; position: relative; background-color: white; width: 909px; height: 1286px;">
 

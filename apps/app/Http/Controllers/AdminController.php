@@ -15,15 +15,17 @@ class AdminController extends Controller
 	}
     function index(){
     	if (Auth::user()->tipe == 'admin') {
-    		$path_view  = 'admin';
-    		$verifikasi = Verifikasi::with("permohonan_surat.layanan_surat", "mahasiswa")->all();
-    	} else {
-    		$path_view = 'default';
-    		$verifikasi = Verifikasi::with("permohonan_surat.layanan_surat", "mahasiswa")->where("user_id", Auth::user()->id)->get();
-    	}
-    	// dd($verifikasi);
+    		// $path_view  = 'admin';
+    		$permohonan_surat = Permohonan_surat::with("layanan_surat", "mahasiswa")->orderBy("created_at", "desc")->get();
 
-    	return view("user.".$path_view.".index", compact('verifikasi'));
+            return view("user/admin/index", compact('permohonan_surat'));
+    	} else {
+    		// $path_view = 'default';
+    		$verifikasi = Verifikasi::with("permohonan_surat.layanan_surat", "mahasiswa")->where("user_id", Auth::user()->id)->orderBy("created_at", "desc")->get();
+        	return view("user/default/index", compact('verifikasi'));
+        }
+        // dd($verifikasi);
+
 
     }
 }

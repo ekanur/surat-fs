@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use App\Dosen;
 
 class AppController extends Controller
 {
@@ -11,8 +12,8 @@ class AppController extends Controller
 		$this->middleware("auth:mahasiswa");
 	}
    	function index(Request $request){
-   		// Session::put("nim", $request->nim);
+   		$dosen = Dosen::where("id", "!=", 1)->get();
 
-   		return view("mahasiswa.app");
+   		return view("mahasiswa.app", compact('dosen'));
    	}
 }
