@@ -12,8 +12,13 @@ class LayananSuratTableSeeder extends Seeder
     public function run()
     {
         DB::table("layanan_surat")->insert([
-        	"judul" => "Layanan Surat Aktif Kuliah",
-        	"kode_layanan" => "aktif_kuliah"
+            "judul" => "Layanan Surat Aktif Kuliah",
+            "kode_layanan" => "aktif-kuliah"
+        ]);
+
+        DB::table("layanan_surat")->insert([
+        	"judul" => "Layanan Surat Ijin Penelitian",
+        	"kode_layanan" => "ijin-penelitian"
         ]);
     }
 }

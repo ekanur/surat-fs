@@ -151,7 +151,7 @@
 
                         
 
-                        <div class="col-md-3 col-lg-3 col-xl-3">
+                        {{-- <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
                             <div class="card">
                                 <div class="header text-center">
@@ -169,7 +169,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
@@ -193,7 +193,7 @@
 
                         
 
-                        <div class="col-md-3 col-lg-3 col-xl-3">
+                        {{-- <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
                             <div class="card">
                                 <div class="header text-center">
@@ -211,7 +211,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
@@ -343,49 +343,9 @@ Surat Ijin Penelitian
 @slot('form_field')
 <form action="{{ url("/permohonan-surat") }}" method="post">
     {{ csrf_field() }}
-    <input type="hidden" name="layanan_surat_id" value='2'>
-    <div class="form-row">
-        <div class="form-group col-md-12">
-          <label for="inputPassword4">Jenis</label><br/>
-          {{-- <select name="jenis" id="" class="form-control">
-              <option value="penelitian">Penelitian</option>
-              <option value="observasi">Observasi</option>
-              <option value="pkl">PKL</option>
-              <option value="pkmm">PKMM</option>
-              <option value="kkp">KKP</option>
-          </select> --}}
-          <div class="form-check form-check-radio form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="penelitian"> Penelitian
-            <span class="form-check-sign"></span>
-          </label>
-        </div>
-        <div class="form-check form-check-radio form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="observasi"> Observasi
-            <span class="form-check-sign"></span>
-          </label>
-        </div>
-        <div class="form-check form-check-radio form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="pkl"> PKL
-            <span class="form-check-sign"></span>
-          </label>
-        </div>
-        <div class="form-check form-check-radio form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="pkmm"> PKMM
-            <span class="form-check-sign"></span>
-          </label>
-        </div>
-        <div class="form-check form-check-radio form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="jenis" required="" id="" value="kkp"> KKP
-            <span class="form-check-sign"></span>
-          </label>
-        </div>
-      </div>
-    </div>
+    <input type="hidden" name="kode_layanan" value='ijin-penelitian'>
+    <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['ijin-penelitian'] }}'>
+    
     <div class="form-row">
       <div class="form-group col-md-5">
           <label for="inputPassword4">Mata Kuliah</label>
@@ -402,12 +362,12 @@ Surat Ijin Penelitian
     <div class="form-group col-md-3">
       <label for="inputEmail4">Tahun Akademik</label>
       <select name="tahun_ajar" id="" class="form-control" required="" >
-          <option value="20161">Gasal 2016</option>
-          <option value="20162">Genap 2016</option>
-          <option value="20171">Gasal 2017</option>
-          <option value="20172">Genap 2017</option>
-          <option value="20181">Gasal 2018</option>
-          <option value="20182">Genap 2018</option>
+          <option value="20161">Gasal 2016/2017</option>
+          <option value="20162">Genap s016/2017</option>
+          <option value="20171">Gasal 2017/2018</option>
+          <option value="20172">Genap 2017/2018</option>
+          <option value="20181">Gasal 2018/2019</option>
+          <option value="20182">Genap 2018/2019</option>
       </select>
   </div>
 </div>
@@ -473,7 +433,7 @@ Pengajuan Judul Skripsi
       <label for="inputPassword4">Judul Skripsi Kedua</label>
       <textarea name="judul_skripsi[]" id="" cols="30" rows="2" class="form-control"></textarea>
   </div>
-  <div class="form-row">
+  {{-- <div class="form-row">
     <div class="form-group col-md-6">
         <label for="">Dosen Pembimbing 1</label>
         <select name="dosen_pembimbing1" id="" class="form-control">
@@ -490,7 +450,7 @@ Pengajuan Judul Skripsi
             @endforeach
         </select>
     </div>
-</div>
+</div> --}}
 
 
 <button type="submit" class="btn btn-success pull-right">Proses</button>
@@ -543,7 +503,8 @@ Laporan Keluhan Pelayanan
                 <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
                 <form action="{{ url("/permohonan-surat") }}" method="post">
                     {{ csrf_field() }}
-                    <input type="hidden" name="layanan_surat_id" value="1">
+                    <input type="hidden" name="kode_layanan" value="aktif-kuliah">
+                    <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['aktif-kuliah'] }}'>
                     <button type="submit" class="btn btn-success">Ya</button>
                 </form>
             </div>

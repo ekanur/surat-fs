@@ -18,8 +18,14 @@ class DosenTableSeeder extends Seeder
         ]);
 
         DB::table("dosen")->insert([
-        	"nama" => "Prof. Utami Widiati, M.A., Ph.D.",
-        	"nip" => "196508131990022001",
+            "nama" => "Prof. Utami Widiati, M.A., Ph.D.",
+            "nip" => "196508131990022001",
+            "jurusan" => "sastra_inggris"
+        ]);
+
+        DB::table("dosen")->insert([
+        	"nama" => "Dr. Primardiana H.W., M.Pd.",
+        	"nip" => "196409171988022001",
         	"jurusan" => "sastra_inggris"
         ]);
     }

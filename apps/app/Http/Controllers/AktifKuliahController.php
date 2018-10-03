@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Verifikasi;
 
 class AktifKuliahController extends Controller
 {
@@ -11,8 +12,11 @@ class AktifKuliahController extends Controller
     	return "aktif-kuliah";
     }
 
-    public function view()
-    {
-    	return view("surat/aktif_kuliah");
+    function view($permohonan_surat_id, $print = null){
+        $verifikasi = Verifikasi::with("mahasiswa", "user.dosen")->where("permohonan_surat_id", $permohonan_surat_id)->first();
+
+        // dd($verifikasi);
+
+        return view("surat/aktif_kuliah", compact('verifikasi', 'print'));
     }
 }

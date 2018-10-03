@@ -33,7 +33,7 @@
 							<tbody>
 								@foreach($verifikasi as $verifikasi)
 									<tr>
-										<td class="text-left"><a href="" data-toggle="modal" data-target="#detailSurat" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a> </td>
+										<td class="text-left"><a href="" data-toggle="modal" data-target="#detailSurat" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a> </td>
 										<td>
 											{{ $verifikasi->mahasiswa->nama }}
 										</td>
@@ -102,7 +102,8 @@ Surat Aktif Kuliah
 	$(document).ready(function(){
 		$("#detailSurat").on("show.bs.modal", function (event) {
                 const detail_surat = $(event.relatedTarget);
-                var url = "{{ url("aktif-kuliah") }}";
+                var kode_layanan = detail_surat.data("kode_layanan");
+                var url = "{{ url("/") }}/"+kode_layanan;
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
 
                 $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);

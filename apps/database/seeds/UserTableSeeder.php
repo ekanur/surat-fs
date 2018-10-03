@@ -20,11 +20,19 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table("users")->insert([
-        	"username" => "dekan",
-        	"email" => "dekan.fs@um.ac.id",
-        	"password" => bcrypt("dekan"),
-        	"dosen_id" => 2,
-        	"tipe" => "dekan"
+            "username" => "dekan",
+            "email" => "dekan.fs@um.ac.id",
+            "password" => bcrypt("123456"),
+            "dosen_id" => 2,
+            "tipe" => "dekan"
+        ]);
+
+        DB::table("users")->insert([
+        	"username" => "wd1",
+        	"email" => "wd1.fs@um.ac.id",
+        	"password" => bcrypt("123456"),
+        	"dosen_id" => 3,
+        	"tipe" => "wd1"
         ]);
     }
 }

@@ -22,7 +22,8 @@ class PermohonanSuratController extends Controller
     	$permohonan_surat->mahasiswa_id = Auth::guard("mahasiswa")->user()->id;
     	$permohonan_surat->layanan_surat_id = $request->layanan_surat_id;
     	$permohonan_surat->konten = $this->kontenSurat($request);
-        $permohonan_surat->status = ($request->layanan_surat_id == '1')? "verifikasi":"siap_cetak";
+        $permohonan_surat->status =  "verifikasi";
+        // $permohonan_surat->status = ($request->layanan_surat_id == '1')? "verifikasi":"siap_cetak";
     	$permohonan_surat->save();
 
     	$is_created = $this->kirimVerifikasi($request->layanan_surat_id, $permohonan_surat->id);
@@ -37,11 +38,11 @@ class PermohonanSuratController extends Controller
     }
 
     function kontenSurat(Request $request){
-        if ($request->layanan_surat_id == 1) {
+        if ($request->kode_layanan == 'aktif-kuliah') {
             return json_encode([]);
-        } elseif($request->layanan_surat_id == 2) {
+        } elseif($request->kode_layanan == 'ijin-penelitian') {
             $konten = array(
-                        "jenis" => $request->jenis,
+                        // "jenis" => $request->jenis,
                         "matakuliah" => $request->matakuliah,
                         "dosen" => $request->dosen,
                         "tahun_ajar" => $request->tahun_ajar,
@@ -59,11 +60,11 @@ class PermohonanSuratController extends Controller
         
     }
 
-    public function prosesIjinPenelitian(Request $request){
-        $permohonan_surat = new Permohonan_surat;
-        $permohonan_surat->mahasiswa_id = Auth::guard("mahasiswa")->user()->id();
-        $permohonan_surat->layanan_surat_id = $request->layanan_surat_id;
-    }
+    // public function prosesIjinPenelitian(Request $request){
+    //     $permohonan_surat = new Permohonan_surat;
+    //     $permohonan_surat->mahasiswa_id = Auth::guard("mahasiswa")->user()->id;
+    //     $permohonan_surat->layanan_surat_id = $request->layanan_surat_id;
+    // }
 
     public function kirimVerifikasi($layanan_surat_id, $permohonan_surat_id){
     	$cek_verifikator = Verifikator::select("user_id", "urutan")->where("layanan_surat_id", "=", $layanan_surat_id)->get();
