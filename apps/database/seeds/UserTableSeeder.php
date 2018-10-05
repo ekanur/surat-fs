@@ -28,11 +28,27 @@ class UserTableSeeder extends Seeder
         ]);
 
         DB::table("users")->insert([
-        	"username" => "wd1",
-        	"email" => "wd1.fs@um.ac.id",
+            "username" => "wd1",
+            "email" => "wd1.fs@um.ac.id",
+            "password" => bcrypt("123456"),
+            "dosen_id" => 3,
+            "tipe" => "wd1"
+        ]);
+
+        DB::table("users")->insert([
+            "username" => "wd2",
+            "email" => "wd2.fs@um.ac.id",
+            "password" => bcrypt("123456"),
+            "dosen_id" => 4,
+            "tipe" => "wd2"
+        ]);
+
+        DB::table("users")->insert([
+        	"username" => "wd3",
+        	"email" => "wd3.fs@um.ac.id",
         	"password" => bcrypt("123456"),
-        	"dosen_id" => 3,
-        	"tipe" => "wd1"
+        	"dosen_id" => 5,
+        	"tipe" => "wd3"
         ]);
     }
 }

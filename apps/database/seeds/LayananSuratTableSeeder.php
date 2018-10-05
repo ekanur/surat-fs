@@ -17,8 +17,18 @@ class LayananSuratTableSeeder extends Seeder
         ]);
 
         DB::table("layanan_surat")->insert([
-        	"judul" => "Layanan Surat Ijin Penelitian",
-        	"kode_layanan" => "ijin-penelitian"
+            "judul" => "Layanan Surat Ijin Penelitian",
+            "kode_layanan" => "ijin-penelitian"
+        ]);
+
+        DB::table("layanan_surat")->insert([
+            "judul" => "Layanan Surat Ijin Observasi",
+            "kode_layanan" => "ijin-observasi"
+        ]);
+
+        DB::table("layanan_surat")->insert([
+        	"judul" => "Layanan Surat Pengajuan Skripsi",
+        	"kode_layanan" => "pengajuan-skripsi"
         ]);
     }
 }

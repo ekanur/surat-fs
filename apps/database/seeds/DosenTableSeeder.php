@@ -66,8 +66,38 @@ class DosenTableSeeder extends Seeder
         ]);
 
         DB::table("dosen")->insert([
-        	"nama" => "Dr. Hariyanto, M.Hum",
-        	"nip" => "195805011987011001",
+            "nama" => "Dr. Hariyanto, M.Hum",
+            "nip" => "195805011987011001",
+            "jurusan" => "seni_desain"
+        ]);
+
+        DB::table("dosen")->insert([
+            "nama" => "Dr. Martutik, M.Pd",
+            "nip" => "196308271987012001",
+            "jurusan" => "sastra_indonesia"
+        ]);
+
+        DB::table("dosen")->insert([
+            "nama" => "Dr. Suharyadi, S.Pd, M.Pd",
+            "nip" => "197910172010121003",
+            "jurusan" => "sastra_inggris"
+        ]);
+
+        DB::table("dosen")->insert([
+            "nama" => "Ali Ma'sum, S.Pd, M.A.",
+            "nip" => "197908262005011002",
+            "jurusan" => "sastra_arab"
+        ]);
+
+        DB::table("dosen")->insert([
+            "nama" => "Iwa Sobara, S.Pd, M.A.",
+            "nip" => "198204282006041001",
+            "jurusan" => "sastra_jerman"
+        ]);
+
+        DB::table("dosen")->insert([
+        	"nama" => "Drs. Sumarwahyudi, M.Sn",
+        	"nip" => "196205191992031001",
         	"jurusan" => "seni_desain"
         ]);
     }
