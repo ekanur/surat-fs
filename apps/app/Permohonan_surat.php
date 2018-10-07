@@ -16,4 +16,8 @@ class Permohonan_surat extends Model
     function mahasiswa(){
     	return $this->belongsTo("App\Mahasiswa");
     }
+
+    function verifikasi(){
+    	return $this->hasMany("App\Verifikasi");
+    }
 }

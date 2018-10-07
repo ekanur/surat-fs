@@ -7,7 +7,7 @@
 @section("content")
 
 <div class="panel-header panel-header-lg">
-	<canvas id="bigDashboardChart"></canvas>
+	{{-- <canvas id="bigDashboardChart"></canvas> --}}
 </div>
 <div class="content">
 
@@ -33,7 +33,7 @@
 							<tbody>
 								@foreach($verifikasi as $verifikasi)
 									<tr>
-										<td class="text-left"><a href="" data-toggle="modal" data-target="#detailSurat" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a> </td>
+										<td class="text-left"><a href="" data-toggle="modal" data-target="#detailSurat" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $verifikasi->bisa_verifikasi }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a> </td>
 										<td>
 											{{ $verifikasi->mahasiswa->nama }}
 										</td>
@@ -41,7 +41,7 @@
 											{{ $verifikasi->status }}
 										</td>
 										<td class="td-actions text-right">
-											{{ 1 }} hari
+											{{ usia_surat($verifikasi->permohonan_surat->created_at) }} hari
 										</td>
 									</tr>
 								@endforeach
@@ -71,7 +71,7 @@ detailSurat
 @endslot
 
 @slot("title")
-Surat Aktif Kuliah
+Verifikasi Surat
 @endslot
 
 @slot("action")
@@ -83,15 +83,15 @@ Surat Aktif Kuliah
 <div id="iframe_container embed-responsive embed-responsive-1by1">
 <iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>	
 </div>
-<div class="form-group row">
+<div class="form-group row" id="input-verifikasi" style="display: none">
     <label for="verifikasi" class="col-sm-2 col-form-label">Setuju/Tolak</label>
     <div class="col-sm-10">
       <select class="form-control" name="status" id="">
-      	<option value="setuju">Setujui</option>
-      	<option value="tolak">Tolak</option>
+        <option value="setuju">Setujui</option>
+        <option value="tolak">Tolak</option>
       </select>
     </div>
-  </div>
+</div>
 @endslot
 @endcomponent
 
@@ -105,6 +105,12 @@ Surat Aktif Kuliah
                 var kode_layanan = detail_surat.data("kode_layanan");
                 var url = "{{ url("/") }}/"+kode_layanan;
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
+                var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
+
+                if (bisa_verifikasi) {
+                	$("#input-verifikasi").css("display", "flex");
+                	$("#btn-simpan").css("display", "block");
+                }
 
                 $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
                 $("input[name='permohonan_surat_id']").val(permohonan_surat_id);

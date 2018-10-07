@@ -88,10 +88,30 @@
         					</div>
         				</div>
         				<div class="col-md-3 col-lg-3 col-xl-3">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="header text-center">
+                                    <h4 class="title title-up">Ijin Penelitian</h4>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home" role="tabpanel">
+                                            <h1 class=" text-center"><i class="now-ui-icons business_chart-bar-32"></i></h1>
+                                            <p><button data-toggle="modal" data-target="#ijin_penelitian" class="btn btn-primary">Proses</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-lg-3 col-xl-3">
         					<!-- Nav tabs -->
         					<div class="card">
         						<div class="header text-center">
-        							<h4 class="title title-up">Ijin Penelitian</h4>
+        							<h4 class="title title-up">Ijin Observasi</h4>
 
         						</div>
 
@@ -100,7 +120,7 @@
         							<div class="tab-content">
         								<div class="tab-pane active" id="home" role="tabpanel">
         									<h1 class=" text-center"><i class="now-ui-icons business_chart-bar-32"></i></h1>
-        									<p><button data-toggle="modal" data-target="#ijin_penelitian" class="btn btn-primary">Proses</button></p>
+        									<p><button data-toggle="modal" data-target="#ijin_observasi" class="btn btn-primary">Proses</button></p>
         								</div>
         							</div>
         						</div>
@@ -347,27 +367,108 @@ Surat Ijin Penelitian
     <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['ijin-penelitian'] }}'>
     
     <div class="form-row">
-      <div class="form-group col-md-5">
+      <div class="form-group col-md-9">
           <label for="inputPassword4">Mata Kuliah</label>
           <input type="text" class="form-control" name="matakuliah" id="" required="" placeholder="Matakuliah">
       </div>
-      <div class="form-group col-md-4">
+      <!-- <div class="form-group col-md-4">
           <label for="inputPassword4">Dosen Pengampu</label>
           <select name="dosen" id="" class="form-control" required="" >
-            @foreach($dosen as $data_dosen)
+            {{-- @foreach($dosen as $data_dosen)
                 <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
-            @endforeach
+            @endforeach --}}
         </select>
-    </div>
+          </div> -->
     <div class="form-group col-md-3">
       <label for="inputEmail4">Tahun Akademik</label>
       <select name="tahun_ajar" id="" class="form-control" required="" >
-          <option value="20161">Gasal 2016/2017</option>
-          <option value="20162">Genap s016/2017</option>
-          <option value="20171">Gasal 2017/2018</option>
-          <option value="20172">Genap 2017/2018</option>
-          <option value="20181">Gasal 2018/2019</option>
           <option value="20182">Genap 2018/2019</option>
+          <option value="20181">Gasal 2018/2019</option>
+          <option value="20172">Genap 2017/2018</option>
+          <option value="20171">Gasal 2017/2018</option>
+          <option value="20162">Genap 2016/2017</option>
+          <option value="20161">Gasal 2016/2017</option>
+      </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputPassword4">Nama Instansi</label>
+  <input type="text" class="form-control" name="nama_instansi" id=""  required=""  placeholder="Instansi">
+</div>
+<div class="form-group">
+  <label for="inputPassword4">Alamat Instansi</label>
+  <textarea name="alamat_instansi" id="" cols="30"  required=""  rows="1" class="form-control"></textarea>
+</div>
+<div class="form-group">
+    <label for="">Judul Penelitian</label>
+    <textarea name="judul_penelitian" id=""  required=""  cols="30" rows="1" class="form-control"></textarea>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="">Populasi</label>
+        <input type="text" class="form-control"  required=""  name="populasi" placeholder="Populasi penelitian">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="">Tempat</label>
+        <input type="text" class="form-control"  required=""  name="tempat" placeholder="Tempat penelitian">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="">Tanggal Mulai</label>
+        <input type="date" class="form-control"  required=""  name="tanggal_mulai" placeholder="">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="">Tanggal Selesai</label>
+        <input type="date" class="form-control"  required=""  name="tanggal_selesai" placeholder="">
+    </div>
+</div>
+
+<button type="submit" class="btn btn-success pull-right">Proses</button>
+</form>
+@endslot
+
+@endcomponent
+
+@component('mahasiswa.component.modal')
+
+@slot("id")
+ijin_observasi
+@endslot
+
+@slot("title")
+Surat Ijin observasi
+@endslot
+
+@slot('form_field')
+<form action="{{ url("/permohonan-surat") }}" method="post">
+    {{ csrf_field() }}
+    <input type="hidden" name="kode_layanan" value='ijin-penelitian'>
+    <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['ijin-observasi'] }}'>
+    
+    <div class="form-row">
+      <div class="form-group col-md-9">
+          <label for="inputPassword4">Mata Kuliah</label>
+          <input type="text" class="form-control" name="matakuliah" id="" required="" placeholder="Matakuliah">
+      </div>
+      <!-- <div class="form-group col-md-4">
+          <label for="inputPassword4">Dosen Pengampu</label>
+          <select name="dosen" id="" class="form-control" required="" >
+            {{-- @foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
+            @endforeach --}}
+        </select>
+          </div> -->
+    <div class="form-group col-md-3">
+      <label for="inputEmail4">Tahun Akademik</label>
+      <select name="tahun_ajar" id="" class="form-control" required="" >
+          <option value="20182">Genap 2018/2019</option>
+          <option value="20181">Gasal 2018/2019</option>
+          <option value="20172">Genap 2017/2018</option>
+          <option value="20171">Gasal 2017/2018</option>
+          <option value="20162">Genap 2016/2017</option>
+          <option value="20161">Gasal 2016/2017</option>
       </select>
   </div>
 </div>
@@ -428,11 +529,7 @@ Pengajuan Judul Skripsi
     <div class="form-group">
       <label for="inputPassword4">Judul Skripsi Pertama</label>
       <textarea name="judul_skripsi[]" id="" cols="30" rows="2" class="form-control"></textarea>
-  </div>
-  <div class="form-group">
-      <label for="inputPassword4">Judul Skripsi Kedua</label>
-      <textarea name="judul_skripsi[]" id="" cols="30" rows="2" class="form-control"></textarea>
-  </div>
+    </div>
   {{-- <div class="form-row">
     <div class="form-group col-md-6">
         <label for="">Dosen Pembimbing 1</label>

@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 </head>
 
-<body style="margin: 0;">
+<body style="margin: 0;"  @if($print == "print") onload="window.print();" @endif>
 
 <div id="p1" style="overflow: hidden; position: relative; background-color: white; width: 935px; height: 1540px;">
 
@@ -80,6 +80,7 @@
 #t1a_1{left:183px;bottom:691px;}
 #t1b_1{left:554px;bottom:649px;word-spacing:-0.1px;}
 #t1c_1{left:554px;bottom:627px;word-spacing:-0.1px;}
+#tfoto{left: 550px;bottom:535px;height:350px; width:530px;}
 #t1d_1{left:554px;bottom:543px;word-spacing:0.1px;}
 #t1e_1{left:554px;bottom:522px;word-spacing:0.1px;}
 #t1f_1{left:114px;bottom:483px;letter-spacing:0.1px;word-spacing:-0.1px;}
@@ -156,7 +157,7 @@
 <div id="t7_1" class="t s4_1">________________________________________________________________________________ </div>
 <div id="t8_1" class="t s3_1">Nomor : </div>
 <div id="t9_1" class="t s3_1">       /UN32.2.1/DK/2018 </div>
-<div id="ta_1" class="t s3_1">{{ date("d") }} {{ bulan() }} {{date("Y")}}  </div>
+<div id="ta_1" class="t s3_1">{{ $verifikasi->permohonan_surat->updated_at->format("d") }} {{ bulan($verifikasi->permohonan_surat->updated_at->format("m")) }} {{ $verifikasi->permohonan_surat->updated_at->format("Y") }}  </div>
 <div id="tb_1" class="t s3_1">Hal </div>
 <div id="tc_1" class="t s3_1">: </div>
 <div id="td_1" class="t s3_1">Izin mengadakan penelitian </div>
@@ -191,8 +192,11 @@
 <div id="t1a_1" class="t s3_1">Atas perhatian dan kerja samanya, kami sampaikan terima kasih. </div>
 <div id="t1b_1" class="t s3_1">a.n. Dekan </div>
 <div id="t1c_1" class="t s3_1">Wakil Dekan I, </div>
-<div id="t1d_1" class="t s4_1">{{ $verifikasi->user->dosen->nama }}</div>
-<div id="t1e_1" class="t s4_1">NIP {{ $verifikasi->user->dosen->nip }}</div>
+@if($verifikasi->permohonan_surat->status == 'siap_cetak')
+		<img id="tfoto" class="t s3_1" src="{{ asset("/surat/ttd/wd1.jpg") }}">
+@endif
+<div id="t1d_1" class="t s4_1">{{ $wd1["nama"] }}</div>
+<div id="t1e_1" class="t s4_1">NIP {{ $wd1["nip"] }}</div>
 <div id="t1f_1" class="t s3_1">Tembusan : </div>
 <div id="t1g_1" class="t s3_1">1. Ketua Jurusan {{ $verifikasi->mahasiswa->jurusan }} FS UM </div>
 <div id="t1h_1" class="t s3_1">2. Yang bersangkutan </div>

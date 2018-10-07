@@ -4,7 +4,7 @@
 
 
 <div class="panel-header panel-header-lg">
-	<canvas id="bigDashboardChart"></canvas>
+	{{-- <canvas id="bigDashboardChart"></canvas> --}}
 </div>
 <div class="content">
 
@@ -38,7 +38,7 @@
 											{{ $permohonan_surat->status }}
 										</td>
 										<td class="td-actions text-right">
-											{{ 1 }} hari
+											{{ usia_surat($permohonan_surat->created_at) }} hari
 										</td>
 										<td>
 											@if($permohonan_surat->status == 'siap_cetak')

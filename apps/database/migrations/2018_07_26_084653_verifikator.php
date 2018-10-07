@@ -16,7 +16,7 @@ class Verifikator extends Migration
         Schema::create('verifikator', function (Blueprint $table) {
             $table->increments('id');
             $table->integer("layanan_surat_id");
-            $table->integer("user_id");
+            $table->enum("user_tipe", ["admin", "dekan", "kajur", "wd1", "wd2", "wd3", "sekjur"]);
             $table->integer("urutan");
             $table->timestamps();
             $table->softDeletes();

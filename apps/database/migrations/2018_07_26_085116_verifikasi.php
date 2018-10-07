@@ -18,6 +18,7 @@ class Verifikasi extends Migration
             $table->integer("permohonan_surat_id");
             $table->integer("mahasiswa_id");
             $table->integer("user_id");
+            $table->integer("urutan");
             $table->enum("status", ["setuju", "tolak", "diajukan"]);
             $table->string("catatan", 200)->nullable();
             $table->timestamps();

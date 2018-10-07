@@ -53,6 +53,7 @@
 #tj_1{left:550px;bottom:622px;}
 #tk_1{left:550px;bottom:576px;word-spacing:0.1px;}
 #tl_1{left:550px;bottom:553px;}
+#tfoto{left:550px;bottom:400px;height:400px; width:550px; word-spacing:0.1px;}
 #tm_1{left:550px;bottom:416px;word-spacing:0.1px;}
 #tn_1{left:550px;bottom:394px;word-spacing:0.3px;}
 
@@ -132,11 +133,14 @@
 <div id="tg_1" class="t s2_1">pada semester {{ semester() }} terdaftar sebagai mahasiswa Program Studi  </div>
 <div id="th_1" class="t s2_1">{{ $verifikasi->mahasiswa->prodi }}, Jurusan {{ $verifikasi->mahasiswa->jurusan }} Universitas Negeri Malang </div>
 <div id="ti_1" class="t s2_1">Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya. </div>
-<div id="tj_1" class="t s2_1">{{ date("d") }} {{ bulan() }} {{date("Y")}} </div>
+<div id="tj_1" class="t s2_1">{{ $verifikasi->permohonan_surat->updated_at->format("d") }} {{ bulan($verifikasi->permohonan_surat->updated_at->format("m")) }} {{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
 <div id="tk_1" class="t s2_1">a.n. Dekan </div>
 <div id="tl_1" class="t s2_1">Wakil Dekan 1, </div>
-<div id="tm_1" class="t s3_1"><strong>{{ $verifikasi->user->dosen->nama }}</strong></div>
-<div id="tn_1" class="t s2_1">NIP {{ $verifikasi->user->dosen->nip }}</div>
+@if($verifikasi->permohonan_surat->status == 'siap_cetak')
+		<img id="tfoto" class="t s3_1" src="{{ asset("/surat/ttd/wd1.jpg") }}">
+@endif
+<div id="tm_1" class="t s3_1"><strong>{{ $wd1["nama"] }}</strong></div>
+<div id="tn_1" class="t s2_1">NIP {{ $wd1["nip"] }}</div>
 
 <!-- End text definitions -->
 
