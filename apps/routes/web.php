@@ -44,3 +44,5 @@ Route::post("/verifikasi-aktif-kuliah", "Admin\VerifikasiController@aktifKuliah"
 
 Route::post("/ijin-penelitian", "IjinPenelitianController@simpan");
 
+Route::get("/mahasiswa", "MahasiswaController@index");
+
