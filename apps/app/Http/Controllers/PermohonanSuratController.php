@@ -69,7 +69,7 @@ class PermohonanSuratController extends Controller
     function kontenSurat(Request $request){
         if ($this->kode_layanan == 'aktif-kuliah') {
             return json_encode([]);
-        } elseif($this->kode_layanan == 'ijin-penelitian') {
+        } elseif($this->kode_layanan == 'ijin-penelitian' || $this->kode_layanan == 'ijin-observasi') {
             $konten = array(
                         // "jenis" => $request->jenis,
                         "matakuliah" => $request->matakuliah,

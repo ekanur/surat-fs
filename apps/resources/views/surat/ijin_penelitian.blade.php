@@ -172,7 +172,7 @@
 <div id="tm_1" class="t s3_1">NIM </div>
 <div id="tn_1" class="t s3_1">: </div>
 <div id="to_1" class="t s3_1">{{ $verifikasi->mahasiswa->nim }} </div>
-<div id="tp_1" class="t s3_1">adalah mahasiswa Fakultas Sastra Universitas Negeri Malang Jurusan Sastra Jerman, </div>
+<div id="tp_1" class="t s3_1">adalah mahasiswa Fakultas Sastra Universitas Negeri Malang Jurusan {{ $verifikasi->mahasiswa->jurusan }}, </div>
 <div id="tq_1" class="t s3_1">Program Studi {{ $verifikasi->mahasiswa->prodi }}. </div>
 <div id="tr_1" class="t s3_1">Dalam rangka menyelesaikan {{ $konten->matakuliah }} pada semester {{ semester() }} yang </div>
 <div id="ts_1" class="t s3_1">bersangkutan memerlukan seperangkat data yang akan diperoleh melalui penelitian </div>
@@ -184,7 +184,7 @@
 <div id="t10_1" class="t s3_1">3. Tempat </div>
 <div id="t11_1" class="t s3_1">: {{ $konten->tempat }}</div>
 <div id="t12_1" class="t s3_1">4. Waktu </div>
-<div id="t13_1" class="t s3_1">: {{ $konten->tanggal_mulai }} s/d {{ $konten->tanggal_selesai }} </div>
+<div id="t13_1" class="t s3_1">: {{ $konten->tanggal_mulai->format("d") }} {{ bulan($konten->tanggal_mulai->format("m")) }} {{ $konten->tanggal_mulai->format("Y") }} s/d {{ $konten->tanggal_selesai->format("d") }} {{ bulan($konten->tanggal_selesai->format("m")) }} {{ $konten->tanggal_selesai->format("Y") }} </div>
 <div id="t16_1" class="t s3_1">Untuk melaksanakan maksud tersebut, dengan hormat kami mohon </div>
 <div id="t17_1" class="t s3_1">Saudara </div>
 <div id="t18_1" class="t s3_1">berkenan </div>

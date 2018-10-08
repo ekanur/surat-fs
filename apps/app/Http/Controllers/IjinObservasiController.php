@@ -11,12 +11,9 @@ use App\User;
 use Auth;
 use Session;
 
-class IjinPenelitianController extends Controller
+class IjinObservasiController extends Controller
 {
-
-    public $pejabat;
-
-    function __construct()
+	function __construct()
     {
         $this->middleware(["auth"=>function($request, $next){
 
@@ -33,10 +30,6 @@ class IjinPenelitianController extends Controller
         }]);
     }
 
-    public function simpan(Request $request)
-    {
-    	
-    }
 
     function view($permohonan_surat_id, $print = null){
         if(auth()->user()->tipe == 'admin'){
@@ -51,6 +44,6 @@ class IjinPenelitianController extends Controller
         $konten->tanggal_selesai = date_create($konten->tanggal_selesai);
         $wd1 = $this->pejabat["wd1"];
 
-        return view("surat/ijin_penelitian", compact('verifikasi', 'konten', 'print', "wd1"));
+        return view("surat/ijin_observasi", compact('verifikasi', 'konten', 'print', "wd1"));
     }
 }

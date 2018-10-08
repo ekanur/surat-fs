@@ -444,7 +444,7 @@ Surat Ijin observasi
 @slot('form_field')
 <form action="{{ url("/permohonan-surat") }}" method="post">
     {{ csrf_field() }}
-    <input type="hidden" name="kode_layanan" value='ijin-penelitian'>
+    <input type="hidden" name="kode_layanan" value='ijin-observasi'>
     <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['ijin-observasi'] }}'>
     
     <div class="form-row">

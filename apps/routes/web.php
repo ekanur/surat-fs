@@ -28,6 +28,9 @@ Route::post("/permohonan-surat", "PermohonanSuratController@simpan")->name("simp
 Route::get('/ijin-penelitian/{permohonan_surat_id}/{print}', "IjinPenelitianController@view")->name("cetak.ijin_kuliah");
 Route::get('/ijin-penelitian/{permohonan_surat_id}/', "IjinPenelitianController@view")->name("lihat.ijin_kuliah");
 
+Route::get('/ijin-observasi/{permohonan_surat_id}/{print}', "IjinObservasiController@view")->name("cetak.ijin_kuliah");
+Route::get('/ijin-observasi/{permohonan_surat_id}/', "IjinObservasiController@view")->name("lihat.ijin_kuliah");
+
 Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
