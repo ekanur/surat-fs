@@ -7,8 +7,8 @@
 		<div class="container">
 			<div class="navbar-translate">
 				{{-- <a class="navbar-brand" href="{{ url("/logout") }}" rel="tooltip" title="Self-service Fakultas Sastra" data-placement="bottom">
-                    
-                    
+
+
 				</a>
              --}}
              {{-- <span style="text-align: left">Durasi Layanan : 03 Menit</span> --}}
@@ -167,9 +167,9 @@
                             </div>
                         </div>
 
-        				
 
-                        
+
+
 
                         {{-- <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
@@ -184,7 +184,7 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
                                             <h1 class=" text-center"><i class="now-ui-icons users_circle-08"></i></h1>
-                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Segera Hadir</button></p>
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
                                         </div>
                                     </div>
                                 </div>
@@ -204,14 +204,15 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
                                             <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
-                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p>
+                                            <!-- <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p> -->
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        
+
 
                         {{-- <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
@@ -226,7 +227,8 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
                                             <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
-                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p>
+                                            <!-- <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p> -->
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
                                         </div>
                                     </div>
                                 </div>
@@ -246,7 +248,8 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
                                             <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
-                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p>
+                                            <!-- <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p> -->
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +269,8 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
                                             <h1 class=" text-center"><i class="now-ui-icons design_app"></i></h1>
-                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Segera hadir..</button></p>
+                                            <!-- <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Segera hadir..</button></p> -->
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
                                         </div>
                                     </div>
                                 </div>
@@ -286,7 +290,8 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="home" role="tabpanel">
                                             <h1 class=" text-center"><i class="now-ui-icons business_bank"></i></h1>
-                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Segera hadir..</button></p>
+                                            <!-- <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Segera hadir..</button></p> -->
+                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
                                         </div>
                                     </div>
                                 </div>
@@ -294,7 +299,7 @@
                         </div>
 
 
-                        
+
 
                     </div>
                 </div>
@@ -365,7 +370,7 @@ Surat Ijin Penelitian
     {{ csrf_field() }}
     <input type="hidden" name="kode_layanan" value='ijin-penelitian'>
     <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['ijin-penelitian'] }}'>
-    
+
     <div class="form-row">
       <div class="form-group col-md-9">
           <label for="inputPassword4">Mata Kuliah</label>
@@ -446,7 +451,7 @@ Surat Ijin observasi
     {{ csrf_field() }}
     <input type="hidden" name="kode_layanan" value='ijin-observasi'>
     <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['ijin-observasi'] }}'>
-    
+
     <div class="form-row">
       <div class="form-group col-md-9">
           <label for="inputPassword4">Mata Kuliah</label>
@@ -525,7 +530,7 @@ Pengajuan Judul Skripsi
 @slot('form_field')
 <form action="{{ url("/permohonan-surat") }}" method="post">
     {{ csrf_field() }}
-    
+
     <div class="form-group">
       <label for="inputPassword4">Judul Skripsi Pertama</label>
       <textarea name="judul_skripsi[]" id="" cols="30" rows="2" class="form-control"></textarea>
@@ -570,7 +575,7 @@ Laporan Keluhan Pelayanan
 @slot('form_field')
 <form action="{{ url("/keluhan") }}" method="post">
     {{ csrf_field() }}
-    
+
     <div class="form-group">
       <label for="inputPassword4">Keluhan</label>
       <textarea name="isi" id="" cols="30" rows="3" class="form-control"></textarea>
@@ -643,7 +648,7 @@ Laporan Keluhan Pelayanan
         @if(null != session('message'))
             demo.showNotification('{{ session('message') }}', '{{ session('status') }}');
         @endif
-        
+
     });
 </script>
 

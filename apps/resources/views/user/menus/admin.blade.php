@@ -6,7 +6,7 @@
 		</a>
 	</li>
 	<li class="">
-		<a href="{{ url("/mahasiswa") }}">
+		<a href="{{ url("/admin/mahasiswa") }}">
 			<i class="now-ui-icons users_single-02"></i>
 			<p>Mahasiswa</p>
 		</a>
@@ -23,9 +23,9 @@
 			<p>Pejabat</p>
 		</a>
 	</li>
-	
-	
-	
-	
+
+
+
+
 
 </ul>
