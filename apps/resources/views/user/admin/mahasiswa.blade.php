@@ -14,7 +14,7 @@
 				<div class="card-header ">
 					<h5 class="card-category"></h5>
 					<h4 class="card-title">Mahasiswa
-						<a class="float-right btn btn-sm btn-success" href="{{ url("mahasiswa/baru") }}">Baru</a>
+						<a class="float-right btn btn-sm btn-success" href="{{ url("admin/mahasiswa/") }}">Baru</a>
 						<a class="float-right btn btn-sm btn-info" href="#" data-toggle="modal" data-target="#import">Import</a>
 					</h4>
 				</div>
@@ -77,7 +77,7 @@
 <div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <form action="{{ $action or null }}" method="post" enctype="multipart/form-data">
+      <form action="{{ url("/admin/import-mahasiswa") }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Import Dari Excel</h5>
@@ -87,11 +87,11 @@
       </div>
       <div class="modal-body">
           <div class="form-group row" id="input-verifikasi">
-	          <label for="verifikasi" class="col-sm-2 col-form-label">Upload</label>
-	          <div class="col-sm-10">
-	            <input class="form-control" type="file" name="file_import"/>
+	          <div class="col-sm-12">
+	            <input class="form-control" type="file" name="file_import" style="opacity: 0.55; position: initial;">
 	          </div>
 	      </div>
+	      <p class="text-info">Untuk mengimport, gunakan file <a href="{{ asset("format_import_mhs.xlsx") }}"><u>berikut</u></a>.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
