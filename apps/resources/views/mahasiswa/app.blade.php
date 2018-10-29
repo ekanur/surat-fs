@@ -147,11 +147,32 @@
                             </div>
                         </div>
 
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="header text-center">
+                                    <h4 class="title title-up">Ujian Skripsi</h4>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home" role="tabpanel">
+                                            <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
+                                            <!-- <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p> -->
+                                            <p><button data-toggle="modal" data-target="#ujian_skripsi" class="btn btn-primary">Proses</button></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
         				<div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
                             <div class="card">
                                 <div class="header text-center">
-                                    <h4 class="title title-up">Keluhan</h4>
+                                    <h4 class="title title-up">Aspirasi</h4>
 
                                 </div>
 
@@ -191,26 +212,7 @@
                             </div>
                         </div> --}}
 
-                        <div class="col-md-3 col-lg-3 col-xl-3">
-                            <!-- Nav tabs -->
-                            <div class="card">
-                                <div class="header text-center">
-                                    <h4 class="title title-up">Ujian Skripsi</h4>
-
-                                </div>
-
-                                <div class="card-body">
-                                    <!-- Tab panes -->
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="home" role="tabpanel">
-                                            <h1 class=" text-center"><i class="now-ui-icons education_hat"></i></h1>
-                                            <!-- <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Belum Tersedia</button></p> -->
-                                            <p><button disabled="" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Proses</button></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
 
 
 
@@ -235,7 +237,7 @@
                             </div>
                         </div> --}}
 
-                        <div class="col-md-3 col-lg-3 col-xl-3">
+                        {{-- <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
                             <div class="card">
                                 <div class="header text-center">
@@ -254,9 +256,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="col-md-3 col-lg-3 col-xl-3">
+                        {{-- <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
                             <div class="card">
                                 <div class="header text-center">
@@ -275,9 +277,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="col-md-3 col-lg-3 col-xl-3">
+                        {{-- <div class="col-md-3 col-lg-3 col-xl-3">
                             <!-- Nav tabs -->
                             <div class="card">
                                 <div class="header text-center">
@@ -296,7 +298,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
 
 
@@ -530,15 +532,20 @@ Pengajuan Judul Skripsi
 @slot('form_field')
 <form action="{{ url("/permohonan-surat") }}" method="post">
     {{ csrf_field() }}
-
+    <input type="hidden" name="kode_layanan" value='pengajuan-skripsi'>
+    <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['pengajuan-skripsi'] }}'>
     <div class="form-group">
       <label for="inputPassword4">Judul Skripsi Pertama</label>
       <textarea name="judul_skripsi[]" id="" cols="30" rows="2" class="form-control"></textarea>
     </div>
-  {{-- <div class="form-row">
+    <div class="form-group">
+      <label for="inputPassword4">Judul Skripsi Kedua</label>
+      <textarea name="judul_skripsi[]" id="" cols="30" rows="2" class="form-control"></textarea>
+    </div>
+  <div class="form-row">
     <div class="form-group col-md-6">
         <label for="">Dosen Pembimbing 1</label>
-        <select name="dosen_pembimbing1" id="" class="form-control">
+        <select name="dosen_pembimbing[]" id="" class="form-control">
             @foreach($dosen as $data_dosen)
                 <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
             @endforeach
@@ -546,13 +553,13 @@ Pengajuan Judul Skripsi
     </div>
     <div class="form-group col-md-6">
         <label for="">Dosen Pembimbing 2</label>
-        <select name="dosen_pembimbing2" id="" class="form-control">
+        <select name="dosen_pembimbing[]" id="" class="form-control">
             @foreach($dosen as $data_dosen)
                 <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
             @endforeach
         </select>
     </div>
-</div> --}}
+</div>
 
 
 <button type="submit" class="btn btn-success pull-right">Proses</button>

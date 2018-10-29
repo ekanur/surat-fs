@@ -46,3 +46,5 @@ Route::post("/ijin-penelitian", "IjinPenelitianController@simpan");
 
 Route::get("/admin/mahasiswa", "Admin\MahasiswaController@index");
 Route::post("/admin/import-mahasiswa", "Admin\MahasiswaController@import");
+
+Route::post("/pengajuan-judul", "PengajuanJudulSkripsi@simpan");

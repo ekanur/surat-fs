@@ -85,6 +85,16 @@ class PermohonanSuratController extends Controller
                     );
 
             return json_encode($konten);
+        } elseif($this->kode_layanan == 'pengajuan-skripsi'){
+            $konten = array(
+                        // "jenis" => $request->jenis,
+                        "judul" => $request->judul_skripsi,
+                        "dosen" => $request->dosen_pembimbing,
+                        "judul_disetujui" => "",
+                        "dosen_disetujui" => ""
+                    );
+
+            return json_encode($konten);
         }
         
     }

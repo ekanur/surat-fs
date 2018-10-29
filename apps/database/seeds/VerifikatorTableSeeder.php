@@ -47,10 +47,5 @@ class VerifikatorTableSeeder extends Seeder
             "urutan" => 1
         ]);
 
-        DB::table("verifikator")->insert([
-            "layanan_surat_id" => 4,
-            "user_tipe" => "wd1",
-            "urutan" => 2
-        ]);
     }
 }
