@@ -8,6 +8,7 @@ use App\Layanan_surat;
 use App\Verifikasi;
 use App\Verifikator;
 use App\User;
+use App\Dosen;
 use Auth;
 use Session;
 
@@ -38,7 +39,7 @@ class PermohonanSuratController extends Controller
             }
 
             return $next($request);
-        });
+        })->except(["getKonten", "getDosen"]);
 
         
         
@@ -89,7 +90,7 @@ class PermohonanSuratController extends Controller
             $konten = array(
                         // "jenis" => $request->jenis,
                         "judul" => $request->judul_skripsi,
-                        "dosen" => $request->dosen_pembimbing,
+                        "dosen" => $this->getDosen($request->dosen_pembimbing),
                         "judul_disetujui" => "",
                         "dosen_disetujui" => ""
                     );
@@ -99,11 +100,16 @@ class PermohonanSuratController extends Controller
         
     }
 
-    // public function prosesIjinPenelitian(Request $request){
-    //     $permohonan_surat = new Permohonan_surat;
-    //     $permohonan_surat->mahasiswa_id = Auth::guard("mahasiswa")->user()->id;
-    //     $permohonan_surat->layanan_surat_id = $request->layanan_surat_id;
-    // }
+    function getDosen($id){
+        $dosen = null;
+        if (is_array($id)) {
+            $dosen = Dosen::select("id", "nama")->whereIn("id", $id)->get();
+        }else{
+            $dosen = Dosen::select("id", "nama")->where("id", $id)->first();
+        }
+
+        return $dosen;
+    }
 
     public function kirimVerifikasi($permohonan_surat_id){
     	$cek_verifikator = Verifikator::select("user_tipe", "urutan")->where("layanan_surat_id", "=", $this->layanan_surat_id)->orderBy("urutan")->get();
@@ -123,6 +129,11 @@ class PermohonanSuratController extends Controller
     	}
 
     	return Verifikasi::insert($data_verifikasi);
+    }
+
+    function getKonten($id){
+        $permohonan_surat = Permohonan_surat::select("konten")->where("id", $id)->firstOrFail();
+        return $permohonan_surat->konten;
     }
 
     // function viewAktifKuliah($permohonan_surat_id, $print = null){

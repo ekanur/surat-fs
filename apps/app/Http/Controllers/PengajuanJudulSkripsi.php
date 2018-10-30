@@ -17,14 +17,14 @@ class PengajuanJudulSkripsi extends Controller
     {
     	$this->middleware(["auth"=>function($request, $next){
 
-            $user = User::with("dosen")->select("id", "tipe", "dosen_id")->whereIn("tipe", ["dekan", "wd1", "wd2", "wd3"])->get();
+            $user = User::with("dosen")->select("id", "tipe", "dosen_id")->where("tipe", "kajur")->get();
             // dd($user);
             foreach ($user as $pejabat) {
                 $this->pejabat[$pejabat->tipe]["nama"] = $pejabat->dosen->nama;
                 $this->pejabat[$pejabat->tipe]["nip"] = $pejabat->dosen->nip;
             }
 
-            // dd($this->pejabat);
+            dd($this->pejabat);
             return $next($request);
 
         }]);
@@ -32,5 +32,10 @@ class PengajuanJudulSkripsi extends Controller
 
     function simpan(Request $request){
 
+    }
+
+    function detail($id)
+    {
+        
     }
 }

@@ -33,7 +33,7 @@
 							<tbody>
 								@foreach($verifikasi as $verifikasi)
 									<tr>
-										<td class="text-left"><a href="" data-toggle="modal" data-target="#detailSurat" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $verifikasi->bisa_verifikasi }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a> </td>
+										<td class="text-left"><a href="" data-toggle="modal" data-target="#{{ camel_case($verifikasi->permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $verifikasi->bisa_verifikasi }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a> </td>
 										<td>
 											{{ $verifikasi->mahasiswa->nama }}
 										</td>
@@ -67,11 +67,11 @@
 
 @component("user.component.modal")
 @slot("id")
-detailSurat
+aktifKuliah
 @endslot
 
 @slot("title")
-Verifikasi Surat
+Verifikasi Surat Aktif Kuliah
 @endslot
 
 @slot("action")
@@ -97,10 +97,88 @@ Verifikasi Surat
 
 @endpush
 
+
+@push("modal")
+
+@component("user.component.modal")
+@slot("id")
+pengajuanSkripsi
+@endslot
+
+@slot("title")
+Pengajuan Judul Skripsi
+@endslot
+
+@slot("action")
+{{ route("verifikasi.pengajuan-skripsi") }}
+@endslot
+
+@slot("content")
+<input type="hidden" name="permohonan_surat_id">
+<div class="form-group row" id="input-verifikasi" style="display: none">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Judul </label>
+    <div class="col-sm-10">
+      <ol start="1">
+      	<li>[[judul 1]]</li>
+      	<li>[[judul 2]]</li>
+      </ol>
+    </div>
+</div>
+
+<div class="form-group row" id="input-verifikasi" style="display: none">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Pembimbing </label>
+    <div class="col-sm-10">
+      <ol start="1">
+      	<li>[[dosen 1]]</li>
+      	<li>[[dosen 2]]</li>
+      </ol>
+    </div>
+</div>
+
+<div class="form-group row" id="input-verifikasi" style="display: none">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Pilih Judul </label>
+    <div class="col-sm-10">
+    	<select name="pilih_judul" id="" class="form-control">
+    		<option value="judul1">[[judul 1]]</option>
+    		<option value="judul2">[[judul 2]]</option>
+    	</select>
+    </div>
+</div>
+
+<div class="form-group row" id="input-verifikasi" style="display: none">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Pilih Pembimbing 1 </label>
+    <div class="col-sm-10">
+    	<select name="pilih_judul" id="" class="form-control">
+    		<option value="judul1">[[dosen 1]]</option>
+    		<option value="judul1">[[dosen 1]]</option>
+    		<option value="judul2">[[dosen 2]]</option>
+    		<option value="judul2">[[dosen 2]]</option>
+    	</select>
+    </div>
+</div>
+
+<div class="form-group row" id="input-verifikasi" style="display: none">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Pilih Pembimbing 2 </label>
+    <div class="col-sm-10">
+    	<select name="pilih_judul" id="" class="form-control">
+    		<option value="judul1">[[dosen 1]]</option>
+    		<option value="judul1">[[dosen 1]]</option>
+    		<option value="judul2">[[dosen 2]]</option>
+    		<option value="judul2">[[dosen 2]]</option>
+    	</select>
+    </div>
+</div>
+
+
+@endslot
+@endcomponent
+
+@endpush
+
 @push("js")
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#detailSurat").on("show.bs.modal", function (event) {
+		$("#aktifKuliah").on("show.bs.modal", function (event) {
                 const detail_surat = $(event.relatedTarget);
                 var kode_layanan = detail_surat.data("kode_layanan");
                 var url = "{{ url("/") }}/"+kode_layanan;
@@ -108,12 +186,31 @@ Verifikasi Surat
                 var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
 
                 if (bisa_verifikasi) {
-                	$("#input-verifikasi").css("display", "flex");
-                	$("#btn-simpan").css("display", "block");
+                	$("#aktifKuliah #input-verifikasi").css("display", "flex");
+                	$("#aktifKuliah #btn-simpan").css("display", "block");
                 }
 
-                $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
-                $("input[name='permohonan_surat_id']").val(permohonan_surat_id);
+                $("#aktifKuliah iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
+                $("#aktifKuliah input[name='permohonan_surat_id']").val(permohonan_surat_id);
+            });
+
+		$("#pengajuanSkripsi").on("show.bs.modal", function (event) {
+                const detail_surat = $(event.relatedTarget);
+                var kode_layanan = detail_surat.data("kode_layanan");
+                var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
+                var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
+                if (bisa_verifikasi) {
+                // alert(bisa_verifikasi);
+                	$("#pengajuanSkripsi #input-verifikasi").css("display", "flex");
+                	$("#pengajuanSkripsi #btn-simpan").css("display", "block");
+                }
+
+                $.get('{{ url("permohonan-surat/konten") }}/'+permohonan_surat_id, function(data, status){
+                	console.log(data);
+                });
+
+                // $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
+                $("#pengajuanSkripsi input[name='permohonan_surat_id']").val(permohonan_surat_id);
             });
 	});
 </script>

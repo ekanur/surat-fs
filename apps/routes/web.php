@@ -25,6 +25,8 @@ Route::get('/aktif-kuliah/{permohonan_surat_id}/', "AktifKuliahController@view")
 Route::post("/keluhan", "KeluhanController@simpan");
 
 Route::post("/permohonan-surat", "PermohonanSuratController@simpan")->name("simpan.permohonan_surat");
+
+Route::get("/permohonan-surat/konten/{id}", "PermohonanSuratController@getKonten")->name("permohonan_surat.konten");
 Route::get('/ijin-penelitian/{permohonan_surat_id}/{print}', "IjinPenelitianController@view")->name("cetak.ijin_kuliah");
 Route::get('/ijin-penelitian/{permohonan_surat_id}/', "IjinPenelitianController@view")->name("lihat.ijin_kuliah");
 
@@ -47,4 +49,6 @@ Route::post("/ijin-penelitian", "IjinPenelitianController@simpan");
 Route::get("/admin/mahasiswa", "Admin\MahasiswaController@index");
 Route::post("/admin/import-mahasiswa", "Admin\MahasiswaController@import");
 
-Route::post("/pengajuan-judul", "PengajuanJudulSkripsi@simpan");
+Route::post("/pengajuan-skripsi", "PengajuanJudulSkripsi@simpan")->name("verifikasi.pengajuan-skripsi");
+
+Route::get("/pengajuan-skripsi/{id}", "PengajuanJudulSkripsi@detail");
