@@ -68,8 +68,9 @@ class PermohonanSuratController extends Controller
     }
 
     function kontenSurat(Request $request){
+        $konten = array();
         if ($this->kode_layanan == 'aktif-kuliah') {
-            return json_encode([]);
+            return json_encode($konten);
         } elseif($this->kode_layanan == 'ijin-penelitian' || $this->kode_layanan == 'ijin-observasi') {
             $konten = array(
                         // "jenis" => $request->jenis,
@@ -84,32 +85,20 @@ class PermohonanSuratController extends Controller
                         "tanggal_mulai" => $request->tanggal_mulai,
                         "tanggal_selesai" => $request->tanggal_selesai,
                     );
-
-            return json_encode($konten);
         } elseif($this->kode_layanan == 'pengajuan-skripsi'){
             $konten = array(
-                        // "jenis" => $request->jenis,
                         "judul" => $request->judul_skripsi,
                         "dosen" => $this->getDosen($request->dosen_pembimbing),
                         "judul_disetujui" => "",
                         "dosen_disetujui" => ""
                     );
+        }
 
             return json_encode($konten);
-        }
         
     }
 
-    function getDosen($id){
-        $dosen = null;
-        if (is_array($id)) {
-            $dosen = Dosen::select("id", "nama")->whereIn("id", $id)->get();
-        }else{
-            $dosen = Dosen::select("id", "nama")->where("id", $id)->first();
-        }
 
-        return $dosen;
-    }
 
     public function kirimVerifikasi($permohonan_surat_id){
     	$cek_verifikator = Verifikator::select("user_tipe", "urutan")->where("layanan_surat_id", "=", $this->layanan_surat_id)->orderBy("urutan")->get();
@@ -133,20 +122,7 @@ class PermohonanSuratController extends Controller
 
     function getKonten($id){
         $permohonan_surat = Permohonan_surat::select("konten")->where("id", $id)->firstOrFail();
-        return $permohonan_surat->konten;
+        return response()->json($permohonan_surat->konten);
     }
 
-    // function viewAktifKuliah($permohonan_surat_id, $print = null){
-    //     $verifikasi = Verifikasi::with("mahasiswa", "user.dosen")->where("permohonan_surat_id", $permohonan_surat_id)->first();
-
-    //     // dd($verifikasi);
-
-    //     return view("surat/aktif_kuliah", compact('verifikasi', 'print'));
-    // }
-
-    // function viewIjinPenelitian($permohonan_surat_id, $print = null){
-    //     $verifikasi = Verifikasi::with("mahasiswa", "user.dosen")->where("permohonan_surat_id", $permohonan_surat_id)->first();
-
-    //     return view("surat/ijin_penelitian", compact('verifikasi', 'print'));
-    // }
 }

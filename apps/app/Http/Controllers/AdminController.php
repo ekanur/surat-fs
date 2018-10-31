@@ -7,15 +7,17 @@ use Auth;
 use App\Verifikasi;
 use App\Verifikator;
 use App\Permohonan_surat;
+use App\Dosen;
 
 class AdminController extends Controller
 {
-
 	function __construct()
 	{
 		$this->middleware("auth");
 	}
     function index(){
+        $dosen = Dosen::where("id", "!=", 1)->get();
+
     	if (Auth::user()->tipe == 'admin') {
     		// $path_view  = 'admin';
     		$permohonan_surat = Permohonan_surat::with("layanan_surat", "mahasiswa")->orderBy("created_at", "desc")->get();
@@ -34,8 +36,8 @@ class AdminController extends Controller
                 }
             }
 
-            // dd($verifikasi);
-        	return view("user/default/index", compact('verifikasi'));
+            // dd($dosen);
+        	return view("user/default/index", compact('verifikasi', 'dosen'));
         }
         // dd($verifikasi);
 

@@ -115,22 +115,20 @@ Pengajuan Judul Skripsi
 
 @slot("content")
 <input type="hidden" name="permohonan_surat_id">
+<input type="hidden" name="judul">
+<input type="hidden" name="dosen">
 <div class="form-group row" id="input-verifikasi" style="display: none">
     <label for="verifikasi" class="col-sm-2 col-form-label">Judul </label>
     <div class="col-sm-10">
-      <ol start="1">
-      	<li>[[judul 1]]</li>
-      	<li>[[judul 2]]</li>
-      </ol>
+      <ul id="judul">
+      </ul>
     </div>
 </div>
 
 <div class="form-group row" id="input-verifikasi" style="display: none">
     <label for="verifikasi" class="col-sm-2 col-form-label">Pembimbing </label>
     <div class="col-sm-10">
-      <ol start="1">
-      	<li>[[dosen 1]]</li>
-      	<li>[[dosen 2]]</li>
+      <ol start="1" id="pembimbing">
       </ol>
     </div>
 </div>
@@ -139,32 +137,28 @@ Pengajuan Judul Skripsi
     <label for="verifikasi" class="col-sm-2 col-form-label">Pilih Judul </label>
     <div class="col-sm-10">
     	<select name="pilih_judul" id="" class="form-control">
-    		<option value="judul1">[[judul 1]]</option>
-    		<option value="judul2">[[judul 2]]</option>
     	</select>
     </div>
 </div>
 
 <div class="form-group row" id="input-verifikasi" style="display: none">
-    <label for="verifikasi" class="col-sm-2 col-form-label">Pilih Pembimbing 1 </label>
+    <label for="verifikasi" class="col-sm-2 col-form-label">Pembimbing 1 </label>
     <div class="col-sm-10">
-    	<select name="pilih_judul" id="" class="form-control">
-    		<option value="judul1">[[dosen 1]]</option>
-    		<option value="judul1">[[dosen 1]]</option>
-    		<option value="judul2">[[dosen 2]]</option>
-    		<option value="judul2">[[dosen 2]]</option>
+    	<select name="pilih_pembimbing[]" id="pilih_pembimbing1" class="form-control">
+            @foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option> 
+            @endforeach
     	</select>
     </div>
 </div>
 
 <div class="form-group row" id="input-verifikasi" style="display: none">
-    <label for="verifikasi" class="col-sm-2 col-form-label">Pilih Pembimbing 2 </label>
+    <label for="verifikasi" class="col-sm-2 col-form-label">Pembimbing 2 </label>
     <div class="col-sm-10">
-    	<select name="pilih_judul" id="" class="form-control">
-    		<option value="judul1">[[dosen 1]]</option>
-    		<option value="judul1">[[dosen 1]]</option>
-    		<option value="judul2">[[dosen 2]]</option>
-    		<option value="judul2">[[dosen 2]]</option>
+    	<select name="pilih_pembimbing[]" id="pilih_pembimbing2" class="form-control">
+    		@foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option> 
+            @endforeach
     	</select>
     </div>
 </div>
@@ -204,9 +198,30 @@ Pengajuan Judul Skripsi
                 	$("#pengajuanSkripsi #input-verifikasi").css("display", "flex");
                 	$("#pengajuanSkripsi #btn-simpan").css("display", "block");
                 }
+                $("#pembimbing").empty();
+                $("#judul").empty();
+                $("select[name='pilih_judul']").empty();
 
                 $.get('{{ url("permohonan-surat/konten") }}/'+permohonan_surat_id, function(data, status){
-                	console.log(data);
+                	// console.log(data);
+                    let konten = JSON.parse(data);
+                    $("#pengajuanSkripsi input[name='judul']").val(JSON.stringify(konten.judul));
+                    
+                    $("#pengajuanSkripsi input[name='dosen']").val(JSON.stringify(konten.dosen));
+                    for (var i = 0; i <= konten.dosen.length - 1; i++) {
+                        $("#pembimbing").append("<li>"+ konten.dosen[i].nama +"</li>");
+                    }
+
+                    for (var i = 0; i <= konten.judul.length - 1; i++) {
+                        $("#judul").append("<li>"+ konten.judul[i] +"</li>");
+                        $("select[name='pilih_judul']").append("<option value='"+ konten.judul[i] +"'>"+ konten.judul[i] +"</option>");
+                    }
+
+                    $("#pilih_pembimbing1").val(konten.dosen_disetujui[0].id);
+                    $("#pilih_pembimbing2").val(konten.dosen_disetujui[1].id);
+                    $("select[name='pilih_judul']").val(konten.judul_disetujui);
+
+
                 });
 
                 // $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);

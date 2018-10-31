@@ -24,13 +24,24 @@ class PengajuanJudulSkripsi extends Controller
                 $this->pejabat[$pejabat->tipe]["nip"] = $pejabat->dosen->nip;
             }
 
-            dd($this->pejabat);
+            // dd($this->pejabat);
             return $next($request);
 
         }]);
     }
 
     function simpan(Request $request){
+        $konten = array(
+                        "judul" => json_decode($request->judul),
+                        "dosen" => json_decode($request->dosen),
+                        "judul_disetujui" => $request->pilih_judul,
+                        "dosen_disetujui" => $this->getDosen($request->pilih_pembimbing)
+                    );
+        $permohonan_surat = Permohonan_surat::where("id", $request->permohonan_surat_id)
+                                                ->update(["konten" => json_encode($konten)]);
+        $this->updateStatusSurat($request);
+
+        return redirect()->back();
 
     }
 
