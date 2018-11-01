@@ -30,9 +30,10 @@ class Controller extends BaseController
     function updateStatusSurat(Request $request){
         $verifikasi = Verifikasi::where([["permohonan_surat_id", $request->permohonan_surat_id], ["user_id", auth()->user()->id]])->update(["status" => $request->status], ["updated_at" => date("Y-m-d")]);
         
+        // dd($this->cekStatus($request->permohonan_surat_id));
         if($this->cekStatus($request->permohonan_surat_id)){            
             $permohonan_surat = Permohonan_surat::find($request->permohonan_surat_id);
-            $permohonan_surat->status =  ($request->status == 'tolak') ? 'ditolak' : 'siap_cetak' ;
+            $permohonan_surat->status = ($request->status == 'tolak') ? 'ditolak' : 'siap_cetak' ;
             $permohonan_surat->save();
         }
 
@@ -42,7 +43,7 @@ class Controller extends BaseController
     function cekStatus($permohonan_surat_id){
         $verifikasi = Verifikasi::where([["permohonan_surat_id", $permohonan_surat_id]])->select("status")->get();
 
-        if($verifikasi->contains("status", "diajukan") || $verifikasi->contains("status", "tolak")){
+        if($verifikasi->contains("status", "diajukan")){
             return false;
         }
         return true;

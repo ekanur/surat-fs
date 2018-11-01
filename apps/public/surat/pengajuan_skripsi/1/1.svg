@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="0 0 935 1210" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<style type="text/css"><![CDATA[
+.g0_1{
+fill: #0000FF;
+}
+.g1_1{
+fill: #A0A0A0;
+}
+.g2_1{
+fill: #E3E3E3;
+}
+.g3_1{
+}
+]]></style>
+</defs>
+<path d="M511.3,161.7h84.4v.7H511.3Z" class="g0_1" />
+<path d="M165.7,182.2H780.6v2H165.7Z" class="g1_1" />
+<path fill-rule="evenodd" d="M165.7,182.2H780.3v.2H165.7Z" class="g1_1" />
+<path fill-rule="evenodd" d="M780.3,182.2h.3v.2h-.3Zm-614.6,.2h.4v1.5h-.4Z" class="g1_1" />
+<path d="M780.3,182.4h.3v1.5h-.3Z" class="g2_1" />
+<path fill-rule="evenodd" d="M165.7,183.9H780.3v.3H165.7Z" class="g2_1" />
+<path d="M780.3,183.9h.3v.3h-.3Z" class="g2_1" />
+<path fill-rule="evenodd" d="M141.7,374.7H812.9v.6H141.7Z" class="g3_1" />
+<path fill-rule="evenodd" d="M812.9,374.7h.7v.6h-.7Zm-671.2,.6h.7v33.9h-.7Zm38.5,0h.7v33.9h-.7Zm410.3,0h.8v33.9h-.8Z" class="g3_1" />
+<path d="M812.9,375.3h.7v33.9h-.7Z" class="g3_1" />
+<path fill-rule="evenodd" d="M141.7,409.2H812.9v.6H141.7Z" class="g3_1" />
+<path fill-rule="evenodd" d="M812.9,409.2h.7v.6h-.7Zm-671.2,.6h.7V616h-.7Zm38.5,0h.7V616h-.7Zm410.3,0h.8V616h-.8Z" class="g3_1" />
+<path d="M812.9,409.8h.7V616h-.7Z" class="g3_1" />
+<path fill-rule="evenodd" d="M141.7,616H812.9v.6H141.7Z" class="g3_1" />
+<path d="M812.9,616h.7v.6h-.7Z" class="g3_1" />
+<path fill-rule="evenodd" d="M141.7,616.6h.7V823.4h-.7Z" class="g3_1" />
+<path fill-rule="evenodd" d="M141.7,822.8h38.5v.6H141.7Z" class="g3_1" />
+<path fill-rule="evenodd" d="M180.2,616.6h.7V823.4h-.7Z" class="g3_1" />
+<path d="M180.9,822.8H590.5v.6H180.9Z" class="g3_1" />
+<path fill-rule="evenodd" d="M590.5,616.6h.8V823.4h-.8Z" class="g3_1" />
+<path d="M591.3,822.8H812.9v.6H591.3Z" class="g3_1" />
+<path fill-rule="evenodd" d="M812.9,616.6h.7V823.4h-.7Z" class="g3_1" />
+<path d="M812.9,822.8h.7v.6h-.7Z" class="g3_1" />
+<image preserveAspectRatio="none" x="170" y="63" width="99" height="93" xlink:href="img/1.png" />
+</svg>

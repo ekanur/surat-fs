@@ -51,4 +51,5 @@ Route::post("/admin/import-mahasiswa", "Admin\MahasiswaController@import");
 
 Route::post("/pengajuan-skripsi", "PengajuanJudulSkripsi@simpan")->name("verifikasi.pengajuan-skripsi");
 
-Route::get("/pengajuan-skripsi/{id}", "PengajuanJudulSkripsi@detail");
+Route::get("/pengajuan-skripsi/{id}/{cetak}", "PengajuanJudulSkripsi@detail");
+Route::get("/pengajuan-skripsi/{id}/", "PengajuanJudulSkripsi@detail");

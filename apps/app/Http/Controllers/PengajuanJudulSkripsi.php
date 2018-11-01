@@ -31,22 +31,33 @@ class PengajuanJudulSkripsi extends Controller
     }
 
     function simpan(Request $request){
-        $konten = array(
+        if($request->status == "setuju"){
+            $konten = array(
                         "judul" => json_decode($request->judul),
                         "dosen" => json_decode($request->dosen),
                         "judul_disetujui" => $request->pilih_judul,
                         "dosen_disetujui" => $this->getDosen($request->pilih_pembimbing)
                     );
-        $permohonan_surat = Permohonan_surat::where("id", $request->permohonan_surat_id)
+            $permohonan_surat = Permohonan_surat::where("id", $request->permohonan_surat_id)
                                                 ->update(["konten" => json_encode($konten)]);
+        }
+        
         $this->updateStatusSurat($request);
 
         return redirect()->back();
 
     }
 
-    function detail($id)
+    function detail($id, $print=null)
     {
-        
+        if(auth()->user()->tipe == 'admin'){
+            $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where("permohonan_surat_id", $id)->first();
+        }else{
+            $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where([["permohonan_surat_id", $id], ["user_id", auth()->user()->id]])->first();
+        }
+        $kajur = $this->pejabat["kajur"];
+        $konten = json_decode($verifikasi->permohonan_surat->konten);
+
+        return view("surat.pengajuan_skripsi", compact('print', 'verifikasi', 'kajur', 'konten'));
     }
 }

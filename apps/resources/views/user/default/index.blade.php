@@ -33,7 +33,9 @@
 							<tbody>
 								@foreach($verifikasi as $verifikasi)
 									<tr>
-										<td class="text-left"><a href="" data-toggle="modal" data-target="#{{ camel_case($verifikasi->permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $verifikasi->bisa_verifikasi }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a> </td>
+										<td class="text-left">
+                                            <a href="" data-toggle="modal" data-target="#{{ camel_case($verifikasi->permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $verifikasi->bisa_verifikasi }}" data-status="{{ $verifikasi->status }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a>
+                                        </td>
 										<td>
 											{{ $verifikasi->mahasiswa->nama }}
 										</td>
@@ -83,7 +85,7 @@ Verifikasi Surat Aktif Kuliah
 <div id="iframe_container embed-responsive embed-responsive-1by1">
 <iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>	
 </div>
-<div class="form-group row" id="input-verifikasi" style="display: none">
+{{-- <div class="form-group row" id="input-verifikasi" style="display: none">
     <label for="verifikasi" class="col-sm-2 col-form-label">Setuju/Tolak</label>
     <div class="col-sm-10">
       <select class="form-control" name="status" id="">
@@ -91,7 +93,75 @@ Verifikasi Surat Aktif Kuliah
         <option value="tolak">Tolak</option>
       </select>
     </div>
+</div> --}}
+@endslot
+@endcomponent
+
+@endpush
+
+@push("modal")
+
+@component("user.component.modal")
+@slot("id")
+ijinObservasi
+@endslot
+
+@slot("title")
+Verifikasi Surat Ijin Observasi
+@endslot
+
+@slot("action")
+{{ route("verifikasi.aktif-kuliah") }}
+@endslot
+
+@slot("content")
+<input type="hidden" name="permohonan_surat_id">
+<div id="iframe_container embed-responsive embed-responsive-1by1">
+<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>  
 </div>
+{{-- <div class="form-group row" id="input-verifikasi" style="display: none">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Setuju/Tolak</label>
+    <div class="col-sm-10">
+      <select class="form-control" name="status" id="">
+        <option value="setuju">Setujui</option>
+        <option value="tolak">Tolak</option>
+      </select>
+    </div>
+</div> --}}
+@endslot
+@endcomponent
+
+@endpush
+
+@push("modal")
+
+@component("user.component.modal")
+@slot("id")
+ijinPeneltian
+@endslot
+
+@slot("title")
+Verifikasi Surat Ijin Peneltian
+@endslot
+
+@slot("action")
+{{ route("verifikasi.aktif-kuliah") }}
+@endslot
+
+@slot("content")
+<input type="hidden" name="permohonan_surat_id">
+<div id="iframe_container embed-responsive embed-responsive-1by1">
+<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>  
+</div>
+{{-- <div class="form-group row" id="input-verifikasi" style="display: none">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Setuju/Tolak</label>
+    <div class="col-sm-10">
+      <select class="form-control" name="status" id="">
+        <option value="setuju">Setujui</option>
+        <option value="tolak">Tolak</option>
+      </select>
+    </div>
+</div> --}}
 @endslot
 @endcomponent
 
@@ -114,6 +184,15 @@ Pengajuan Judul Skripsi
 @endslot
 
 @slot("content")
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a disabled="" id="cetak" class="btn btn-info" href="" target="_blank"><i class="fa fa-m"></i>Cetak</a></li>
+            <li class="list-inline-item"><a disabled="" id="lihat" class="btn btn-info" href="" target="_blank">Lihat</a></li>
+        </ul>
+    </div>
+    
+</div>
 <input type="hidden" name="permohonan_surat_id">
 <input type="hidden" name="judul">
 <input type="hidden" name="dosen">
@@ -163,7 +242,6 @@ Pengajuan Judul Skripsi
     </div>
 </div>
 
-
 @endslot
 @endcomponent
 
@@ -178,26 +256,77 @@ Pengajuan Judul Skripsi
                 var url = "{{ url("/") }}/"+kode_layanan;
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
                 var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
+                var status = detail_surat.data("status");
 
                 if (bisa_verifikasi) {
                 	$("#aktifKuliah #input-verifikasi").css("display", "flex");
                 	$("#aktifKuliah #btn-simpan").css("display", "block");
+                    $("#aktifKuliah select[name='status']").val(status);
                 }
 
                 $("#aktifKuliah iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
                 $("#aktifKuliah input[name='permohonan_surat_id']").val(permohonan_surat_id);
             });
 
+        $("#ijinObservasi").on("show.bs.modal", function (event) {
+                const detail_surat = $(event.relatedTarget);
+                var kode_layanan = detail_surat.data("kode_layanan");
+                var url = "{{ url("/") }}/"+kode_layanan;
+                var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
+                var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
+                var status = detail_surat.data("status");
+
+                if (bisa_verifikasi) {
+                    $("#ijinObservasi #input-verifikasi").css("display", "flex");
+                    $("#ijinObservasi #btn-simpan").css("display", "block");
+                    $("#ijinObservasi select[name='status']").val(status);
+                }
+
+                $("#ijinObservasi iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
+                $("#ijinObservasi input[name='permohonan_surat_id']").val(permohonan_surat_id);
+            });
+
+        $("#ijinPenelitian").on("show.bs.modal", function (event) {
+                const detail_surat = $(event.relatedTarget);
+                var kode_layanan = detail_surat.data("kode_layanan");
+                var url = "{{ url("/") }}/"+kode_layanan;
+                var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
+                var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
+                var status = detail_surat.data("status");
+
+                if (bisa_verifikasi) {
+                    $("#ijinPenelitian #input-verifikasi").css("display", "flex");
+                    $("#ijinPenelitian #btn-simpan").css("display", "block");
+                    $("#ijinPenelitian select[name='status']").val(status);
+                }
+
+                $("#ijinPenelitian iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
+                $("#ijinPenelitian input[name='permohonan_surat_id']").val(permohonan_surat_id);
+            });
+
 		$("#pengajuanSkripsi").on("show.bs.modal", function (event) {
+                $("a#cetak, a#lihat").attr("disabled", true);
                 const detail_surat = $(event.relatedTarget);
                 var kode_layanan = detail_surat.data("kode_layanan");
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
                 var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
+                var status = detail_surat.data("status");
+
                 if (bisa_verifikasi) {
                 // alert(bisa_verifikasi);
                 	$("#pengajuanSkripsi #input-verifikasi").css("display", "flex");
                 	$("#pengajuanSkripsi #btn-simpan").css("display", "block");
+                    $("#pengajuanSkripsi select[name='status']").val(status);
                 }
+
+                if(status == 'setuju'){
+                    $("a#cetak, a#lihat").attr("disabled", false);
+
+                    $("a#cetak").attr("href", "{{ url("pengajuan-skripsi") }}/"+permohonan_surat_id+"/print");
+                    $("a#lihat").attr("href", "{{ url("pengajuan-skripsi") }}/"+permohonan_surat_id);
+                }
+                
+
                 $("#pembimbing").empty();
                 $("#judul").empty();
                 $("select[name='pilih_judul']").empty();

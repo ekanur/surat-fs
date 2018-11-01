@@ -568,6 +568,52 @@ Pengajuan Judul Skripsi
 
 @endcomponent
 
+@component('mahasiswa.component.modal')
+
+@slot("id")
+ujian_skripsi
+@endslot
+
+@slot("title")
+Pengajuan Ijin Ujian Skripsi
+@endslot
+
+@slot('form_field')
+<form action="{{ url("/permohonan-surat") }}" method="post">
+    {{ csrf_field() }}
+    <input type="hidden" name="kode_layanan" value='ijin-ujian'>
+    <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['pengajuan-skripsi'] }}'>
+    <div class="form-group">
+      <label for="inputPassword4">Judul Skripsi</label>
+      <textarea name="judul_skripsi" id="" cols="30" rows="2" class="form-control"></textarea>
+    </div>
+    
+  <div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="">Dosen Pembimbing 1</label>
+        <select name="dosen_pembimbing[]" id="" class="form-control">
+            @foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="">Dosen Pembimbing 2</label>
+        <select name="dosen_pembimbing[]" id="" class="form-control">
+            @foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
+            @endforeach
+        </select>
+    </div>
+</div>
+
+
+<button type="submit" class="btn btn-success pull-right">Proses</button>
+</form>
+@endslot
+
+@endcomponent
+
 
 @component('mahasiswa.component.modal')
 
