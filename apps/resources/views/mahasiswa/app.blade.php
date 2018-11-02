@@ -431,7 +431,7 @@ Surat Ijin Penelitian
         <input type="date" class="form-control"  required=""  name="tanggal_selesai" placeholder="">
     </div>
 </div>
-
+<p class="help-block">Surat dapat dikonfirmasi di Admin Fakultas.</p>
 <button type="submit" class="btn btn-success pull-right">Proses</button>
 </form>
 @endslot
@@ -512,7 +512,7 @@ Surat Ijin observasi
         <input type="date" class="form-control"  required=""  name="tanggal_selesai" placeholder="">
     </div>
 </div>
-
+<p class="help-block">Surat dapat dikonfirmasi di Admin Fakultas.</p>
 <button type="submit" class="btn btn-success pull-right">Proses</button>
 </form>
 @endslot
@@ -561,7 +561,7 @@ Pengajuan Judul Skripsi
     </div>
 </div>
 
-
+<p class="help-block">Surat dapat diambil di Kajur.</p>
 <button type="submit" class="btn btn-success pull-right">Proses</button>
 </form>
 @endslot
@@ -582,32 +582,24 @@ Pengajuan Ijin Ujian Skripsi
 <form action="{{ url("/permohonan-surat") }}" method="post">
     {{ csrf_field() }}
     <input type="hidden" name="kode_layanan" value='ijin-ujian'>
-    <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['pengajuan-skripsi'] }}'>
+    <input type="hidden" name="layanan_surat_id" value='{{ $id_layanan_surat['ijin-ujian'] }}'>
     <div class="form-group">
       <label for="inputPassword4">Judul Skripsi</label>
       <textarea name="judul_skripsi" id="" cols="30" rows="2" class="form-control"></textarea>
     </div>
     
-  <div class="form-row">
-    <div class="form-group col-md-6">
-        <label for="">Dosen Pembimbing 1</label>
-        <select name="dosen_pembimbing[]" id="" class="form-control">
-            @foreach($dosen as $data_dosen)
-                <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
-            @endforeach
-        </select>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="">Dosen Pembimbing</label>
+            <select name="dosen_pembimbing" id="" class="form-control">
+                @foreach($dosen as $data_dosen)
+                    <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
+                @endforeach
+            </select>
+        </div>
     </div>
-    <div class="form-group col-md-6">
-        <label for="">Dosen Pembimbing 2</label>
-        <select name="dosen_pembimbing[]" id="" class="form-control">
-            @foreach($dosen as $data_dosen)
-                <option value="{{ $data_dosen->id }}"> {{ $data_dosen->nama }} </option>
-            @endforeach
-        </select>
-    </div>
-</div>
 
-
+<p class="help-block">Segera kumpulkan <strong>draft skripsi yang telah ditandatangani oleh pembimbing</strong> ke kantor Jurusan, agar pengajuan ujian dapat segera diproses.</p>
 <button type="submit" class="btn btn-success pull-right">Proses</button>
 </form>
 @endslot
@@ -622,7 +614,7 @@ keluhan
 @endslot
 
 @slot("title")
-Laporan Keluhan Pelayanan
+Aspirasi Anda
 @endslot
 
 @slot('form_field')
@@ -630,7 +622,7 @@ Laporan Keluhan Pelayanan
     {{ csrf_field() }}
 
     <div class="form-group">
-      <label for="inputPassword4">Keluhan</label>
+      <label for="inputPassword4">Aspirasi</label>
       <textarea name="isi" id="" cols="30" rows="3" class="form-control"></textarea>
       <small class="help-block">Maksimal 230 huruf</small>
   </div>
@@ -653,6 +645,8 @@ Laporan Keluhan Pelayanan
             <div class="modal-body">
                 <p>Apakah anda yakin akan memproses surat aktif kuliah?
                 </p>
+
+                <small class="help-block">Surat dapat dikonfirmasi di Admin Fakultas.</small>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>

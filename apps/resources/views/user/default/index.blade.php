@@ -196,7 +196,7 @@ Pengajuan Judul Skripsi
 <input type="hidden" name="permohonan_surat_id">
 <input type="hidden" name="judul">
 <input type="hidden" name="dosen">
-<div class="form-group row" id="input-verifikasi" style="display: none">
+<div class="form-group row" id="input-verifikasi">
     <label for="verifikasi" class="col-sm-2 col-form-label">Judul </label>
     <div class="col-sm-10">
       <ul id="judul">
@@ -204,15 +204,15 @@ Pengajuan Judul Skripsi
     </div>
 </div>
 
-<div class="form-group row" id="input-verifikasi" style="display: none">
-    <label for="verifikasi" class="col-sm-2 col-form-label">Pembimbing </label>
+<div class="form-group row" id="input-verifikasi">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Opsi Pembimbing </label>
     <div class="col-sm-10">
       <ol start="1" id="pembimbing">
       </ol>
     </div>
 </div>
 
-<div class="form-group row" id="input-verifikasi" style="display: none">
+<div class="form-group row" id="input-verifikasi">
     <label for="verifikasi" class="col-sm-2 col-form-label">Pilih Judul </label>
     <div class="col-sm-10">
     	<select name="pilih_judul" id="" class="form-control">
@@ -220,8 +220,8 @@ Pengajuan Judul Skripsi
     </div>
 </div>
 
-<div class="form-group row" id="input-verifikasi" style="display: none">
-    <label for="verifikasi" class="col-sm-2 col-form-label">Pembimbing 1 </label>
+<div class="form-group row" id="input-verifikasi">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Pembimbing </label>
     <div class="col-sm-10">
     	<select name="pilih_pembimbing[]" id="pilih_pembimbing1" class="form-control">
             @foreach($dosen as $data_dosen)
@@ -231,13 +231,104 @@ Pengajuan Judul Skripsi
     </div>
 </div>
 
-<div class="form-group row" id="input-verifikasi" style="display: none">
+{{-- <div class="form-group row" id="input-verifikasi">
     <label for="verifikasi" class="col-sm-2 col-form-label">Pembimbing 2 </label>
     <div class="col-sm-10">
     	<select name="pilih_pembimbing[]" id="pilih_pembimbing2" class="form-control">
     		@foreach($dosen as $data_dosen)
                 <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option> 
             @endforeach
+    	</select>
+    </div>
+</div> --}}
+
+@endslot
+@endcomponent
+
+@endpush
+
+
+
+@push("modal")
+
+@component("user.component.modal")
+@slot("id")
+ijinUjian
+@endslot
+
+@slot("title")
+Pengajuan Ijin Ujian Skripsi
+@endslot
+
+@slot("action")
+{{ route("verifikasi.ijin-ujian") }}
+@endslot
+
+@slot("content")
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a disabled="" id="cetak" class="btn btn-info" href="" target="_blank"><i class="fa fa-m"></i>Cetak</a></li>
+            <li class="list-inline-item"><a disabled="" id="lihat" class="btn btn-info" href="" target="_blank">Lihat</a></li>
+        </ul>
+    </div>
+    
+</div>
+<input type="hidden" name="permohonan_surat_id">
+<input type="hidden" name="judul">
+<input type="hidden" name="dosen">
+<div class="form-group row" id="input-verifikasi">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Judul </label>
+    <div class="col-sm-10">
+      <ul id="judul" class="list-unstyled">
+      </ul>
+    </div>
+</div>
+
+<div class="form-group row" id="input-verifikasi">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Pembimbing </label>
+    <div class="col-sm-10">
+      <ol start="1" id="pembimbing"  class="list-unstyled">
+      </ol>
+    </div>
+</div>
+
+<div class="form-group row" id="input-verifikasi">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Penguji 1 </label>
+    <div class="col-sm-10">
+    	<select name="penguji[]" id="penguji1" class="form-control">
+            @foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option> 
+            @endforeach
+    	</select>
+    </div>
+</div>
+
+<div class="form-group row" id="input-verifikasi">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Penguji 2 </label>
+    <div class="col-sm-10">
+    	<select name="penguji[]" id="penguji2" class="form-control">
+    		@foreach($dosen as $data_dosen)
+                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option> 
+            @endforeach
+    	</select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Ruang</label>
+    <div class="col-sm-10">
+    	<input type="text" class="form-control" name="ruang">
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Jam</label>
+    <div class="col-sm-10">
+    	<select name="jam" id="" class="form-control">
+    		@for($i=7 ; $i<=16; $i++)
+    			<option value="{{ $i }}.00">{{ $i }}.00</option>
+    		@endfor
     	</select>
     </div>
 </div>
@@ -306,6 +397,7 @@ Pengajuan Judul Skripsi
 
 		$("#pengajuanSkripsi").on("show.bs.modal", function (event) {
                 $("a#cetak, a#lihat").attr("disabled", true);
+                $("#pilih_pembimbing1").val(2);
                 const detail_surat = $(event.relatedTarget);
                 var kode_layanan = detail_surat.data("kode_layanan");
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
@@ -320,10 +412,10 @@ Pengajuan Judul Skripsi
                 }
 
                 if(status == 'setuju'){
-                    $("a#cetak, a#lihat").attr("disabled", false);
+                    $("#pengajuanSkripsi a#cetak, #pengajuanSkripsi a#lihat").attr("disabled", false);
 
-                    $("a#cetak").attr("href", "{{ url("pengajuan-skripsi") }}/"+permohonan_surat_id+"/print");
-                    $("a#lihat").attr("href", "{{ url("pengajuan-skripsi") }}/"+permohonan_surat_id);
+                    $("#pengajuanSkripsi a#cetak").attr("href", "{{ url("pengajuan-skripsi") }}/"+permohonan_surat_id+"/print");
+                    $("#pengajuanSkripsi a#lihat").attr("href", "{{ url("pengajuan-skripsi") }}/"+permohonan_surat_id);
                 }
                 
 
@@ -338,16 +430,16 @@ Pengajuan Judul Skripsi
                     
                     $("#pengajuanSkripsi input[name='dosen']").val(JSON.stringify(konten.dosen));
                     for (var i = 0; i <= konten.dosen.length - 1; i++) {
-                        $("#pembimbing").append("<li>"+ konten.dosen[i].nama +"</li>");
+                        $("#pengajuanSkripsi #pembimbing").append("<li>"+ konten.dosen[i].nama +"</li>");
                     }
 
                     for (var i = 0; i <= konten.judul.length - 1; i++) {
-                        $("#judul").append("<li>"+ konten.judul[i] +"</li>");
-                        $("select[name='pilih_judul']").append("<option value='"+ konten.judul[i] +"'>"+ konten.judul[i] +"</option>");
+                        $("#pengajuanSkripsi #judul").append("<li>"+ konten.judul[i] +"</li>");
+                        $("#pengajuanSkripsi select[name='pilih_judul']").append("<option value='"+ konten.judul[i] +"'>"+ konten.judul[i] +"</option>");
                     }
 
                     $("#pilih_pembimbing1").val(konten.dosen_disetujui[0].id);
-                    $("#pilih_pembimbing2").val(konten.dosen_disetujui[1].id);
+                    // $("#pilih_pembimbing2").val(konten.dosen_disetujui[1].id);
                     $("select[name='pilih_judul']").val(konten.judul_disetujui);
 
 
@@ -355,6 +447,58 @@ Pengajuan Judul Skripsi
 
                 // $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
                 $("#pengajuanSkripsi input[name='permohonan_surat_id']").val(permohonan_surat_id);
+            });
+
+		$("#ijinUjian").on("show.bs.modal", function (event) {
+                $("a#cetak, a#lihat").attr("disabled", true);
+                const detail_surat = $(event.relatedTarget);
+                var kode_layanan = detail_surat.data("kode_layanan");
+                var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
+                var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
+                var status = detail_surat.data("status");
+
+                if (bisa_verifikasi) {
+                // alert(bisa_verifikasi);
+                	$("#ijinUjian #input-verifikasi").css("display", "flex");
+                	$("#ijinUjian #btn-simpan").css("display", "block");
+                    $("#ijinUjian select[name='status']").val(status);
+                }
+
+                if(status == 'setuju'){
+                    $("#ijinUjian #cetak, #ijinUjian a#lihat").attr("disabled", false);
+
+                    $("#ijinUjian a#cetak").attr("href", "{{ url("ijin-ujian") }}/"+permohonan_surat_id+"/print");
+                    $("#ijinUjian a#lihat").attr("href", "{{ url("ijin-ujian") }}/"+permohonan_surat_id);
+                }
+                
+
+                $("#ijinUjian #pembimbing").empty();
+                $("#ijinUjian #judul").empty();
+
+                $.get('{{ url("permohonan-surat/konten") }}/'+permohonan_surat_id, function(data, status){
+                	// console.log(data);
+                    let konten = JSON.parse(data);
+                    $("#ijinUjian input[name='judul']").val(JSON.stringify(konten.judul));
+                    
+                    $("#ijinUjian input[name='dosen']").val(JSON.stringify(konten.dosen));
+                    for (var i = 0; i <= konten.dosen.length - 1; i++) {
+                        $("#ijinUjian #pembimbing").append("<li>"+ konten.dosen[i].nama +"</li>");
+                    }
+
+                    // for (var i = 0; i <= konten.judul.length - 1; i++) {
+                        $("#ijinUjian #judul").append("<li>"+ konten.judul +"</li>");
+                    // }
+
+                    $("input[name='ruang']").val(konten.ruang);
+                    $("select[name='jam']").val(konten.waktu);
+                    $("#penguji1").val(konten.penguji[0].id);
+                    $("#penguji2").val(konten.penguji[1].id);
+
+
+                });
+
+                // $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
+                $("#ijinUjian input[name='permohonan_surat_id']").val(permohonan_surat_id);
             });
 	});
 </script>

@@ -94,16 +94,17 @@ class PermohonanSuratController extends Controller
                     );
         } elseif($this->kode_layanan == 'ijin-ujian'){
             $konten = array(
-                "judul" => $request->judul_skripsi,
-                "dosen" => $this->getDosen($request->dosen_pembimbing),
-            );
+                        "judul" => $request->judul_skripsi,
+                        "dosen" => $this->getDosen($request->dosen_pembimbing),
+                        "penguji" => "",
+                        "waktu" => "",
+                        "tempat" => ""
+                    );
         }
 
             return json_encode($konten);
         
     }
-
-
 
     public function kirimVerifikasi($permohonan_surat_id){
     	$cek_verifikator = Verifikator::select("user_tipe", "urutan")->where("layanan_surat_id", "=", $this->layanan_surat_id)->orderBy("urutan")->get();

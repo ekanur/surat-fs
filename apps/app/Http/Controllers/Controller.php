@@ -21,8 +21,9 @@ class Controller extends BaseController
         if (is_array($id)) {
             $dosen = Dosen::select("id", "nama")->whereIn("id", $id)->get();
         }else{
-            $dosen = Dosen::select("id", "nama")->where("id", $id)->first();
+            $dosen = Dosen::select("id", "nama")->where("id", $id)->get();
         }
+            // $dosen = Dosen::select("id", "nama")->whereIn("id", $id)->get();
 
         return $dosen;
     }

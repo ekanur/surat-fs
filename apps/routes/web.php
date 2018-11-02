@@ -53,3 +53,8 @@ Route::post("/pengajuan-skripsi", "PengajuanJudulSkripsi@simpan")->name("verifik
 
 Route::get("/pengajuan-skripsi/{id}/{cetak}", "PengajuanJudulSkripsi@detail");
 Route::get("/pengajuan-skripsi/{id}/", "PengajuanJudulSkripsi@detail");
+
+Route::post("/ijin-ujian", "IjinUjianController@simpan")->name("verifikasi.ijin-ujian");
+
+Route::get("/ijin-ujian/{id}/{cetak}", "IjinUjianController@detail");
+Route::get("/ijin-ujian/{id}/", "IjinUjianController@detail");
