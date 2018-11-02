@@ -20,16 +20,20 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th width="45%">Surat</th>
-									<th width="35%">Pemohon</th>
-									<th width="35%">Status</th>
-									<th width="35%">Usia Surat</th>
-									<th class="text-right">Cetak</th>
+									<th width="15%">Tanggal</th>
+									<th width="25%">Surat</th>
+									<th width="25%">Pemohon</th>
+									<th width="15%">Status</th>
+									<th width="15%">Usia Surat</th>
+									<th width="5%">Cetak</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach($permohonan_surat as $permohonan_surat)
 									<tr>
+										<td>
+											{{ $permohonan_surat->created_at }}
+										</td>
 										<td class="text-left"><a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id) }}" target="_blank">{{ $permohonan_surat->layanan_surat->judul }}</a> </td>
 										<td>
 											{{ $permohonan_surat->mahasiswa->nama }}
@@ -37,7 +41,7 @@
 										<td>
 											{{ $permohonan_surat->status }}
 										</td>
-										<td class="td-actions text-right">
+										<td>
 											{{ usia_surat($permohonan_surat->created_at) }} hari
 										</td>
 										<td>

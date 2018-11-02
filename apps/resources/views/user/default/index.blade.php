@@ -23,16 +23,17 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									{{-- <th class="text-center" width="10%">#</th> --}}
-									<th width="45%">Surat</th>
-									<th width="35%">Pemohon</th>
-									<th width="35%">Status</th>
-									<th class="text-right">Usia Surat</th>
+									<th width="15%">Tanggal</th>
+									<th width="30%">Surat</th>
+									<th width="30%">Pemohon</th>
+									<th width="10%">Status</th>
+									<th width="10%">Usia Surat</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach($verifikasi as $verifikasi)
 									<tr>
+										<td>{{ $verifikasi->permohonan_surat->created_at }}</td>
 										<td class="text-left">
                                             <a href="" data-toggle="modal" data-target="#{{ camel_case($verifikasi->permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $verifikasi->bisa_verifikasi }}" data-status="{{ $verifikasi->status }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a>
                                         </td>

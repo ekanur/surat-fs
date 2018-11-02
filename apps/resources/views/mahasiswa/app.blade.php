@@ -20,6 +20,7 @@
              </button>
          </div>
          <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="{{ asset("img/blurred-image-1.jpg") }} ">
+            <p style="color:white">Jam Pelayanan 07.00 s/d 14.00 (Permohonan di atas pukul 14.00 akan diproses hari berikutnya)</p> 
             <ul class="navbar-nav">
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
@@ -30,7 +31,7 @@
                     <li class="nav-item dropdown">
                     	<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                     		<i class="now-ui-icons users_single-02"></i>
-                    		<p>{{ Auth::guard("mahasiswa")->user()->nim }}</p>
+                    		<p>{{ Auth::guard("mahasiswa")->user()->nama }}</p>
                     	</a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="" class="dropdown-item">Ganti Password</a>
@@ -599,7 +600,7 @@ Pengajuan Ijin Ujian Skripsi
         </div>
     </div>
 
-<p class="help-block">Segera kumpulkan <strong>draft skripsi yang telah ditandatangani oleh pembimbing</strong> ke kantor Jurusan, agar pengajuan ujian dapat segera diproses.</p>
+<p class="help-block">Segera kumpulkan <strong>draft skripsi yang telah ditandatangani oleh pembimbing</strong> ke kantor Jurusan, agar pengajuan ujian dapat segera diproses. Surat dapat dikonfirmasi di Kantor Jurusan.</p>
 <button type="submit" class="btn btn-success pull-right">Proses</button>
 </form>
 @endslot
