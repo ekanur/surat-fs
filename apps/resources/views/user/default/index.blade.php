@@ -137,7 +137,7 @@ Verifikasi Surat Ijin Observasi
 
 @component("user.component.modal")
 @slot("id")
-ijinPeneltian
+ijinPenelitian
 @endslot
 
 @slot("title")

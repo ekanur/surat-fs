@@ -33,12 +33,12 @@ class IjinObservasiController extends Controller
 
     function view($permohonan_surat_id, $print = null){
         if(auth()->user()->tipe == 'admin'){
-            $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where("permohonan_surat_id", $permohonan_surat_id)->first();
+            $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where("permohonan_surat_id", $permohonan_surat_id)->firstOrFail();
         }else{
-            $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where([["permohonan_surat_id", $permohonan_surat_id], ["user_id", auth()->user()->id]])->first();
+            $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where([["permohonan_surat_id", $permohonan_surat_id], ["user_id", auth()->user()->id]])->firstOrFail();
+        // dd($verifikasi);
         }
         
-        // dd($verifikasi);
         $konten = json_decode($verifikasi->permohonan_surat->konten);
         $konten->tanggal_mulai = date_create($konten->tanggal_mulai);
         $konten->tanggal_selesai = date_create($konten->tanggal_selesai);

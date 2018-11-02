@@ -129,22 +129,22 @@
 
 @font-face {
 	font-family: TimesNewRomanPS-BoldMT_9;
-	src: url("fonts/TimesNewRomanPS-BoldMT_9.woff") format("woff");
+	src: url("{{ asset("surat/ijin_observasi")  }}/fonts/TimesNewRomanPS-BoldMT_9.woff") format("woff");
 }
 
 @font-face {
 	font-family: TimesNewRomanPSMT_6;
-	src: url("fonts/TimesNewRomanPSMT_6.woff") format("woff");
+	src: url("{{ asset("surat/ijin_observasi")  }}/fonts/TimesNewRomanPSMT_6.woff") format("woff");
 }
 
 @font-face {
 	font-family: TimesNewRomanPSMT_i;
-	src: url("fonts/TimesNewRomanPSMT_i.woff") format("woff");
+	src: url("{{ asset("surat/ijin_observasi")  }}/fonts/TimesNewRomanPSMT_i.woff") format("woff");
 }
 
 @font-face {
 	font-family: ArialMT_c;
-	src: url("fonts/ArialMT_c.woff") format("woff");
+	src: url("{{ asset("surat/ijin_observasi")  }}/fonts/ArialMT_c.woff") format("woff");
 }
 
 </style>

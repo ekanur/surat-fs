@@ -37,9 +37,9 @@ class AdminController extends Controller
             }
 
             // dd($dosen);
-        	return view("user/default/index", compact('verifikasi', 'dosen'));
-        }
         // dd($verifikasi);
+            return view("user/default/index", compact('verifikasi', 'dosen'));
+        }
 
 
     }
