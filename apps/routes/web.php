@@ -46,9 +46,6 @@ Route::post("/verifikasi-aktif-kuliah", "Admin\VerifikasiController@aktifKuliah"
 
 Route::post("/ijin-penelitian", "IjinPenelitianController@simpan");
 
-Route::get("/admin/mahasiswa", "Admin\MahasiswaController@index");
-Route::post("/admin/import-mahasiswa", "Admin\MahasiswaController@import");
-
 Route::post("/pengajuan-skripsi", "PengajuanJudulSkripsi@simpan")->name("verifikasi.pengajuan-skripsi");
 
 Route::get("/pengajuan-skripsi/{id}/{cetak}", "PengajuanJudulSkripsi@detail");
@@ -58,3 +55,18 @@ Route::post("/ijin-ujian", "IjinUjianController@simpan")->name("verifikasi.ijin-
 
 Route::get("/ijin-ujian/{id}/{cetak}", "IjinUjianController@detail");
 Route::get("/ijin-ujian/{id}/", "IjinUjianController@detail");
+
+Route::group(['prefix' => 'admin'], function() {
+	Route::get("mahasiswa", "Admin\MahasiswaController@index");
+	Route::post("import-mahasiswa", "Admin\MahasiswaController@import");
+	Route::get("log-mahasiswa/{id}", "Admin\MahasiswaController@log");
+    Route::post('reset-mahasiswa', "Admin\MahasiswaController@resetPassword");
+    Route::post('hapus-mahasiswa', "Admin\MahasiswaController@hapus");
+
+    Route::get('dosen', "Admin\DosenController@index");
+    Route::post('import-dosen', "Admin\DosenController@import");
+    
+    Route::get("pejabat", "PejabatController@index");
+    Route::get("detail-pejabat/{id}", "PejabatController@detail");
+    Route::post("pejabat", "PejabatController@update");
+});
