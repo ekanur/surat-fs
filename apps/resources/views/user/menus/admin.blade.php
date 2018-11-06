@@ -12,13 +12,13 @@
 		</a>
 	</li>
 	<li class="">
-		<a href="{{ url("/dosen") }}">
+		<a href="{{ url("admin/dosen") }}">
 			<i class="now-ui-icons files_single-copy-04"></i>
 			<p>Dosen</p>
 		</a>
 	</li>
 	<li class="">
-		<a href="{{ url("/pejabat") }}">
+		<a href="{{ url("admin/pejabat") }}">
 			<i class="now-ui-icons users_circle-08"></i>
 			<p>Pejabat</p>
 		</a>
