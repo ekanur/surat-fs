@@ -324,8 +324,12 @@ Pengajuan Ijin Ujian Skripsi
 </div>
 
 <div class="form-group row">
-    <label for="verifikasi" class="col-sm-2 col-form-label">Jam</label>
-    <div class="col-sm-10">
+    <label for="verifikasi" class="col-sm-2 col-form-label">Hari</label>
+    <div class="col-sm-4">
+        <input class="form-control" name="tanggal" type="date" />
+    </div>
+    <label class="col-sm-1 col-form-label pull-right">Jam</label>
+    <div class="col-sm-5">
     	<select name="jam" id="" class="form-control">
     		@for($i=7 ; $i<=16; $i++)
     			<option value="{{ $i }}.00">{{ $i }}.00</option>
@@ -492,6 +496,7 @@ Pengajuan Ijin Ujian Skripsi
 
                     $("input[name='ruang']").val(konten.ruang);
                     $("select[name='jam']").val(konten.waktu);
+                    $("input[name='tanggal']").val(konten.tanggal);
                     $("#penguji1").val(konten.penguji[0].id);
                     $("#penguji2").val(konten.penguji[1].id);
 

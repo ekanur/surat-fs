@@ -38,6 +38,7 @@ class IjinUjianController extends Controller
                         "penguji" => $this->getDosen($request->penguji),
                         "ruang" => $request->ruang,
                         "waktu" => $request->jam,
+                        "tanggal" => $request->tanggal,
                     );
             $permohonan_surat = Permohonan_surat::where("id", $request->permohonan_surat_id)
                                                 ->update(["konten" => json_encode($konten)]);

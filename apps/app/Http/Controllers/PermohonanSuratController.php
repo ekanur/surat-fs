@@ -97,8 +97,9 @@ class PermohonanSuratController extends Controller
                         "judul" => $request->judul_skripsi,
                         "dosen" => $this->getDosen($request->dosen_pembimbing),
                         "penguji" => "",
+                        "ruang" => ""
                         "waktu" => "",
-                        "tempat" => ""
+                        "tanggal" => "",
                     );
         }
 
