@@ -27,3 +27,21 @@ function usia_surat($created_at){
 
 	return $usia_surat->format("%a");
 }
+
+function usernameToJurusan($username){
+	if (!strpos($username, "_")) {
+		return false;
+	}
+
+	$array_jurusan = ["sastra_indonesia" => "Sastra Indonsia", "sastra_inggris" => "Sastra Inggris", "sastra_arab" => "Sastra Arab", "sastra_jerman" => "Sastra Jerman", "seni_desain" => "Seni dan Desain"];
+	$list_jurusan = array(
+		"ind" => $array_jurusan["sastra_indonesia"],
+		"ing" => $array_jurusan["sastra_inggris"],
+		"arab" => $array_jurusan["sastra_arab"],
+		"jer" => $array_jurusan["sastra_jerman"],
+		"seni" => $array_jurusan["seni_desain"]
+	);
+	$jurusan = substr($username, strpos($username, "_")+1, (strlen($username)-strpos($username, "_")));
+
+	return $list_jurusan[$jurusan];
+}

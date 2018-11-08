@@ -66,7 +66,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('dosen', "Admin\DosenController@index");
     Route::post('import-dosen', "Admin\DosenController@import");
     
-    Route::get("pejabat", "PejabatController@index");
-    Route::get("detail-pejabat/{id}", "PejabatController@detail");
-    Route::post("pejabat", "PejabatController@update");
+    Route::get("pejabat", "Admin\PejabatController@index");
+    Route::get("detail-pejabat/{id}", "Admin\PejabatController@detail");
+    Route::post("pejabat", "Admin\PejabatController@update");
 });
