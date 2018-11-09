@@ -23,10 +23,10 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th width="30%">Nama</th>
+									<th width="40%">Nama</th>
 									<th width="20%">NIP</th>
 									<th width="15%">Jurusan</th>
-									<th width="55%">Opsi</th>
+									<th width="5%">Opsi</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -40,7 +40,7 @@
 											{{ $dosen->jurusan }}
 										</td>
 										<td class="td-actions text-right">
-											<a href="" class="btn btn-sm btn-info"><i class="now-ui-icons ui-1_lock-circle-open"></i> Reset Password</a>
+											<a href="" class="btn btn-sm btn-info">Edit</a>
 											{{-- <a href="" class="btn btn-sm btn-danger"><i class="now-ui-icons ui-1_simple-remove"></i> Hapus</a> --}}
 										</td>
 										

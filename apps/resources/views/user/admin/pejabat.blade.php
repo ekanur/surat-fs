@@ -21,9 +21,9 @@
 							<thead>
 								<tr>
 									<th width="20%">Jabatan</th>
-									<th width="30%">Nama</th>
+									<th width="40%">Nama</th>
 									<th width="15%">Jurusan</th>
-									<th width="40%">Opsi</th>
+									<th width="10%">Opsi</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -37,8 +37,8 @@
 											{{ $pejabat->dosen->jurusan }}
 										</td>
 										<td class="td-actions text-right">
-											<a href="" class="btn btn-sm btn-info"><i class="now-ui-icons ui-1_lock-circle-open"></i> Reset Password</a>
-											<a href="{{ url("admin/detail-pejabat/".$pejabat->id) }}" class="btn btn-sm btn-warning"><i class="now-ui-icons ui-1_simple-edit"></i> Edit</a>
+											{{-- <a href="" class="btn btn-sm btn-info"><i class="now-ui-icons ui-1_lock-circle-open"></i> Reset Password</a> --}}
+											<a href="{{ url("admin/detail-pejabat/".$pejabat->id) }}" class="btn btn-sm btn-info"><i class="now-ui-icons ui-1_simple-edit"></i> Detail</a>
 										</td>
 										
 									</tr>

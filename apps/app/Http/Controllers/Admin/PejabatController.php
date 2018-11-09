@@ -27,11 +27,13 @@ class PejabatController extends Controller
 
     function detail($id){
     	$pejabat = User::with("dosen")->where([["tipe", "!=", "admin"], ["id", "=", $id]])->firstOrFail();
-    	if($pejabat->tipe != 'kajur' || $pejabat->tipe != 'sekjur'){
-	    	$dosen = Dosen::where("id", "!=","1")->get();
-    	}else{
-    		$dosen = Dosen::where([["id", "!=","1"], ["jurusan", "=", $pejabat->dosen->jurusan]])->get();
+        if($pejabat->tipe == 'kajur' || $pejabat->tipe == 'sekjur'){
+            $dosen = Dosen::where([["id", "!=","1"], ["jurusan", "=", $pejabat->dosen->getOriginal('jurusan')]])->get();
+        }else{
+            $dosen = Dosen::where("id", "!=","1")->get();
     	}
+
+        // dd($dosen);
 
     	return view("user.admin.detail_pejabat", compact('pejabat', 'dosen'));
     }

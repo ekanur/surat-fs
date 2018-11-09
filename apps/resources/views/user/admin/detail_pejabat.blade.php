@@ -10,23 +10,44 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<div class="card  card-tasks">
-				<div class="card-header ">
-					<h4 class="card-title">{{ ucfirst($pejabat->tipe) }} {{ usernameToJurusan($pejabat->username) }}</h4>
-					
-				</div>
-				<div class="card-body ">
-					<!-- <div class="table-full-width table-responsive"> -->
-						
-						<!-- </div> -->
-					</div>
-					<div class="card-footer ">
-						{{-- <hr> --}}
-						{{-- <div class="stats">
-							<button class="btn btn-success">Cetak (1 Surat)</button>
-						</div> --}}
-					</div>
-			</div>
+			<div class="card card-tasks">
+                <div class="card-header">
+                    <h5 class="title">{{ ucfirst($pejabat->tipe) }} {{ usernameToJurusan($pejabat->username) }}</h5>
+                </div>
+                <div class="card-body">
+                	<form action="{{ url("admin/pejabat") }}" method="post">
+                		{{ csrf_field() }}
+                	
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Pilih</label>
+                        <div class="col-sm-5">
+                        	<select name="dosen_id" class="form-control">
+                        		@foreach($dosen as $dosen)
+	                        		<option value="{{ $dosen->id }}" @if($pejabat->dosen_id == $dosen->id) selected="" @endif>{{ $dosen->nama }}</option>
+                        		@endforeach
+                        	</select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-10">
+                            <span>{{ $pejabat->username }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Reset Password</label>
+                        <div class="col-sm-10">
+                            <a class="" href="">Reset</a>
+                        </div>
+                    </div>
+                    <div class="form-group row text-center">
+                        <div class="col-sm-12">
+                        	<button class="btn btn-success">Simpan</button>
+                        </div>
+                    </div>
+                   	</form>
+                </div>
+            </div>
 		</div>
 
 	</div>
