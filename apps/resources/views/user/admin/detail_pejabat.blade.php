@@ -40,6 +40,14 @@
                             <a class="" href="">Reset</a>
                         </div>
                     </div>
+                    <div class="form-group row">
+                    	<label for="" class="col-sm-2 col-form-label">Tanda Tangan</label>
+                    	<div class="col-sm-5">
+                    		{{-- <img src="{{ asset("surat/ttd/".$pejabat->scan_ttd) }}" alt="" class="img"><br/> --}}
+	                    	<input type="file" class="form-control" name="ttd" />
+	                    	{{-- <p class="help-block">Type:.jpg, .png | Maks. 700Kb</p> --}}
+	                    </div>
+                    </div>
                     <div class="form-group row text-center">
                         <div class="col-sm-12">
                         	<button class="btn btn-success">Simpan</button>
