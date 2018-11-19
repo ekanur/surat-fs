@@ -143,9 +143,36 @@
   <script>
     $(document).ready(function() {
 
-      $("table.table").DataTable();
+      $("table.table").DataTable({
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+
+                if(column[0][0] == 3 && column.data().length > 0){
+                  var select = $('<select class="form-control" style="width:70px;height:15px"><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                  // console.log(column.data());
+ 
+                  column.data().unique().sort().each( function ( d, j ) {
+                      select.append( '<option value="'+d+'">'+d+'</option>' )
+                  } );
+                }
+                
+            } );
+        }
+    } );
       // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
+      // demo.initDashboardPageCharts();
 
     });
   </script>
