@@ -34,8 +34,9 @@
                     		<p>{{ Auth::guard("mahasiswa")->user()->nama }}</p>
                     	</a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="" class="dropdown-item">Ganti Password</a>
-                            <a href="" class="dropdown-item" data-toggle="modal" data-target="#myModal1">Info</a>
+                            <a href="" class="dropdown-item" data-toggle="modal" data-target="#statusSurat">Status Surat</a>
+                            <a href="" class="dropdown-item" data-toggle="modal" data-target="#gantiPassword">Ganti Password</a>
+                            <a href="" class="dropdown-item" data-toggle="modal" data-target="#myModal1">Bantuan</a>
                             <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();" class="dropdown-item text-danger">
@@ -664,23 +665,136 @@ Aspirasi Anda
 <!--  End Modal -->
 <!-- Mini Modal -->
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header justify-content-center">
-                <!-- <div class="modal-profile">
-                    <i class="now-ui-icons users_circle-08"></i>
-                </div> -->
-                <h4 class="title title-up">Bantuan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                </button>
+                <h4 class="title title-up">Bantuan Alur Pengurusan Surat</h4>
             </div>
             <div class="modal-body">
-                <ul>
-                    <li>Durasi Pelayanan hanya <strong>3 menit</strong>, persiapkan berkas yang dibutuhkan.</li>
-                    <li>Surat yang telah diproses dapat dikonfirmasi pada admin fakultas.</li>
-                </ul>
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Aktif Kuliah
+                          </button>
+                        </h5>
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ol start="1">
+                                <li>Mahasiswa memproses surat aktif kuliah melalui menu <strong>AKTIF KULIAH</strong></li>
+                                <li>Permohonan permohonan surat akan divalidasi oleh Wakil Dekan 1</li>    
+                                <li>Setelah permohonan surat divalidasi, mahasiswa dapat mengambil surat aktif kuliah yang telah dicetak di Admin Fakultas</li>    
+                            </ol>    
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Ijin Penelitian, Ijin Observasi
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ol start="1">
+                                <li>Mahasiswa memproses surat Ijin Penelitian, Observasi </li>
+                                <li>Permohonan permohonan surat akan divalidasi oleh Kajur</li>    
+                                <li>Selanjutnya permohonan surat akan divalidasi oleh Wakil Dekan 1</li>    
+                                <li>Setelah permohonan surat divalidasi oleh Kajur dan Wakil Dekan 1, mahasiswa dapat mengambil surat ijin yang telah dicetak di Admin Fakultas</li>    
+                            </ol>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Pengajuan Judul Skripsi
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ol start="1">
+                                <li>Mahasiswa memproses surat pengajuan judul skripsi melalui menu <strong>JUDUL SKRIPSI</strong></li>
+                                <li>Permohonan permohonan surat akan divalidasi oleh Kajur</li>    
+                                <li>Setelah permohonan surat divalidasi, mahasiswa dapat mengambil surat pengajuan skripsi yang telah dicetak di Admin Fakultas</li>    
+                            </ol>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingFour">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Ijin Ujian Skripsi
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ol start="1">
+                                <li>Mahasiswa memproses surat ijin ujian skripsi melalui menu <strong>UJIAN SKRIPSI</strong></li>
+                                <li>Permohonan permohonan surat akan divalidasi oleh Kajur</li>    
+                                <li>Setelah permohonan surat divalidasi, mahasiswa dapat mengambil surat ijin ujian skripsi yang telah dicetak di Admin Fakultas</li>    
+                            </ol>  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-link btn-neutral">Back</button>
               <button type="button" class="btn btn-link btn-neutral" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="statusSurat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header justify-content-center">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                </button>
+                <h4 class="title title-up">Status Pengurusan Surat</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <th>#</th>
+                        <th>Layanan Surat</th>
+                        <th>Tanggal Diajukan</th>
+                        <th>Usia Surat</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody>
+                        @php
+                            $i=1;
+                        @endphp
+                        @foreach ($permohonan_surat as $permohonan_surat)
+                            <tr>
+                                <td>{{ $i++ }}</td>
+                                <td>{{ $permohonan_surat->layanan_surat->judul }}</td>
+                                <td>{{ $permohonan_surat->created_at }}</td>
+                                <td>{{ usia_surat($permohonan_surat->created_at) }} hari</td>
+                                <td>{{ $permohonan_surat->status }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link" data-dismiss="modal">Back</button>
           </div>
       </div>
   </div>
@@ -691,13 +805,29 @@ Aspirasi Anda
 
 <script src="{{ asset("js/plugins/bootstrap-notify.js") }}" type="text/javascript"></script>
 <script src="{{ asset("demo/demo.js") }}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset("plugin/datatable/datatables.min.js") }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         @if(null != session('message'))
             demo.showNotification('{{ session('message') }}', '{{ session('status') }}');
         @endif
 
+        $("table.table").dataTable();
+
     });
 </script>
 
+@endpush
+
+@push('css')
+    <style type="text/css">
+        ul, ol {
+            padding-left: 0.5em !important;
+            padding-inline-start: 0.5em  !important;
+        }
+
+        .dataTables_filter{
+            float: right;
+        }
+    </style>
 @endpush
