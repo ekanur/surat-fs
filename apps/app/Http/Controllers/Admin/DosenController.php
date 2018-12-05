@@ -14,7 +14,7 @@ class DosenController extends Controller
     		if(auth()->user()->tipe != 'admin'){
     			abort(404);
     		}
-    			return $next($request);
+    	    return $next($request);
     	}]);
     }
 

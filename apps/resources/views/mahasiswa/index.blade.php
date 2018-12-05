@@ -68,7 +68,7 @@
                     &copy;
                     <script>
                         document.write(new Date().getFullYear())
-                    </script>, Bekerja sama dengan <a href="http://illiyin.co">Illiyin Studio</a>
+                    </script>, Bekerja sama dengan <strong>Illiyin Studio</strong>
                 </div>
             </div>
         </footer>

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Session;
 use App\Dosen;
 use App\Layanan_surat;
+use App\Permohonan_surat;
+use Auth;
+
 
 class AppController extends Controller
 {
@@ -19,7 +22,12 @@ class AppController extends Controller
    		for ($i=0; $i < sizeof($layanan_surat) ; $i++) { 
    			$id_layanan_surat[$layanan_surat[$i]["kode_layanan"]] = $layanan_surat[$i]["id"];
    		}
-         // dd($id_layanan_surat);
-   		return view("mahasiswa.app", compact('dosen', 'id_layanan_surat'));
-   	}
+        $permohonan_surat = $this->getPermohonanSurat();
+   		return view("mahasiswa.app", compact('dosen', 'id_layanan_surat', 'permohonan_surat'));
+	   }
+	   
+	   function getPermohonanSurat(){
+			$permohonan_surat = Permohonan_surat::with("layanan_surat")->where("mahasiswa_id", Auth::guard('mahasiswa')->user()->id)->get();
+			return $permohonan_surat;
+	   }
 }
