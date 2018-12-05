@@ -21,7 +21,7 @@ class PermohonanSuratController extends Controller
     function __construct()
     {
         // $this->middleware("auth:mahasiswa");
-        
+
     	$this->middleware(function($request, $next){
             $this->layanan_surat_id = $request->layanan_surat_id;
             $this->kode_layanan = $request->kode_layanan;
@@ -41,13 +41,13 @@ class PermohonanSuratController extends Controller
             return $next($request);
         })->except(["getKonten", "getDosen"]);
 
-        
-        
+
+
     }
 
     public function simpan(Request $request){
         // dd($this->user);
-    	
+
         $permohonan_surat = new Permohonan_surat;
     	$permohonan_surat->mahasiswa_id = Auth::guard("mahasiswa")->user()->id;
     	$permohonan_surat->layanan_surat_id = $request->layanan_surat_id;
@@ -97,14 +97,14 @@ class PermohonanSuratController extends Controller
                         "judul" => $request->judul_skripsi,
                         "dosen" => $this->getDosen($request->dosen_pembimbing),
                         "penguji" => "",
-                        "ruang" => ""
+                        "ruang" => "",
                         "waktu" => "",
-                        "tanggal" => "",
+                        "tanggal" => ""
                     );
         }
 
             return json_encode($konten);
-        
+
     }
 
     public function kirimVerifikasi($permohonan_surat_id){
