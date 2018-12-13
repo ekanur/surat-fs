@@ -149,7 +149,7 @@
                 var column = this;
 
                 if(column[0][0] == 3 && column.data().length > 0){
-                  var select = $('<select class="form-control" style="width:70px;height:15px"><option value=""></option></select>')
+                  var select = $('<select class="form-control" style="width:70px;height:15px"><option value="">Semua</option></select>')
                     .appendTo( $(column.footer()).empty() )
                     .on( 'change', function () {
                         var val = $.fn.dataTable.util.escapeRegex(

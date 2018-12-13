@@ -30,26 +30,23 @@
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Username</label>
-                        <div class="col-sm-10">
-                            <span>{{ $pejabat->username }}</span>
+                        <div class="col-sm-5">
+                            <span>{{ $pejabat->username }}</span> 
+                            <span style="margin-left: 20px"><a class="" href="">Reset Password</a></span>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">Reset Password</label>
-                        <div class="col-sm-10">
-                            <a class="" href="">Reset</a>
-                        </div>
-                    </div>
+                    
                     <div class="form-group row">
                     	<label for="" class="col-sm-2 col-form-label">Tanda Tangan</label>
                     	<div class="col-sm-5">
-                    		{{-- <img src="{{ asset("surat/ttd/".$pejabat->scan_ttd) }}" alt="" class="img"><br/> --}}
-	                    	<input type="file" class="form-control" name="ttd" />
+                    		<img src="{{ asset("surat/ttd/".$pejabat->username.".jpg") }}" alt="" class="img img-thumbnail"><br/>
+	                    	<input class="form-control" type="file" name="file_import" style="opacity: 0.95; position: initial;height: initial;margin-top: 10px">
 	                    	{{-- <p class="help-block">Type:.jpg, .png | Maks. 700Kb</p> --}}
 	                    </div>
                     </div>
-                    <div class="form-group row text-center">
-                        <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-5 offset-sm-2">
                         	<button class="btn btn-success">Simpan</button>
                         </div>
                     </div>
