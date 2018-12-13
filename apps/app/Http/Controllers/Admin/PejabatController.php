@@ -39,6 +39,17 @@ class PejabatController extends Controller
     }
 
     function update(Request $request){
+        $verifikator = Verifikator::findOrFail($request->id);
+        $verifikator->dosen_id = $request->dosen_id;
+        $verifikator->scan_ttd = $this->uploadTtd($request->ttd);
+        $verifikator->save();
 
+        return redirect()->back();
+    }
+
+    function uploadTtd($ttd){
+
+
+        return true;
     }
 }

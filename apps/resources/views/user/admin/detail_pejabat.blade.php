@@ -17,6 +17,7 @@
                 <div class="card-body">
                 	<form action="{{ url("admin/pejabat") }}" method="post">
                 		{{ csrf_field() }}
+                        <input type="hidden" name="id" value="{{ $pejabat->id }}">
                 	
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Pilih</label>
@@ -40,7 +41,7 @@
                     	<label for="" class="col-sm-2 col-form-label">Tanda Tangan</label>
                     	<div class="col-sm-5">
                     		<img src="{{ asset("surat/ttd/".$pejabat->username.".jpg") }}" alt="" class="img img-thumbnail"><br/>
-	                    	<input class="form-control" type="file" name="file_import" style="opacity: 0.95; position: initial;height: initial;margin-top: 10px">
+	                    	<input class="form-control" type="file" name="ttd" style="opacity: 0.95; position: initial;height: initial;margin-top: 10px">
 	                    	{{-- <p class="help-block">Type:.jpg, .png | Maks. 700Kb</p> --}}
 	                    </div>
                     </div>
