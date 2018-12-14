@@ -172,7 +172,21 @@
         }
     } );
       // Javascript method's body can be found in assets/js/demos.js
+
       // demo.initDashboardPageCharts();
+      @if ($errors->any())
+      var error = '<ul>';
+            @foreach ($errors->all() as $error)
+                error += '<li>{{ $error }}</li>';
+            @endforeach
+      error += '</ul>';
+      demo.showNotification(error, 'danger');                    
+      @endif
+
+      @if (session('success'))
+      var msg = "{{ session('success') }}";
+      demo.showNotification(msg, 'success');                    
+      @endif
 
     });
   </script>

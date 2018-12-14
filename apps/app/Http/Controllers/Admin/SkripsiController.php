@@ -37,13 +37,15 @@ class SkripsiController extends Controller
             });
         }
 
-        // dd($ijin_ujian);
+        $ijin_ujian = $ijin_ujian->each(function($item, $key){
+            $item->konten = json_decode($item->konten);
+        });
         
         return view("user.default.skripsi", compact("ijin_ujian"));
     }
 
     public function detail($id)
     {
-        # code...
+        
     }
 }
