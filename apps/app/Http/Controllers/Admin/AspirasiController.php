@@ -18,12 +18,19 @@ class AspirasiController extends Controller
                 // get original value, instead  accessor func
     			$this->jurusan = auth()->user()->dosen->getAttributes()['jurusan'];
     		}
+
     	    return $next($request);
     	}]);
     }
 
     function index(){
-    	$keluhan = Keluhan::all();
+    	$keluhan = Keluhan::with("mahasiswa")->get();
+
+        if(!is_null($this->jurusan)){
+            $keluhan = $keluhan->filter(function($item, $key){
+                return $item->mahasiswa->getAttributes()['jurusan'] == $this->jurusan;
+            });
+        }
 
     	return view("user.default.keluhan", compact('keluhan'));
     }

@@ -1,11 +1,7 @@
 @extends("user.layout")
 
 @section("menu")
-	@if(auth()->user()->tipe == "admin")
-		@include("user.menus.admin")
-	@else
-		@include("user.menus.default")
-	@endif
+	@include("user.menus.default")
 @endsection
 
 @section("content")
@@ -28,26 +24,15 @@
 							<thead>
 								<tr>
 									<th width="5%">No</th>
-									<th width="30%">Nama Mahasiswa</th>
-									<th width="20%">Jurusan</th>
-									<th width="45%">Aspirasi</th>
+									<th width="35%">Nama Mahasiswa</th>
+									<th width="30%">Judul</th>
+									{{-- <th width="15%">Tanggal</th> --}}
+									<th width="30%">Ruang - Tanggal</th>
+									<th width="10%">Penguji</th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach($keluhan as $keluhan)
-								<tr>
-									<td>{{ $loop->iteration }}</td>
-									<td>
-										{{ $keluhan->mahasiswa->nama }}<br/>
-										<small><em>{{ $keluhan->nim }}</em></small>
-									</td>
-									<td>{{ $keluhan->mahasiswa->jurusan }}</td>
-									<td>
-										{{ $keluhan->isi }}<br/>
-										<small><i class="now-ui-icons ui-1_calendar-60"></i> <em>{{ $keluhan->created_at }}</em></small>
-									</td>
-								</tr>
-								@endforeach
+								
                             </tbody>
                             
 						</table>
