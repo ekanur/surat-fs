@@ -36,23 +36,35 @@
 									<tr>
                                         <td>{{ $loop->iteration }}</td>
 										<td>
-											{{ $ijin_ujian->mahasiswa->nama }} 
+											{{ $ijin_ujian->mahasiswa->nama }}
                                         </td>
 										<td>
 											{{ $ijin_ujian->konten->judul }}
 										</td>
 										<td>
+<<<<<<< HEAD
+											@if(isset(json_decode($ijin_ujian->konten)->ruang) && isset(json_decode($ijin_ujian->konten)->waktu) && isset(json_decode($ijin_ujian->konten)->tanggal))
+                          {{ json_decode($ijin_ujian->konten)->ruang }}-{{ json_decode($ijin_ujian->konten)->tanggal or null }}<br/>{{ json_decode($ijin_ujian->konten)->waktu }}
+                      @else
+                          -
+                      @endif
+=======
                                             @if ($ijin_ujian->konten->ruang != "''" && $ijin_ujian->konten->waktu != "''")
                                                 {{ $ijin_ujian->konten->ruang }}-{{ $ijin_ujian->konten->tanggal or null }}<br/>{{ $ijin_ujian->konten->waktu }}
                                             @else
                                                 -
                                             @endif
+>>>>>>> eff57eba7a127da16d8f466f5fa6705a57b660af
 										</td>
 										<td>
                                             <ol start="1">
                                                 <li>{{ $ijin_ujian->konten->dosen[0]->nama }}</li>
                                             </ol>
+<<<<<<< HEAD
+                                            @if (json_decode($ijin_ujian->konten)->penguji != '')
+=======
                                             @if (is_array($ijin_ujian->konten->penguji))    
+>>>>>>> eff57eba7a127da16d8f466f5fa6705a57b660af
                                                 <ol start="2">
                                                 @foreach ($ijin_ujian->konten->penguji as $penguji)
                                                     <li>{{$penguji->nama}}</li>
@@ -63,7 +75,7 @@
 									</tr>
 								@endforeach
                             </tbody>
-                            
+
 						</table>
 						<!-- </div> -->
 					</div>

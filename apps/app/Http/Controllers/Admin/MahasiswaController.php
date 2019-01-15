@@ -33,19 +33,19 @@ class MahasiswaController extends Controller
             $data = Excel::load($path, function($reader){})->get();
 
             if(!empty($data) && sizeof($data)!=0){
-                $max = (sizeof($data)<=100) ? sizeof($data) : 100 ;
+                $max = (sizeof($data)<=100) ? sizeof($data) : 500 ;
                 for ($i=0; $i < $max ; $i++) {
                     if((null != $data[$i]->nim || '' != $data[$i]->nim) && (null != $data[$i]->nama || '' != $data[$i]->nama) && (null != $data[$i]->jurusan || '' != $data[$i]->jurusan) && (null != $data[$i]->prodi || '' != $data[$i]->prodi)){
                         $insert[] = [
-                                "nim"=>$data[$i]->nim, 
-                                "password"=>Hash::make($data[$i]->nim), 
-                                "nama"=>$data[$i]->nama, 
-                                "jurusan"=>$data[$i]->jurusan, 
+                                "nim"=>$data[$i]->nim,
+                                "password"=>Hash::make($data[$i]->nim),
+                                "nama"=>$data[$i]->nama,
+                                "jurusan"=>$data[$i]->jurusan,
                                 "prodi"=>$data[$i]->prodi,
                                 "created_at" => date("Y-m-d")
                             ];
-                    } 
-                    
+                    }
+
                 }
 
                 if(!empty($insert)){
