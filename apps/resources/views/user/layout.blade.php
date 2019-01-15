@@ -149,7 +149,7 @@
                 var column = this;
 
                 if(column[0][0] == 3 && column.data().length > 0){
-                  var select = $('<select class="form-control" style="width:70px;height:15px"><option value=""></option></select>')
+                  var select = $('<select class="form-control" style="width:70px;height:15px"><option value="">Semua</option></select>')
                     .appendTo( $(column.footer()).empty() )
                     .on( 'change', function () {
                         var val = $.fn.dataTable.util.escapeRegex(
@@ -172,7 +172,21 @@
         }
     } );
       // Javascript method's body can be found in assets/js/demos.js
+
       // demo.initDashboardPageCharts();
+      @if ($errors->any())
+      var error = '<ul>';
+            @foreach ($errors->all() as $error)
+                error += '<li>{{ $error }}</li>';
+            @endforeach
+      error += '</ul>';
+      demo.showNotification(error, 'danger');                    
+      @endif
+
+      @if (session('success'))
+      var msg = "{{ session('success') }}";
+      demo.showNotification(msg, 'success');                    
+      @endif
 
     });
   </script>
