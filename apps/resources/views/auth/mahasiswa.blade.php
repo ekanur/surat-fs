@@ -9,7 +9,7 @@
             </div>
             <div class="navbar-translate">
                 <a class="navbar-brand" href="#" rel="tooltip" title="Pelayanan pengurusan surat Fakultas Sastra" data-placement="bottom" target="_blank">
-                        
+
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar bar1"></span>
@@ -31,7 +31,7 @@
                         {{ csrf_field() }}
                     <div class="card-header text-center" style="margin-top:20vh">
                         Self-Service Fakultas Sastra
-                     
+
                     </div>
                 <div class="card-body">
                   <div class="input-group no-border input-lg">
@@ -67,7 +67,7 @@
                     &copy;
                     <script>
                         document.write(new Date().getFullYear())
-                    </script>, Bekerja sama dengan <a href="http://illiyin.co">Illiyin Studio</a>
+                    </script>, Bekerja sama dengan <strong style="color:orange">Illiyin Studio</strong>
                 </div>
             </div>
         </footer>
@@ -79,7 +79,7 @@
 @push("css")
 <style type="text/css">
     span.input-group-text{
-        border-top-right-radius: 0; 
+        border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         display: flex;
         -ms-flex-align: center;
@@ -91,7 +91,7 @@
         line-height: 1.5;
         color: #495057;
         text-align: center;
-        white-space: nowrap; 
+        white-space: nowrap;
     }
 </style>
 @endpush

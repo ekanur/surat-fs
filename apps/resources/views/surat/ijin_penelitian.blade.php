@@ -156,7 +156,7 @@
 <div id="t6_1" class="t s3_1">Laman: www.um.ac.id </div>
 <div id="t7_1" class="t s4_1">________________________________________________________________________________ </div>
 <div id="t8_1" class="t s3_1">Nomor : </div>
-<div id="t9_1" class="t s3_1"> {{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.{{ $verifikasi->permohonan_surat->updated_at->format("Y") }}/          /DK/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
+<div id="t9_1" class="t s3_1"> {{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.       /UN32.2.1/DK/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
 <div id="ta_1" class="t s3_1">{{ $verifikasi->permohonan_surat->updated_at->format("d") }} {{ bulan($verifikasi->permohonan_surat->updated_at->format("m")) }} {{ $verifikasi->permohonan_surat->updated_at->format("Y") }}  </div>
 <div id="tb_1" class="t s3_1">Hal </div>
 <div id="tc_1" class="t s3_1">: </div>

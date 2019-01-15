@@ -9,7 +9,7 @@
             </div>
             <div class="navbar-translate">
                 <a class="navbar-brand" href="#" rel="tooltip" title="Pelayanan pengurusan surat Fakultas Sastra" data-placement="bottom" target="_blank">
-                    Self-Service Fakultas Sastra    
+                    Self-Service Fakultas Sastra
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar bar1"></span>
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="card-footer text-center">
-      <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Login</button>
+      <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Masuk</button>
 
 </div></form>
 </div>

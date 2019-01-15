@@ -36,23 +36,23 @@
 									<tr>
                                         <td>{{ $loop->iteration }}</td>
 										<td>
-											{{ $ijin_ujian->mahasiswa->nama }} 
+											{{ $ijin_ujian->mahasiswa->nama }}
                                         </td>
 										<td>
 											{{ json_decode($ijin_ujian->konten)->judul }}
 										</td>
 										<td>
-                                            @if (json_decode($ijin_ujian->konten)->ruang != "''" && json_decode($ijin_ujian->konten)->waktu != "''")
-                                                {{ json_decode($ijin_ujian->konten)->ruang }}-{{ json_decode($ijin_ujian->konten)->tanggal or null }}<br/>{{ json_decode($ijin_ujian->konten)->waktu }}
-                                            @else
-                                                -
-                                            @endif
+											@if(isset(json_decode($ijin_ujian->konten)->ruang) && isset(json_decode($ijin_ujian->konten)->waktu) && isset(json_decode($ijin_ujian->konten)->tanggal))
+                          {{ json_decode($ijin_ujian->konten)->ruang }}-{{ json_decode($ijin_ujian->konten)->tanggal or null }}<br/>{{ json_decode($ijin_ujian->konten)->waktu }}
+                      @else
+                          -
+                      @endif
 										</td>
 										<td>
                                             <ol start="1">
                                                 <li>{{ json_decode($ijin_ujian->konten)->dosen[0]->nama }}</li>
                                             </ol>
-                                            @if (json_decode($ijin_ujian->konten)->penguji != '')    
+                                            @if (json_decode($ijin_ujian->konten)->penguji != '')
                                                 <ol start="2">
                                                 @foreach (json_decode($ijin_ujian->konten)->penguji as $penguji)
                                                     <li>{{$penguji->nama}}</li>
@@ -63,7 +63,7 @@
 									</tr>
 								@endforeach
                             </tbody>
-                            
+
 						</table>
 						<!-- </div> -->
 					</div>
