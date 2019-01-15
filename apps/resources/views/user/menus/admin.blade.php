@@ -23,6 +23,12 @@
 			<p>Pejabat</p>
 		</a>
 	</li>
+	<li class="">
+		<a href="{{ url("admin/aspirasi") }}">
+			<i class="now-ui-icons ui-2_chat-round"></i>
+			<p>Aspirasi</p>
+		</a>
+	</li>
 
 
 

@@ -15,7 +15,7 @@ class KeluhanController extends Controller
     	$keluhan->isi = $request->isi;
     	
     	if($keluhan->save()){
-    		Session::flash("message", "Terima kasih telah memberikan informasi keluhan. Keluhan anda akan kami proses");
+    		Session::flash("message", "Terima kasih telah memberikan aspirasi. Aspirasi anda sangat berarti bagi kami.");
     		Session::flash("status", "success");
     	}
 

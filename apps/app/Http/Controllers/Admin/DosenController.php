@@ -11,7 +11,7 @@ class DosenController extends Controller
     function __construct()
     {
     	$this->middleware(["auth" => function($request, $next){
-    		if(auth()->user()->tipe != 'admin'){
+    		if(is_null(auth()->user()) || auth()->user()->tipe != 'admin'){
     			abort(404);
     		}
     	    return $next($request);

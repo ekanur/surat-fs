@@ -13,62 +13,62 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<div class="card  card-tasks">
-				<div class="card-header ">
-					<h5 class="card-category"></h5>
-					<h4 class="card-title">Permohonan Surat</h4>
-				</div>
-				<div class="card-body ">
-					<!-- <div class="table-full-width table-responsive"> -->
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th width="15%">Tanggal</th>
-									<th width="30%">Surat</th>
-									<th width="30%">Pemohon</th>
-									<th width="10%">Status</th>
-									<th width="10%">Usia Surat</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach($verifikasi as $verifikasi)
-									<tr>
-										<td>{{ $verifikasi->permohonan_surat->created_at }}</td>
-										<td class="text-left">
+            <div class="card  card-tasks">
+                <div class="card-header ">
+                    <h5 class="card-category"></h5>
+                    <h4 class="card-title">Permohonan Surat</h4>
+                </div>
+                <div class="card-body ">
+                    <!-- <div class="table-full-width table-responsive"> -->
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="15%">Tanggal</th>
+                                    <th width="30%">Surat</th>
+                                    <th width="30%">Pemohon</th>
+                                    <th width="10%">Status</th>
+                                    <th width="10%">Usia Surat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($verifikasi as $verifikasi)
+                                    <tr>
+                                        <td>{{ $verifikasi->permohonan_surat->created_at }}</td>
+                                        <td class="text-left">
                                             <a href="" data-toggle="modal" data-target="#{{ camel_case($verifikasi->permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $verifikasi->bisa_verifikasi }}" data-status="{{ $verifikasi->status }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a>
                                         </td>
-										<td>
-											{{ $verifikasi->mahasiswa->nama }}
-										</td>
-										<td>
-											{{ $verifikasi->status }}
-										</td>
-										<td class="td-actions text-right">
-											{{ usia_surat($verifikasi->permohonan_surat->created_at) }} hari
-										</td>
-									</tr>
-								@endforeach
+                                        <td>
+                                            {{ $verifikasi->mahasiswa->nama }}
+                                        </td>
+                                        <td>
+                                            {{ $verifikasi->status }}
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            {{ usia_surat($verifikasi->permohonan_surat->created_at) }} hari
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
-								<tr>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-									<th></th>
-								</tr>
-							</tfoot>
-						</table>
-						<!-- </div> -->
-					</div>
-					<div class="card-footer ">
-						{{-- <hr> --}}
-						{{-- <div class="stats">
-							<button class="btn btn-success">Verifikasi (2 Surat)</button>
-						</div> --}}
-					</div>
-			</div>
-		</div>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <!-- </div> -->
+                    </div>
+                    <div class="card-footer ">
+                        {{-- <hr> --}}
+                        {{-- <div class="stats">
+                            <button class="btn btn-success">Verifikasi (2 Surat)</button>
+                        </div> --}}
+                    </div>
+            </div>
+        </div>
 
 	</div>
 </div>

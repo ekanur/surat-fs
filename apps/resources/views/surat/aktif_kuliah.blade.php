@@ -137,7 +137,7 @@
 <div id="tk_1" class="t s2_1">a.n. Dekan </div>
 <div id="tl_1" class="t s2_1">Wakil Dekan 1, </div>
 @if($verifikasi->permohonan_surat->status == 'siap_cetak')
-		<img id="tfoto" class="t s3_1" src="{{ asset("/surat/ttd/wd1.jpg") }}">
+		<img id="tfoto" class="t s3_1" src="{{ Storage::url($wd1["ttd"]) }}">
 @endif
 <div id="tm_1" class="t s3_1"><strong>{{ $wd1["nama"] }}</strong></div>
 <div id="tn_1" class="t s2_1">NIP {{ $wd1["nip"] }}</div>
