@@ -41,7 +41,7 @@
 #t7_1{left:402px;bottom:1048px;letter-spacing:0.1px;word-spacing:0.9px;}
 #t8_1{left:339px;bottom:1003px;letter-spacing:-0.2px;word-spacing:0.2px;}
 #t9_1{left:313px;bottom:980px;word-spacing:0.2px;}
-#ta_1{left:443px;bottom:980px;}
+#ta_1{left:440px;bottom:980px;}
 #tb_1{left:110px;bottom:895px;word-spacing:0.3px;}
 #tc_1{left:110px;bottom:849px;}
 #td_1{left:330px;bottom:849px;letter-spacing:0.1px;}
@@ -123,8 +123,8 @@
 <div id="t6_1" class="t s4_1">Telepon: 0341 -567475, 551312 Pesawat 235 </div>
 <div id="t7_1" class="t s4_1">Laman: www.um.ac.id </div>
 <div id="t8_1" class="t s5_1">SURAT KETERANGAN </div>
-<div id="t9_1" class="t s2_1">Nomor: {{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
-<div id="ta_1" class="t s2_1">    / {{ $verifikasi->permohonan_surat->nomor_surat }} /KM/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
+<div id="t9_1" class="t s2_1">Nomor: {{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.{{ $verifikasi->permohonan_surat->nomor_surat }}</div>
+<div id="ta_1" class="t s2_1">/UN.32.2.1/KM/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
 <div id="tb_1" class="t s2_1">Dekan Fakultas Sastra Universitas Negeri Malang menerangkan: </div>
 <div id="tc_1" class="t s2_1">Nama </div>
 <div id="td_1" class="t s2_1">: {{ $verifikasi->mahasiswa->nama }}</div>

@@ -44,7 +44,7 @@
                 <td style="vertical-align:top">:</td>
                 <td>
                     <ul style="list-style:none; font-weight:bolder; margin-top:0; padding:0">
-                        <li>{{ $konten->yth }} {{ $konten->nama_instansi }}</li>
+                        <li>{{ $konten->yth or null }} {{ $konten->nama_instansi }}</li>
                         <li>{{ $konten->alamat_instansi }}</li>
                     </ul>
                 </td>
