@@ -77,3 +77,4 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 Route::post("reset-password", "Admin\PejabatController@resetPassword");
+Route::post("ganti-password", "AppController@gantiPassword");

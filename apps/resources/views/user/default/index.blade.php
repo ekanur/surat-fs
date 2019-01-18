@@ -355,6 +355,10 @@ Pengajuan Ijin Ujian Skripsi
 @push("js")
 <script type="text/javascript">
 	$(document).ready(function(){
+        $("input[name='status']").change(function(){
+            $("button#btn-simpan").attr("disabled", false);
+        });
+
 		$("#aktifKuliah").on("show.bs.modal", function (event) {
                 const detail_surat = $(event.relatedTarget);
                 var kode_layanan = detail_surat.data("kode_layanan");

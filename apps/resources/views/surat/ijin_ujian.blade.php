@@ -201,7 +201,7 @@
 <div id="t6_1" class="t s3_1">Laman: </div>
 <div id="t7_1" class="t s4_1">www.um.ac.id </div>
 <div id="t8_1" class="t s5_1">No </div>
-<div id="t9_1" class="t s5_1">:{{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.  /       /KM/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
+<div id="t9_1" class="t s5_1">:{{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.{{ $verifikasi->permohonan_surat->nomor_surat }}/       /KM/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
 <div id="ta_1" class="t s5_1">{{ $verifikasi->permohonan_surat->updated_at->format("d") }} {{ bulan($verifikasi->permohonan_surat->updated_at->format("m")) }} {{ $verifikasi->permohonan_surat->updated_at->format("Y") }}</div>
 <div id="tb_1" class="t s5_1">Lamp. : Teks Draft Skripsi </div>
 <div id="tc_1" class="t s5_1">Hal </div>

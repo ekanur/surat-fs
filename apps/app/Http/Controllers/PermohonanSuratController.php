@@ -11,6 +11,7 @@ use App\User;
 use App\Dosen;
 use Auth;
 use Session;
+use Carbon\Carbon;
 
 class PermohonanSuratController extends Controller
 {
@@ -50,8 +51,9 @@ class PermohonanSuratController extends Controller
 
         $permohonan_surat = new Permohonan_surat;
     	$permohonan_surat->mahasiswa_id = Auth::guard("mahasiswa")->user()->id;
-    	$permohonan_surat->layanan_surat_id = $request->layanan_surat_id;
-    	$permohonan_surat->konten = $this->kontenSurat($request);
+        $permohonan_surat->layanan_surat_id = $request->layanan_surat_id;
+        $permohonan_surat->nomor_surat = $this->setNomorSurat();
+        $permohonan_surat->konten = $this->kontenSurat($request);
         $permohonan_surat->status =  "verifikasi";
         // $permohonan_surat->status = ($request->layanan_surat_id == '1')? "verifikasi":"siap_cetak";
     	$permohonan_surat->save();
@@ -67,6 +69,12 @@ class PermohonanSuratController extends Controller
     	return redirect()->back();
     }
 
+    function setNomorSurat(){
+        $permohonan_surat = Permohonan_surat::whereDate("created_at", Carbon::today())->count();
+
+        return $permohonan_surat+1;
+    }
+
     function kontenSurat(Request $request){
         $konten = array();
         if ($this->kode_layanan == 'aktif-kuliah') {
@@ -75,8 +83,9 @@ class PermohonanSuratController extends Controller
             $konten = array(
                         // "jenis" => $request->jenis,
                         "matakuliah" => $request->matakuliah,
-                        "dosen" => $request->dosen,
+                        // "dosen" => $request->dosen,
                         "tahun_ajar" => $request->tahun_ajar,
+                        "yth" => ($request->yth != "lain")?$request->yth:$request->yth_lain,
                         "nama_instansi" => $request->nama_instansi,
                         "alamat_instansi" => $request->alamat_instansi,
                         "judul_penelitian" => $request->judul_penelitian,

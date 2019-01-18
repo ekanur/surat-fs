@@ -58,7 +58,7 @@ class UserTableSeeder extends Seeder
 
         DB::table("users")->insert([
             "id" => 6,
-            "username" => "kajur_ind",
+            "username" => "indonesia",
             "email" => "fs@um.ac.id",
             "password" => bcrypt("123456"),
             "dosen_id" => 6,
@@ -67,7 +67,7 @@ class UserTableSeeder extends Seeder
 
         DB::table("users")->insert([
             "id" => 7,
-            "username" => "kajur_ing",
+            "username" => "inggris",
             "email" => "fs@um.ac.id",
             "password" => bcrypt("123456"),
             "dosen_id" => 7,
@@ -76,7 +76,7 @@ class UserTableSeeder extends Seeder
 
         DB::table("users")->insert([
             "id" => 8,
-            "username" => "kajur_arab",
+            "username" => "arab",
             "email" => "fs@um.ac.id",
             "password" => bcrypt("123456"),
             "dosen_id" => 8,
@@ -85,7 +85,7 @@ class UserTableSeeder extends Seeder
 
         DB::table("users")->insert([
             "id" => 9,
-            "username" => "kajur_jer",
+            "username" => "jerman",
             "email" => "fs@um.ac.id",
             "password" => bcrypt("123456"),
             "dosen_id" => 9,
@@ -94,56 +94,11 @@ class UserTableSeeder extends Seeder
 
         DB::table("users")->insert([
             "id" => 10,
-            "username" => "kajur_seni",
+            "username" => "seni",
             "email" => "fs@um.ac.id",
             "password" => bcrypt("123456"),
             "dosen_id" => 10,
             "tipe" => "kajur"
-        ]);
-
-        DB::table("users")->insert([
-            "id" => 11,
-            "username" => "sekjur_ind",
-            "email" => "fs@um.ac.id",
-            "password" => bcrypt("123456"),
-            "dosen_id" => 11,
-            "tipe" => "sekjur"
-        ]);
-
-        DB::table("users")->insert([
-            "id" => 12,
-            "username" => "sekjur_ing",
-            "email" => "fs@um.ac.id",
-            "password" => bcrypt("123456"),
-            "dosen_id" => 12,
-            "tipe" => "sekjur"
-        ]);
-
-        DB::table("users")->insert([
-            "id" => 13,
-            "username" => "sekjur_arab",
-            "email" => "fs@um.ac.id",
-            "password" => bcrypt("123456"),
-            "dosen_id" => 13,
-            "tipe" => "sekjur"
-        ]);
-
-        DB::table("users")->insert([
-            "id" => 14,
-            "username" => "sekjur_jer",
-            "email" => "fs@um.ac.id",
-            "password" => bcrypt("123456"),
-            "dosen_id" => 14,
-            "tipe" => "sekjur"
-        ]);
-
-        DB::table("users")->insert([
-            "id" => 15,
-        	"username" => "sekjur_seni",
-        	"email" => "fs@um.ac.id",
-        	"password" => bcrypt("123456"),
-        	"dosen_id" => 15,
-        	"tipe" => "sekjur"
         ]);
     }
 }

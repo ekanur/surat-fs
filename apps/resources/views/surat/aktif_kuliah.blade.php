@@ -124,7 +124,7 @@
 <div id="t7_1" class="t s4_1">Laman: www.um.ac.id </div>
 <div id="t8_1" class="t s5_1">SURAT KETERANGAN </div>
 <div id="t9_1" class="t s2_1">Nomor: {{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
-<div id="ta_1" class="t s2_1">/        /KM/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
+<div id="ta_1" class="t s2_1">    / {{ $verifikasi->permohonan_surat->nomor_surat }} /KM/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }} </div>
 <div id="tb_1" class="t s2_1">Dekan Fakultas Sastra Universitas Negeri Malang menerangkan: </div>
 <div id="tc_1" class="t s2_1">Nama </div>
 <div id="td_1" class="t s2_1">: {{ $verifikasi->mahasiswa->nama }}</div>

@@ -34,7 +34,7 @@
 										<td>
 											{{ $permohonan_surat->created_at }}
 										</td>
-										<td class="text-left"><a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id) }}" target="_blank">{{ $permohonan_surat->layanan_surat->judul }}</a> </td>
+										<td class="text-left"><a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id) }}">{{ $permohonan_surat->layanan_surat->judul }}</a> </td>
 										<td>
 											{{ $permohonan_surat->mahasiswa->nama }}
 										</td>
@@ -46,7 +46,7 @@
 										</td>
 										<td>
 											@if($permohonan_surat->status == 'siap_cetak')
-												<a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id."/print") }}" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral" target="_blank">
+												<a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id."/print") }}" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral">
 												<i class="now-ui-icons arrows-1_cloud-download-93"></i>
 											</a>
 											@else

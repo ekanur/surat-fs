@@ -35,7 +35,7 @@
                     	</a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="" class="dropdown-item" data-toggle="modal" data-target="#statusSurat">Status Surat</a>
-                            <a href="" class="dropdown-item" data-toggle="modal" data-target="#gantiPassword">Ganti Password</a>
+                            <a href="" class="dropdown-item" data-toggle="modal" data-target="#ganti_password">Ganti Password</a>
                             <a href="" class="dropdown-item" data-toggle="modal" data-target="#myModal1">Bantuan</a>
                             <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -400,15 +400,27 @@ Surat Ijin Penelitian
       </select>
   </div>
 </div>
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label for="">Kepada YTH</label>
+        <select name="yth" id="" class="form-control">
+            <option value="Kepala Sekolah">Kepala Sekolah</option>
+            <option value="Kepala Dinas">Kepala Dinas</option>
+            <option value="Direktur">Direktur</option>
+            <option value="lain">--isi manual--</option>
+        </select><br/>
+        <input type="text" name="yth_lain" id="" style="display:none" class="form-control" placeholder="YTH ...">
+    </div>
+    <div class="form-group col-md-9">
+      <label for="inputPassword4">Nama Instansi</label>
+      <input type="text" class="form-control" name="nama_instansi" id=""  required=""  placeholder="Instansi">
+    </div>
+</div>
+<div class="form-group">
+        <label for="inputPassword4">Alamat Instansi</label>
+        <textarea name="alamat_instansi" id="" cols="30"  required=""  rows="1" class="form-control"></textarea>
+</div>
 
-<div class="form-group">
-  <label for="inputPassword4">Nama Instansi</label>
-  <input type="text" class="form-control" name="nama_instansi" id=""  required=""  placeholder="Instansi">
-</div>
-<div class="form-group">
-  <label for="inputPassword4">Alamat Instansi</label>
-  <textarea name="alamat_instansi" id="" cols="30"  required=""  rows="1" class="form-control"></textarea>
-</div>
 <div class="form-group">
     <label for="">Judul Penelitian</label>
     <textarea name="judul_penelitian" id=""  required=""  cols="30" rows="1" class="form-control"></textarea>
@@ -482,9 +494,21 @@ Surat Ijin observasi
   </div>
 </div>
 
-<div class="form-group">
-  <label for="inputPassword4">Nama Instansi</label>
-  <input type="text" class="form-control" name="nama_instansi" id=""  required=""  placeholder="Instansi">
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <label for="">Kepada YTH</label>
+        <select name="yth" id="" class="form-control">
+            <option value="Kepala Sekolah">Kepala Sekolah</option>
+            <option value="Kepala Dinas">Kepala Dinas</option>
+            <option value="Direktur">Direktur</option>
+            <option value="lain">--isi manual--</option>
+        </select><br/>
+        <input type="text" name="yth_lain" id="" style="display:none" class="form-control" placeholder="YTH ...">
+    </div>
+    <div class="form-group col-md-9">
+      <label for="inputPassword4">Nama Instansi</label>
+      <input type="text" class="form-control" name="nama_instansi" id=""  required=""  placeholder="Instansi">
+    </div>
 </div>
 <div class="form-group">
   <label for="inputPassword4">Alamat Instansi</label>
@@ -630,6 +654,41 @@ Aspirasi Anda
   </div>
 
   <button type="submit" class="btn btn-success pull-right" name="keluhan">Proses</button>
+</form>
+@endslot
+
+@endcomponent
+
+@component('mahasiswa.component.modal')
+
+@slot("id")
+ganti_password
+@endslot
+
+@slot("title")
+Ganti Password
+@endslot
+
+@slot('form_field')
+<form action="{{ url("/ganti-password") }}" method="post">
+    {{ csrf_field() }}
+    <div class="form-group">
+      <label for="inputPassword4">Password Lama</label>
+      <input type="password" class="form-control" name="old"  placeholder="Password lama"/>
+      {{-- <small class="help-block">Password saat ini</small> --}}
+    </div>
+    <div class="form-group">
+      <label for="inputPassword4">Password Baru</label>
+      <input type="password" class="form-control" name="password"  placeholder="Password baru"/>
+      {{-- <small class="help-block">Password baru</small> --}}
+    </div>
+    <div class="form-group">
+      <label for="inputPassword4">Ulang Password Baru</label>
+      <input type="password" class="form-control" name="password_confirmation"  placeholder="Ulang Password baru"/>
+      {{-- <small class="help-block">Ulangi Password baru</small> --}}
+    </div>
+
+  <button type="submit" class="btn btn-success pull-right" name="keluhan">Ganti</button>
 </form>
 @endslot
 
@@ -813,6 +872,15 @@ Aspirasi Anda
         @endif
 
         $("table.table").dataTable();
+
+        $("select[name='yth']").change(function(){
+            const yth = $(this).val();
+            $("input[name='yth_lain']").show();
+            if(yth !== 'lain'){
+                $("input[name='yth_lain']").hide();
+                $("input[name='yth_lain']").val("");
+            }
+        });
 
     });
 </script>

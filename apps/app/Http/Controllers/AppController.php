@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Dosen;
+use App\Mahasiswa;
 use App\Layanan_surat;
 use App\Permohonan_surat;
 use Auth;
+use Hash;
 
 
 class AppController extends Controller
@@ -29,5 +31,31 @@ class AppController extends Controller
 	   function getPermohonanSurat(){
 			$permohonan_surat = Permohonan_surat::with("layanan_surat")->where("mahasiswa_id", Auth::guard('mahasiswa')->user()->id)->get();
 			return $permohonan_surat;
+	   }
+
+	   function gantiPassword(Request $request){
+			$this->validate($request, [
+				'old' => 'required',
+				'password' => 'required|min:6|confirmed'
+			]);
+
+			$mahasiswa = Mahasiswa::find(Auth::id());
+			$hashed_password = $mahasiswa->password;
+
+			if(Hash::check($request->old, $hashed_password)){
+				$mahasiswa->fill([
+					'password' => Hash::make($request->password)
+				])->save();
+				$request->session()->flash('message', "Berhasil mengubah password. Password akan berubah setelah Logout");
+				$request->session()->flash('status', "success");
+
+				return redirect()->back();
+			}
+			$request->session()->flash('message', "Gagal mengubah password.");
+			$request->session()->flash('status', "error");
+
+			return redirect()->back();
+
+
 	   }
 }
