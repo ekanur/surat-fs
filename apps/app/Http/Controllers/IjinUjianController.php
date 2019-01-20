@@ -18,7 +18,7 @@ class IjinUjianController extends Controller
     {
     	$this->middleware(["auth"=>function($request, $next){
 
-            $user = User::with("dosen")->select("id", "tipe", "dosen_id")->where("tipe", "sekjur")->get();
+            $user = User::with("dosen")->select("id", "tipe", "dosen_id")->where("tipe", "kajur")->get();
             // dd($user);
             foreach ($user as $pejabat) {
                 $this->pejabat[$pejabat->tipe]["nama"] = $pejabat->dosen->nama;
@@ -59,10 +59,10 @@ class IjinUjianController extends Controller
         }else{
             $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where([["permohonan_surat_id", $id], ["user_id", auth()->user()->id]])->first();
         }
-        $sekjur = $this->pejabat["sekjur"];
+        $kajur = $this->pejabat["kajur"];
         $konten = json_decode($verifikasi->permohonan_surat->konten);
         $konten->tanggal = Carbon::parse($konten->tanggal);
 
-        return view("surat.ijin_ujian", compact('print', 'verifikasi', 'sekjur', 'konten'));
+        return view("surat.ijin_ujian", compact('print', 'verifikasi', 'kajur', 'konten'));
     }
 }

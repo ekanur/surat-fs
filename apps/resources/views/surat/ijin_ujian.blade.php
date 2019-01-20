@@ -110,12 +110,12 @@
                             <tr>
                                     <td width="60%"></td>
                                     <td width="40%">
-                                        An. Ketua Jurusan {{ $verifikasi->mahasiswa->jurusan }} <br>Sekertaris Jurusan, <br/>
+                                        Ketua Jurusan {{ $verifikasi->mahasiswa->jurusan }}  <br/>
                                         @if($verifikasi->permohonan_surat->status == 'siap_cetak')
-                                            <img id="tfoto" class="t s3_1" src="{{ Storage::url($sekjur["ttd"]) }}">
+                                            <img id="tfoto" class="t s3_1" src="{{ Storage::url($kajur["ttd"]) }}">
                                         @endif<br>
-                                            {{ $sekjur["nama"] }}<br/>
-                                            NIP {{ $sekjur["nip"] }}
+                                            {{ $kajur["nama"] }}<br/>
+                                            NIP {{ $kajur["nip"] }}
                                     </td>
                                 </tr>
                     </table>
