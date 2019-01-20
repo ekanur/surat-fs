@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Surat Ijin Penelitian-{{ $verifikasi->mahasiswa->nama }}</title>
 </head>
-<body>
+<body @if($print == "print") onload="window.print();" @endif>
     <div id="header">
         <table width="100%" border="0">
             <tr>
                 <td width="20%" style="text-align:right;padding:0px">
-                <img src="{{ asset("img/logo_um.jpg") }}" alt="Universitas Negeri Malang" srcset="" width="75%" height="30%">
+                <img src="{{ asset("img/logo_um.jpg")}}" width="75%" height="30%">
                 </td>
                 <td width="80%" style="text-align:center;padding:0px;vertical-align:text-top">
                 
@@ -103,6 +103,7 @@
                                         a.n Dekan<br>Wakil Dekan 1, <br/>
                                         @if($verifikasi->permohonan_surat->status == 'siap_cetak')
                                             <img id="tfoto" class="t s3_1" src="{{ Storage::url($wd1["ttd"]) }}">
+                                        
                                         @endif<br>
                                         <strong>
                                             {{ $wd1["nama"] }}<br/>

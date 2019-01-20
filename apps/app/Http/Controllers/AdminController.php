@@ -33,11 +33,9 @@ class AdminController extends Controller
     	$verifikasi = Verifikasi::with("permohonan_surat.layanan_surat", "mahasiswa")->where("user_id", Auth::user()->id)->orderBy("created_at", "desc")->get();
         foreach ($verifikasi as $key => $value) {
             if($this->cekUrutan($value->permohonan_surat->layanan_surat_id) == 1 || $this->cekStatusVerifikasi($value->permohonan_surat_id, ($this->cekUrutan($value->permohonan_surat->layanan_surat_id)-1))){
-                    $value->bisa_verifikasi = "true";
+                $value->bisa_verifikasi = "true";
             }else{
-                    
-                $value->bisa_verifikasi = "false";
-                    
+                $value->bisa_verifikasi = "false"; 
             }
         }
 
@@ -85,7 +83,7 @@ class AdminController extends Controller
 
     function cekStatusVerifikasi($permohonan_surat_id, $urutan){
         $verifikasi = Verifikasi::where([["permohonan_surat_id", $permohonan_surat_id], ["urutan", $urutan]])->select("status")->first();
-
+        // dd($verifikasi->status);
         return ($verifikasi->status == "setuju")? true : false;
     }
 }

@@ -9,7 +9,7 @@ use App\Verifikator;
 use App\User;
 use Auth;
 use Session;
-use PDF;
+// use PDF;
 
 class IjinPenelitianController extends Controller
 {
@@ -34,23 +34,6 @@ class IjinPenelitianController extends Controller
         }]);
     }
 
-    public function loadLogo()
-    {
-    	$avatarUrl = asset("img/logo_um.jpg");
-        $arrContextOptions=array(
-                        "ssl"=>array(
-                            "verify_peer"=>false,
-                            "verify_peer_name"=>false,
-                        ),
-                    );
-        $type = pathinfo($avatarUrl, PATHINFO_EXTENSION);
-        $avatarData = file_get_contents($avatarUrl, false, stream_context_create($arrContextOptions));
-        $avatarBase64Data = base64_encode($avatarData);
-        $imageData = 'data:image/' . $type . ';base64,' . $avatarBase64Data;
-
-        return $imageData;
-    }
-
     function view($permohonan_surat_id, $print = null){
         if(auth()->user()->tipe == 'admin'){
             $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where("permohonan_surat_id", $permohonan_surat_id)->first();
@@ -63,17 +46,25 @@ class IjinPenelitianController extends Controller
         $konten->tanggal_mulai = date_create($konten->tanggal_mulai);
         $konten->tanggal_selesai = date_create($konten->tanggal_selesai);
         $wd1 = $this->pejabat["wd1"];
-        $data = [
-            'konten' => $konten,
-            'wd1' => $this->pejabat["wd1"],
-            'verifikasi' => $verifikasi,
-            // "logo" => $this->loadLogo()
-        ];
+        // $data = [
+        //     'konten' => $konten,
+        //     'wd1' => $this->pejabat["wd1"],
+        //     'verifikasi' => $verifikasi,
+        //     // "logo" => $this->loadLogo()
+        // ];
         
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView("surat/ijin_penelitian", $data);
+        // $context = stream_context_create([ 
+        //     'ssl' => [ 
+        //         'verify_peer' => FALSE, 
+        //         'verify_peer_name' => FALSE,
+        //         'allow_self_signed'=> TRUE
+        //     ] 
+        // ]);
+        // $pdf = PDF::loadView("surat/ijin_penelitian", $data);
 
-        return $pdf->stream();
+        // $pdf->getDomPDF()->setHttpContext($context);
+        // return $pdf->stream();
 
-        // return view("surat/ijin_penelitian", compact('verifikasi', 'konten', 'print', "wd1"));
+        return view("surat/ijin_penelitian", compact('verifikasi', 'konten', 'print', "wd1"));
     }
 }

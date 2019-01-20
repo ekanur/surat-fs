@@ -41,7 +41,7 @@
                         <i class="now-ui-icons users_circle-08"></i>
                     </span>
                 </div>
-                <input type="text" name="nim" class="form-control" placeholder="Nomor Induk Mahasiswa">
+                <input type="text" name="nim" class="form-control" autocomplete="off" placeholder="Nomor Induk Mahasiswa">
             </div>
 
             <div class="input-group no-border input-lg">

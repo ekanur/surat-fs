@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Dosen;
 use Auth;
 use App\Verifikasi;
+use App\Verifikator;
 use App\Permohonan_surat;
 
 class Controller extends BaseController
@@ -29,24 +30,30 @@ class Controller extends BaseController
     }
 
     function updateStatusSurat(Request $request){
+        // dd($request->urutan);
         $verifikasi = Verifikasi::where([["permohonan_surat_id", $request->permohonan_surat_id], ["user_id", auth()->user()->id]])->update(["status" => $request->status], ["updated_at" => date("Y-m-d")]);
         
-        // dd($this->cekStatus($request->permohonan_surat_id));
-        if($this->cekStatus($request->permohonan_surat_id)){            
-            $permohonan_surat = Permohonan_surat::find($request->permohonan_surat_id);
-            $permohonan_surat->status = ($request->status == 'tolak') ? 'ditolak' : 'siap_cetak' ;
-            $permohonan_surat->save();
+        $permohonan_surat = Permohonan_surat::find($request->permohonan_surat_id);
+        if($request->status == 'tolak'){            
+            $permohonan_surat->status = 'ditolak' ;
+        }else{
+            // dd(Verifikator::where([['layanan_surat_id', $permohonan_surat->layanan_surat_id]])->get()->count());
+            if($request->urutan == Verifikator::where([['layanan_surat_id', $permohonan_surat->layanan_surat_id]])->get()->count()){
+                $permohonan_surat->status = 'siap_cetak' ;
+            }
+            
         }
+        $permohonan_surat->save();
 
         return $verifikasi;
     }
 
-    function cekStatus($permohonan_surat_id){
-        $verifikasi = Verifikasi::where([["permohonan_surat_id", $permohonan_surat_id]])->select("status")->get();
-
-        if($verifikasi->contains("status", "diajukan")){
-            return false;
-        }
-        return true;
-    }
+    // function isAllConfirmed($permohonan_surat_id){
+    //     $verifikasi = Verifikasi::where([["permohonan_surat_id", $permohonan_surat_id], ['status', 'setuju']])->select("urutan")->get();
+    //     dd($verifikasi);
+    //     if($verifikasi->contains("status", "diajukan")){
+    //         return false;
+    //     }
+    //     return true;
+    // }
 }

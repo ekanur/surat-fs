@@ -24,7 +24,7 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="orange">
+    <div class="sidebar" data-color="blue">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -116,7 +116,7 @@
             <script>
               document.write(new Date().getFullYear())
             </script>, Bekerja sama dengan
-            <a href="https://www.illiyin.co" target="_blank">Illiyin Studio</a>. 
+            <a href="http://www.illiyin.co" target="_blank">Illiyin Studio</a>. 
           </div>
         </div>
       </footer>

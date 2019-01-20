@@ -3,7 +3,7 @@
 @section("content")
 <body class="index-page sidebar-collapse" style="background-color: #EDEDEE ">
 	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg bg-primary fixed-top ">
+	<nav class="navbar navbar-expand-lg bg-primary fixed-top " style="background-color:#2ca8ff !important">
 		<div class="container">
 			<div class="navbar-translate">
 				{{-- <a class="navbar-brand" href="{{ url("/logout") }}" rel="tooltip" title="Self-service Fakultas Sastra" data-placement="bottom">

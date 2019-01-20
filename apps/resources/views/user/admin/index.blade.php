@@ -34,7 +34,7 @@
 										<td>
 											{{ $permohonan_surat->created_at }}
 										</td>
-										<td class="text-left"><a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id) }}">{{ $permohonan_surat->layanan_surat->judul }}</a> </td>
+										<td class="text-left"><a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id) }}" target="_blank">{{ $permohonan_surat->layanan_surat->judul }}</a> </td>
 										<td>
 											{{ $permohonan_surat->mahasiswa->nama }}
 										</td>
