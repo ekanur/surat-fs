@@ -8,6 +8,7 @@ use App\Layanan_surat;
 use App\Verifikasi;
 use App\Verifikator;
 use App\User;
+use Carbon\Carbon;
 
 class IjinUjianController extends Controller
 {
@@ -22,6 +23,7 @@ class IjinUjianController extends Controller
             foreach ($user as $pejabat) {
                 $this->pejabat[$pejabat->tipe]["nama"] = $pejabat->dosen->nama;
                 $this->pejabat[$pejabat->tipe]["nip"] = $pejabat->dosen->nip;
+                $this->pejabat[$pejabat->tipe]["ttd"] = $pejabat->dosen->scan_ttd;
             }
 
             // dd($this->pejabat);
@@ -59,6 +61,7 @@ class IjinUjianController extends Controller
         }
         $sekjur = $this->pejabat["sekjur"];
         $konten = json_decode($verifikasi->permohonan_surat->konten);
+        $konten->tanggal = Carbon::parse($konten->tanggal);
 
         return view("surat.ijin_ujian", compact('print', 'verifikasi', 'sekjur', 'konten'));
     }
