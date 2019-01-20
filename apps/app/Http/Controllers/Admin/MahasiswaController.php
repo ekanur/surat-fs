@@ -59,4 +59,12 @@ class MahasiswaController extends Controller
 
         return redirect()->back();
     }
+
+    function resetPassword(Request $request){
+        $mahasiswa = Mahasiswa::findOrFail($request->id);
+        $mahasiswa->password = bcrypt($request->nim);
+        $mahasiswa->save();
+
+        return redirect()->back()->withSuccess("Berhasil Mereset Password Mahasiswa");
+    }
 }

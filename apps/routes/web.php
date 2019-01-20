@@ -77,4 +77,5 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 Route::post("reset-password", "Admin\PejabatController@resetPassword");
+Route::post("mahasiswa/reset-password", "Admin\MahasiswaController@resetPassword");
 Route::post("ganti-password", "AppController@gantiPassword");

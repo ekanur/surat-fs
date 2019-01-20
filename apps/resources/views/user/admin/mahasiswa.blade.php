@@ -40,7 +40,7 @@
 											{{ $mahasiswa->jurusan }}
 										</td>
 										<td class="td-actions text-right">
-											<a href="" class="btn btn-sm btn-info"><i class="now-ui-icons ui-1_lock-circle-open"></i> Reset Password</a>
+										<a href="#" data-target="#resetPassword" data-toggle="modal" data-id="{{ $mahasiswa->id }}" data-nim="{{ $mahasiswa->nim }}" class="btn btn-sm btn-info"><i class="now-ui-icons ui-1_lock-circle-open"></i> Reset Password</a>
 											{{-- <a href="" class="btn btn-sm btn-danger"><i class="now-ui-icons ui-1_simple-remove"></i> Hapus</a> --}}
 										</td>
 										
@@ -101,4 +101,47 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="resetPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <form action="{{ url("/mahasiswa/reset-password") }}" method="post">
+        {{ csrf_field() }}
+      <div class="modal-header">
+        <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Apakah anda yakin akan mereset password Mahasiswa?</h5>
+        
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group row" id="input-verifikasi">
+	          <div class="col-sm-12">
+							<p class="text-info">Setelah berhasil di-reset, password mahasiswa akan menjadi nim mahasiswa <blockquote id="new_password"></blockquote></p>
+	            <input class="form-control" type="hidden" name="id">
+	            <input class="form-control" type="hidden" name="nim">
+	          </div>
+	      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+        <button type="submit" class="btn btn-info" id="btn-simpan">Reset</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endpush
+
+@push("js")
+<script>
+	$(document).ready(function(){
+		$("#resetPassword").on("show.bs.modal", function (event) {
+                const reset = $(event.relatedTarget);
+                var id = reset.data("id");
+                var nim = reset.data("nim");
+                
+                $("input[name='id']").val(id);
+                $("input[name='nim']").val(nim);
+                $("#new_password").html(nim);
+            });
+	});
+</script>
 @endpush
