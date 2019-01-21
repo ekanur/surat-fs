@@ -24,9 +24,9 @@
 							<thead>
 								<tr>
 									<th width="5%">No</th>
-									<th width="25%">Nama Mahasiswa</th>
+									<th width="20%">Nama Mahasiswa</th>
 									<th width="30%">Judul</th>
-									<th width="10%">Lokasi</th>
+									<th width="15%">Lokasi</th>
 									<th width="30%">Penguji</th>
 								</tr>
 							</thead>
@@ -42,7 +42,7 @@
 										</td>
 										<td>
                                             @if ($ijin_ujian->konten->ruang != "''" && $ijin_ujian->konten->waktu != "''")
-                                                <span class="badge badge-info">{{ $ijin_ujian->konten->ruang }}</span> <span class="badge badge-info">@if(!is_null($ijin_ujian->konten->tanggal)) {{ $ijin_ujian->konten->tanggal->format("d")." ".bulan($ijin_ujian->konten->tanggal->format("m"))." ".$ijin_ujian->konten->tanggal->format("Y") }} @endif @if(!is_null($ijin_ujian->konten->waktu)) Pukul {{ $ijin_ujian->konten->waktu }} @endif</span>
+                                                <span class="badge badge-info">{{ $ijin_ujian->konten->ruang }}</span><br/><span class="badge badge-info">@if(!is_null($ijin_ujian->konten->tanggal)) {{ $ijin_ujian->konten->tanggal->format("d")." ".bulan($ijin_ujian->konten->tanggal->format("m"))." ".$ijin_ujian->konten->tanggal->format("Y") }} @endif @if(!is_null($ijin_ujian->konten->waktu)) Pukul {{ $ijin_ujian->konten->waktu }} @endif</span>
                                             @else
                                                 <span class="badge badge-neutral">Belum diverifikasi</span>
                                             @endif
