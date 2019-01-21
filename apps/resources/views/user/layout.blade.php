@@ -140,6 +140,13 @@
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script type="text/javascript" src="{{ asset("demo/demo.js") }}"></script>
   <script type="text/javascript" src="{{ asset("plugin/datatable/datatables.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("plugin/datatable/js/dataTables.buttons.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("plugin/datatable/js/buttons.flash.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("plugin/datatable/js/jszip.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("plugin/datatable/js/pdfmake.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("plugin/datatable/js/vfs_fonts.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("plugin/datatable/js/buttons.html5.min.js") }}"></script>
+  <script type="text/javascript" src="{{ asset("plugin/datatable/js/buttons.print.min.js") }}"></script>
   <script>
     $(document).ready(function() {
 
@@ -169,7 +176,11 @@
                 }
                 
             } );
-        }
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'excel', 'pdf', 'print'
+        ]
     } );
       // Javascript method's body can be found in assets/js/demos.js
 

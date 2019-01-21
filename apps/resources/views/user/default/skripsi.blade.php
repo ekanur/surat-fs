@@ -24,11 +24,10 @@
 							<thead>
 								<tr>
 									<th width="5%">No</th>
-									<th width="35%">Nama Mahasiswa</th>
+									<th width="25%">Nama Mahasiswa</th>
 									<th width="30%">Judul</th>
-									{{-- <th width="15%">Tanggal</th> --}}
-									<th width="30%">Ruang - Tanggal</th>
-									<th width="10%">Penguji</th>
+									<th width="10%">Lokasi</th>
+									<th width="30%">Penguji</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -43,22 +42,21 @@
 										</td>
 										<td>
                                             @if ($ijin_ujian->konten->ruang != "''" && $ijin_ujian->konten->waktu != "''")
-                                                {{ $ijin_ujian->konten->ruang }}-{{ $ijin_ujian->konten->tanggal or null }}<br/>{{ $ijin_ujian->konten->waktu }}
+                                                <span class="badge badge-info">{{ $ijin_ujian->konten->ruang }}</span> <span class="badge badge-info">@if(!is_null($ijin_ujian->konten->tanggal)) {{ $ijin_ujian->konten->tanggal->format("d")." ".bulan($ijin_ujian->konten->tanggal->format("m"))." ".$ijin_ujian->konten->tanggal->format("Y") }} @endif @if(!is_null($ijin_ujian->konten->waktu)) Pukul {{ $ijin_ujian->konten->waktu }} @endif</span>
                                             @else
-                                                -
+                                                <span class="badge badge-neutral">Belum diverifikasi</span>
                                             @endif
 										</td>
 										<td>
-                                            <ol start="1">
-                                                <li>{{ $ijin_ujian->konten->dosen[0]->nama }}</li>
-                                            </ol>
-                                            @if (is_array($ijin_ujian->konten->penguji))    
-                                                <ol start="2">
+                                            <ol start="1" style="padding-left:5px;margin:0px">
+												<li>{{ $ijin_ujian->konten->dosen[0]->nama }}</li>
+												@if (is_array($ijin_ujian->konten->penguji))    
+                                                
                                                 @foreach ($ijin_ujian->konten->penguji as $penguji)
                                                     <li>{{$penguji->nama}}</li>
                                                 @endforeach
-                                                </ol>
-                                            @endif
+											@endif
+											</ol>
 										</td>
 									</tr>
 								@endforeach

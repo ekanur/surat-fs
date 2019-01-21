@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Permohonan_surat;
+use Carbon\Carbon;
 
 class SkripsiController extends Controller
 {
@@ -39,6 +40,7 @@ class SkripsiController extends Controller
 
         $ijin_ujian = $ijin_ujian->each(function($item, $key){
             $item->konten = json_decode($item->konten);
+            $item->konten->tanggal = Carbon::parse($item->konten->tanggal);
         });
         
         return view("user.default.skripsi", compact("ijin_ujian"));
