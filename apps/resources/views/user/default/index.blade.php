@@ -1,9 +1,5 @@
 @extends("user.layout")
 
-@section("menu")
-	@include("user.menus.default")
-@endsection
-
 @section("content")
 
 <div class="panel-header panel-header-lg">
@@ -16,11 +12,11 @@
             <div class="card  card-tasks">
                 <div class="card-header ">
                     <h5 class="card-category"></h5>
-                    <h4 class="card-title">Permohonan Surat</h4>
+                    <h4 class="card-title">Surat Masuk</h4>
                 </div>
                 <div class="card-body ">
                     <!-- <div class="table-full-width table-responsive"> -->
-                        <table class="table table-hover">
+                        <table class="table table-hover datatable">
                             <thead>
                                 <tr>
                                     <th width="15%">Tanggal</th>
@@ -69,7 +65,7 @@
                     </div>
             </div>
         </div>
-
+        
 	</div>
 </div>
 

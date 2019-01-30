@@ -74,6 +74,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('skripsi/{id}',"Admin\SkripsiController@detail");
     Route::get('aspirasi',"Admin\AspirasiController@index");
     Route::get('aspirasi/{id}',"Admin\AspirasiController@detail");
+
+    Route::get('surat-masuk', "AdminController@suratMasuk");
+    Route::get('layanan', "Admin\LayananSuratController@index");
 });
 
 Route::post("reset-password", "Admin\PejabatController@resetPassword");

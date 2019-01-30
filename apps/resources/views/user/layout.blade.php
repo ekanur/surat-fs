@@ -15,8 +15,8 @@
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <!-- CSS Files -->
   <link href="{{ asset("css/bootstrap.min.css") }}" rel="stylesheet" />
-  <link href="{{ asset("css/now-ui-dashboard.css?v=1.1.0") }}" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="{{ asset("demo/demo.css") }}">
+  <link href="{{ asset("css/now-ui-dashboard.css?v=1.1.0") }}" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="{{ asset("/plugin/datatable/datatables.min.css") }}">
 
   @stack("css")
@@ -35,7 +35,11 @@
         </a>
       </div>
       <div class="sidebar-wrapper">
-        @yield("menu")
+        @if(auth()->user()->tipe == 'admin')
+          @include("user.menus.admin")
+        @else
+          @include("user.menus.default")
+        @endif
       </div>
     </div>
     <div class="main-panel">
@@ -150,7 +154,7 @@
   <script>
     $(document).ready(function() {
 
-      $("table.table").DataTable({
+      $("table.datatable").DataTable({
         initComplete: function () {
             this.api().columns().every( function () {
                 var column = this;

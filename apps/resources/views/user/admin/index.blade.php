@@ -13,11 +13,11 @@
 			<div class="card  card-tasks">
 				<div class="card-header ">
 					<h5 class="card-category"></h5>
-					<h4 class="card-title">Permohonan Surat</h4>
+					<h4 class="card-title">Cetak Surat</h4>
 				</div>
 				<div class="card-body ">
 					<!-- <div class="table-full-width table-responsive"> -->
-						<table class="table table-hover">
+						<table class="table table-hover datatable">
 							<thead>
 								<tr>
 									<th width="15%">Tanggal</th>
@@ -101,14 +101,6 @@
 </div>
 
 
-@endsection
-
-@section("menu")
-	@if(Auth::user()->tipe == 'admin')
-		@include("user.menus.admin")
-	@else
-		@include("user.menus.default")
-	@endif
 @endsection
 
 @push("js")

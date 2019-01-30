@@ -404,8 +404,7 @@ Surat Ijin Penelitian
     <div class="form-group col-md-3">
         <label for="">Kepada YTH</label>
         <select name="yth" id="" class="form-control">
-            <option value="Kepala Sekolah">Kepala Sekolah</option>
-            <option value="Kepala Dinas">Kepala Dinas</option>
+            <option value="Kepala">Kepala</option>
             <option value="Direktur">Direktur</option>
             <option value="lain">--isi manual--</option>
         </select><br/>
@@ -438,11 +437,11 @@ Surat Ijin Penelitian
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="">Tanggal Mulai</label>
-        <input type="date" class="form-control"  required=""  name="tanggal_mulai" placeholder="">
+        <input type="text" class="form-control date-picker" style="background-color:white; color:#2c2c2c; cursor:pointer" readonly name="tanggal_mulai" value="" placeholder="dd/mm/yyyy" data-datepicker-color="info">
     </div>
     <div class="form-group col-md-6">
         <label for="">Tanggal Selesai</label>
-        <input type="date" class="form-control"  required=""  name="tanggal_selesai" placeholder="">
+        <input type="text" class="form-control date-picker" style="background-color:white; color:#2c2c2c; cursor:pointer" readonly name="tanggal_selesai" value="" placeholder="dd/mm/yyyy" data-datepicker-color="info">
     </div>
 </div>
 <p class="help-block">Surat dapat dikonfirmasi di Admin Fakultas.</p>
@@ -498,7 +497,7 @@ Surat Ijin observasi
     <div class="form-group col-md-3">
         <label for="">Kepada YTH</label>
         <select name="yth" id="" class="form-control">
-            <option value="Kepala Sekolah">Kepala Sekolah</option>
+            <option value="Kepala">Kepala</option>
             <option value="Kepala Dinas">Kepala Dinas</option>
             <option value="Direktur">Direktur</option>
             <option value="lain">--isi manual--</option>
@@ -531,11 +530,11 @@ Surat Ijin observasi
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="">Tanggal Mulai</label>
-        <input type="date" class="form-control"  required=""  name="tanggal_mulai" placeholder="">
+        <input type="text" class="form-control date-picker" style="background-color:white; color:#2c2c2c; cursor:pointer" readonly name="tanggal_mulai" value="" placeholder="dd/mm/yyyy" data-datepicker-color="info">
     </div>
     <div class="form-group col-md-6">
         <label for="">Tanggal Selesai</label>
-        <input type="date" class="form-control"  required=""  name="tanggal_selesai" placeholder="">
+        <input type="text" class="form-control date-picker" style="background-color:white; color:#2c2c2c; cursor:pointer" readonly name="tanggal_selesai" value="" placeholder="dd/mm/yyyy" data-datepicker-color="info">
     </div>
 </div>
 <p class="help-block">Surat dapat dikonfirmasi di Admin Fakultas.</p>
@@ -867,6 +866,23 @@ Ganti Password
 <script type="text/javascript" src="{{ asset("plugin/datatable/datatables.min.js") }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+        $('.date-picker').each(function(){
+            $(this).datepicker({
+                templates:{
+                    leftArrow: '<i class="now-ui-icons arrows-1_minimal-left"></i>',
+                    rightArrow: '<i class="now-ui-icons arrows-1_minimal-right"></i>'
+                }
+            }).on('show', function() {
+                    $('.datepicker').addClass('open');
+
+                    datepicker_color = $(this).data('datepicker-color');
+                    if( datepicker_color.length != 0){
+                        $('.datepicker').addClass('datepicker-'+ datepicker_color +'');
+                    }
+                }).on('hide', function() {
+                    $('.datepicker').removeClass('open');
+                });
+        });
         @if(null != session('message'))
             demo.showNotification('{{ session('message') }}', '{{ session('status') }}');
         @endif

@@ -1,9 +1,5 @@
 @extends("user.layout")
 
-@section("menu")
-	@include("user.menus.default")
-@endsection
-
 @section("content")
 
 <div class="panel-header panel-header-lg">

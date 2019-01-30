@@ -17,11 +17,12 @@ class IjinObservasiController extends Controller
     {
         $this->middleware(["auth"=>function($request, $next){
 
-            $user = User::with("dosen")->select("id", "tipe", "dosen_id")->whereIn("tipe", ["dekan", "wd1", "wd2", "wd3"])->get();
+            $user = User::with("dosen")->select("id", "tipe", "scan_ttd", "dosen_id")->whereIn("tipe", ["wd1"])->get();
             // dd($user);
             foreach ($user as $pejabat) {
                 $this->pejabat[$pejabat->tipe]["nama"] = $pejabat->dosen->nama;
                 $this->pejabat[$pejabat->tipe]["nip"] = $pejabat->dosen->nip;
+                $this->pejabat[$pejabat->tipe]["ttd"] = $pejabat->scan_ttd;
             }
 
             // dd($this->pejabat);
@@ -43,6 +44,8 @@ class IjinObservasiController extends Controller
         $konten->tanggal_mulai = date_create($konten->tanggal_mulai);
         $konten->tanggal_selesai = date_create($konten->tanggal_selesai);
         $wd1 = $this->pejabat["wd1"];
+
+        // dd($wd1);
 
         return view("surat/ijin_observasi", compact('verifikasi', 'konten', 'print', "wd1"));
     }

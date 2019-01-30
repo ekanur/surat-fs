@@ -41,9 +41,6 @@ class PermohonanSuratController extends Controller
 
             return $next($request);
         })->except(["getKonten", "getDosen"]);
-
-
-
     }
 
     public function simpan(Request $request){

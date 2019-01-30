@@ -16,30 +16,16 @@ class AdminController extends Controller
 	function __construct()
 	{
 		$this->middleware("auth");
-	}
+    }
+    
     function index(){
+        if (Auth::user()->tipe != 'admin') {
+           return $this->suratMasuk();
+        }
         $statistik = json_encode($this->getStatistik());
-        // dd($statistik);
+        $permohonan_surat = Permohonan_surat::with("layanan_surat", "mahasiswa")->orderBy("created_at", "desc")->get();
 
-        if (Auth::user()->tipe == 'admin') {
-            // $path_view  = 'admin';
-            $permohonan_surat = Permohonan_surat::with("layanan_surat", "mahasiswa")->orderBy("created_at", "desc")->get();
-
-            return view("user/admin/index", compact('permohonan_surat', 'statistik'));
-        }
-
-        $dosen = Dosen::where("id", "!=", 1)->get();
-    		// $path_view = 'default';
-    	$verifikasi = Verifikasi::with("permohonan_surat.layanan_surat", "mahasiswa")->where("user_id", Auth::user()->id)->orderBy("created_at", "desc")->get();
-        foreach ($verifikasi as $key => $value) {
-            if($this->cekUrutan($value->permohonan_surat->layanan_surat_id) == 1 || $this->cekStatusVerifikasi($value->permohonan_surat_id, ($this->cekUrutan($value->permohonan_surat->layanan_surat_id)-1))){
-                $value->bisa_verifikasi = "true";
-            }else{
-                $value->bisa_verifikasi = "false"; 
-            }
-        }
-
-        return view("user/default/index", compact('verifikasi', 'dosen', 'statistik'));
+        return view("user/admin/index", compact('permohonan_surat', 'statistik'));
     }
 
     function cekUrutan($layanan_surat_id){
@@ -85,5 +71,24 @@ class AdminController extends Controller
         $verifikasi = Verifikasi::where([["permohonan_surat_id", $permohonan_surat_id], ["urutan", $urutan]])->select("status")->first();
         // dd($verifikasi->status);
         return ($verifikasi->status == "setuju")? true : false;
+    }
+
+    function suratMasuk(){
+        $verifikasi = Verifikasi::with("permohonan_surat.layanan_surat", "mahasiswa")->where("user_id", Auth::user()->id)->orderBy("created_at", "desc")->get();
+        foreach ($verifikasi as $key => $value) {
+            if($this->cekUrutan($value->permohonan_surat->layanan_surat_id) == 1 || $this->cekStatusVerifikasi($value->permohonan_surat_id, ($this->cekUrutan($value->permohonan_surat->layanan_surat_id)-1))){
+                $value->bisa_verifikasi = "true";
+            }else{
+                $value->bisa_verifikasi = "false"; 
+            }
+        }
+        $dosen = Dosen::where("id", "!=", 1)->get();
+        
+        if(Auth::user()->tipe == 'dekan' || Auth::user()->tipe == 'wd1' || Auth::user()->tipe == 'wd2' || Auth::user()->tipe == 'wd3'){
+            $statistik = json_encode($this->getStatistik());
+            return view("user/default/index", compact('verifikasi', 'dosen', 'statistik'));
+        }
+
+        return view("user/default/index", compact('verifikasi', 'dosen'));
     }
 }

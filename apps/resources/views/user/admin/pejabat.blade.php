@@ -17,7 +17,7 @@
 				</div>
 				<div class="card-body ">
 					<!-- <div class="table-full-width table-responsive"> -->
-						<table class="table table-hover">
+						<table class="table table-hover datatable">
 							<thead>
 								<tr>
 									<th width="20%">Jabatan</th>
@@ -60,14 +60,6 @@
 </div>
 
 
-@endsection
-
-@section("menu")
-	@if(Auth::user()->tipe == 'admin')
-		@include("user.menus.admin")
-	@else
-		@include("user.menus.default")
-	@endif
 @endsection
 
 @push("modal")

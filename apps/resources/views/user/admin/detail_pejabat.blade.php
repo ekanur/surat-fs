@@ -92,11 +92,3 @@
 </div>
 @endpush
 
-@section("menu")
-	@if(Auth::user()->tipe == 'admin')
-		@include("user.menus.admin")
-	@else
-		@include("user.menus.default")
-	@endif
-@endsection
-
