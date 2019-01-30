@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Dosen;
+use Excel;
 
 class DosenController extends Controller
 {
@@ -32,19 +33,18 @@ class DosenController extends Controller
             if(!empty($data) && sizeof($data)!=0){
                 $max = (sizeof($data)<=100) ? sizeof($data) : 300 ;
                 for ($i=0; $i < $max ; $i++) {
-                    if((null != $data[$i]->nim || '' != $data[$i]->nim) && (null != $data[$i]->nama || '' != $data[$i]->nama) && (null != $data[$i]->jurusan || '' != $data[$i]->jurusan) && (null != $data[$i]->prodi || '' != $data[$i]->prodi)){
+                    if((null != $data[$i]->nip || '' != $data[$i]->nip) && (null != $data[$i]->nama || '' != $data[$i]->nama) && (null != $data[$i]->jurusan || '' != $data[$i]->jurusan)){
                         $insert[] = [
-                                "nip"=>$data[$i]->nip,
                                 "nama"=>$data[$i]->nama,
+                                "nip"=>$data[$i]->nip,
                                 "jurusan"=>$data[$i]->jurusan,
                                 "created_at" => date("Y-m-d")
                             ];
                     }
-
                 }
 
                 if(!empty($insert)){
-                    Mahasiswa::insert($insert);
+                    Dosen::insert($insert);
                     session()->flash('msg', "Berhasil mengimport ".sizeof($insert)." dari ".$max." data");
                 }
             }else{
