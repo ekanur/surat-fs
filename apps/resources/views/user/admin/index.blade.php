@@ -24,7 +24,7 @@
 									<th width="25%">Surat</th>
 									<th width="25%">Pemohon</th>
 									<th width="15%">Status</th>
-									<th width="15%">Usia Surat</th>
+									<th width="15%">Usia Surat (Hari)</th>
 									<th width="5%">Cetak</th>
 								</tr>
 							</thead>
@@ -42,10 +42,10 @@
 											{{ $permohonan_surat->status }}
 										</td>
 										<td>
-											{{ usia_surat($permohonan_surat->created_at) }} hari
+											{{ usia_surat($permohonan_surat->created_at) }}
 										</td>
 										<td>
-											@if($permohonan_surat->status == 'siap_cetak')
+											@if($permohonan_surat->siap_cetak)
 												<a href="{{ url($permohonan_surat->layanan_surat->kode_layanan."/".$permohonan_surat->id."/print") }}" class="btn btn-success btn-round btn-icon btn-icon-mini btn-neutral">
 												<i class="now-ui-icons arrows-1_cloud-download-93"></i>
 											</a>

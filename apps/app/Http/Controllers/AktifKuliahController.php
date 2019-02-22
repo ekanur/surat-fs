@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Verifikasi;
+use App\Permohonan_surat;
 use App\User;
 
 class AktifKuliahController extends Controller
@@ -33,14 +32,15 @@ class AktifKuliahController extends Controller
     }
 
     function view($permohonan_surat_id, $print = null){
-        if(auth()->user()->tipe == 'admin'){
-            $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where("permohonan_surat_id", $permohonan_surat_id)->first();
-        }else{
-            $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where([["permohonan_surat_id", $permohonan_surat_id], ["user_id", auth()->user()->id]])->first();
-        }
+        $permohonan_surat = Permohonan_surat::with("verifikasi", "mahasiswa")->findOrFail($permohonan_surat_id);
+        // if(auth()->user()->tipe == 'admin'){
+            //     $permohonan_surat = Permohonan_surat::with("verifikasi", "mahasiswa")->findOrFail($permohonan_surat_id);
+        // }else{
+        //     $permohonan_surat = Permohonan_surat::with("verifikasi", "mahasiswa")->where([["permohonan_surat_id", $permohonan_surat_id], ["user_id", auth()->user()->id]])->first();
+        // }
         $wd1 = $this->pejabat["wd1"];
-        // dd($verifikasi);
+        // dd($permohonan_surat);
 
-        return view("surat/aktif_kuliah", compact('verifikasi', 'print', "wd1"));
+        return view("surat/aktif_kuliah", compact('permohonan_surat', 'print', "wd1"));
     }
 }

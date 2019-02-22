@@ -27,20 +27,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($verifikasi as $verifikasi)
+                                @foreach($permohonan_surat as $permohonan_surat)
                                     <tr>
-                                        <td>{{ $verifikasi->permohonan_surat->created_at }}</td>
+                                        <td>{{ $permohonan_surat->created_at }}</td>
                                         <td class="text-left">
-                                        <a href="" data-toggle="modal" data-target="#{{ camel_case($verifikasi->permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $verifikasi->permohonan_surat_id }}" data-kode_layanan="{{ $verifikasi->permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $verifikasi->bisa_verifikasi }}" data-status="{{ $verifikasi->status }}" data-urutan="{{ $verifikasi->urutan }}">{{ $verifikasi->permohonan_surat->layanan_surat->judul }}</a>
+                                        <a href="" data-toggle="modal" data-target="#{{ camel_case($permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $permohonan_surat->id }}" data-kode-layanan="{{ $permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $permohonan_surat->bisa_verifikasi }}" data-status="{{ $permohonan_surat->verifikasi[0]->status or null }}" data-urutan="{{ $permohonan_surat->urutan }}">{{ $permohonan_surat->layanan_surat->judul }}</a>
                                         </td>
                                         <td>
-                                            {{ $verifikasi->mahasiswa->nama }}
+                                            {{ $permohonan_surat->mahasiswa->nama }}
                                         </td>
                                         <td>
-                                            {{ $verifikasi->status }}
+                                            {{ $permohonan_surat->status }}
                                         </td>
                                         <td class="td-actions text-right">
-                                            {{ usia_surat($verifikasi->permohonan_surat->created_at) }} hari
+                                            {{ usia_surat($permohonan_surat->created_at) }} hari
                                         </td>
                                     </tr>
                                 @endforeach
@@ -83,11 +83,12 @@ Verifikasi Surat Aktif Kuliah
 @endslot
 
 @slot("action")
-{{ route("verifikasi.aktif-kuliah") }}
+{{ route("verifikasi") }}
 @endslot
 
 @slot("content")
 <input type="hidden" name="permohonan_surat_id">
+<input type="hidden" name="kode_layanan">
 <input type="hidden" name="urutan">
 <div id="iframe_container embed-responsive embed-responsive-1by1">
 <iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>	
@@ -118,12 +119,14 @@ Verifikasi Surat Ijin Observasi
 @endslot
 
 @slot("action")
-{{ route("verifikasi.aktif-kuliah") }}
+{{ route("verifikasi") }}
 @endslot
 
 @slot("content")
 <input type="hidden" name="permohonan_surat_id">
 <input type="hidden" name="urutan">
+<input type="hidden" name="kode_layanan">
+
 <div id="iframe_container embed-responsive embed-responsive-1by1">
 <iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>  
 </div>
@@ -149,15 +152,16 @@ ijinPenelitian
 @endslot
 
 @slot("title")
-Verifikasi Surat Ijin Peneltian
+Verifikasi Surat Ijin Penelitian
 @endslot
 
 @slot("action")
-{{ route("verifikasi.aktif-kuliah") }}
+{{ route("verifikasi") }}
 @endslot
 
 @slot("content")
 <input type="hidden" name="permohonan_surat_id">
+<input type="hidden" name="kode_layanan">
 <input type="hidden" name="urutan">
 <div id="iframe_container embed-responsive embed-responsive-1by1">
 <iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>  
@@ -203,6 +207,7 @@ Pengajuan Judul Skripsi
     
 </div>
 <input type="hidden" name="permohonan_surat_id">
+<input type="hidden" name="kode_layanan">
 <input type="hidden" name="urutan">
 <input type="hidden" name="judul">
 <input type="hidden" name="dosen">
@@ -285,6 +290,7 @@ Pengajuan Ijin Ujian Skripsi
     
 </div>
 <input type="hidden" name="permohonan_surat_id">
+<input type="hidden" name="kode_layanan">
 <input type="hidden" name="urutan">
 <input type="hidden" name="judul">
 <input type="hidden" name="dosen">
@@ -362,79 +368,86 @@ Pengajuan Ijin Ujian Skripsi
 
 		$("#aktifKuliah").on("show.bs.modal", function (event) {
                 const detail_surat = $(event.relatedTarget);
-                var kode_layanan = detail_surat.data("kode_layanan");
+                var kode_layanan = detail_surat.data("kode-layanan");
                 var url = "{{ url("/") }}/"+kode_layanan;
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
                 var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
                 var status = detail_surat.data("status");
                 var urutan = detail_surat.data("urutan");
+                var kode_layanan = detail_surat.data("kode-layanan");
 
                 if (bisa_verifikasi) {
                 	$("#aktifKuliah #input-verifikasi").css("display", "flex");
                 	$("#aktifKuliah #btn-simpan").css("display", "block");
-                    $("#aktifKuliah select[name='status']").val(status);
+                    $("#aktifKuliah input[value='"+ status +"']").prop("checked", true);
                 }
 
                 $("#aktifKuliah iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
                 $("#aktifKuliah input[name='permohonan_surat_id']").val(permohonan_surat_id);
                 $("#aktifKuliah input[name='urutan']").val(urutan);
+                $("#aktifKuliah input[name='kode_layanan']").val(kode_layanan);
             });
 
         $("#ijinObservasi").on("show.bs.modal", function (event) {
                 const detail_surat = $(event.relatedTarget);
-                var kode_layanan = detail_surat.data("kode_layanan");
+                var kode_layanan = detail_surat.data("kode-layanan");
                 var url = "{{ url("/") }}/"+kode_layanan;
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
                 var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
                 var status = detail_surat.data("status");
                 var urutan = detail_surat.data("urutan");
+                var kode_layanan = detail_surat.data("kode-layanan");
 
                 if (bisa_verifikasi) {
                     $("#ijinObservasi #input-verifikasi").css("display", "flex");
                     $("#ijinObservasi #btn-simpan").css("display", "block");
-                    $("#ijinObservasi select[name='status']").val(status);
+                    $("#ijinObservasi input[value='"+ status +"']").prop("checked", true);
                 }
 
                 $("#ijinObservasi iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
                 $("#ijinObservasi input[name='permohonan_surat_id']").val(permohonan_surat_id);
                 $("#ijinObservasi input[name='urutan']").val(urutan);
+                $("#ijinObservasi input[name='kode_layanan']").val(kode_layanan);
             });
 
         $("#ijinPenelitian").on("show.bs.modal", function (event) {
                 const detail_surat = $(event.relatedTarget);
-                var kode_layanan = detail_surat.data("kode_layanan");
+                var kode_layanan = detail_surat.data("kode-layanan");
                 var url = "{{ url("/") }}/"+kode_layanan;
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
                 var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
                 var status = detail_surat.data("status");
                 var urutan = detail_surat.data("urutan");
+                var kode_layanan = detail_surat.data("kode-layanan");
 
                 if (bisa_verifikasi) {
                     $("#ijinPenelitian #input-verifikasi").css("display", "flex");
                     $("#ijinPenelitian #btn-simpan").css("display", "block");
-                    $("#ijinPenelitian select[name='status']").val(status);
+                    $("#ijinPenelitian input[value='"+ status +"']").prop("checked", true);
                 }
 
                 $("#ijinPenelitian iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
                 $("#ijinPenelitian input[name='permohonan_surat_id']").val(permohonan_surat_id);
                 $("#ijinPenelitian input[name='urutan']").val(urutan);
+                $("#ijinPenelitian input[name='kode_layanan']").val(kode_layanan);
             });
 
 		$("#pengajuanSkripsi").on("show.bs.modal", function (event) {
                 $("a#cetak, a#lihat").attr("disabled", true);
                 $("#pilih_pembimbing1").val(2);
                 const detail_surat = $(event.relatedTarget);
-                var kode_layanan = detail_surat.data("kode_layanan");
+                var kode_layanan = detail_surat.data("kode-layanan");
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
                 var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
                 var status = detail_surat.data("status");
                 var urutan = detail_surat.data("urutan");
+                var kode_layanan = detail_surat.data("kode-layanan");
 
                 if (bisa_verifikasi) {
                 // alert(bisa_verifikasi);
                 	$("#pengajuanSkripsi #input-verifikasi").css("display", "flex");
                 	$("#pengajuanSkripsi #btn-simpan").css("display", "block");
-                    $("#pengajuanSkripsi select[name='status']").val(status);
+                    $("#pengajuanSkripsi input[value='"+ status +"']").prop("checked", true);
                 }
 
                 if(status == 'setuju'){
@@ -450,7 +463,7 @@ Pengajuan Ijin Ujian Skripsi
                 $("select[name='pilih_judul']").empty();
 
                 $.get('{{ url("permohonan-surat/konten") }}/'+permohonan_surat_id, function(data, status){
-                	// console.log(data);
+                	console.log(data);
                     let konten = JSON.parse(data);
                     $("#pengajuanSkripsi input[name='judul']").val(JSON.stringify(konten.judul));
                     
@@ -474,22 +487,25 @@ Pengajuan Ijin Ujian Skripsi
                 // $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
                 $("#pengajuanSkripsi input[name='permohonan_surat_id']").val(permohonan_surat_id);
                 $("#pengajuanSkripsi input[name='urutan']").val(urutan);
+                $("#pengajuanSkripsi input[name='kode_layanan']").val(kode_layanan);
+                
             });
 
 		$("#ijinUjian").on("show.bs.modal", function (event) {
                 $("a#cetak, a#lihat").attr("disabled", true);
                 const detail_surat = $(event.relatedTarget);
-                var kode_layanan = detail_surat.data("kode_layanan");
+                var kode_layanan = detail_surat.data("kode-layanan");
                 var permohonan_surat_id = detail_surat.data("permohonan_surat_id");
                 var bisa_verifikasi = detail_surat.data("fitur-verifikasi");
                 var status = detail_surat.data("status");
                 var urutan = detail_surat.data("urutan");
+                var kode_layanan = detail_surat.data("kode-layanan");
 
                 if (bisa_verifikasi) {
                 // alert(bisa_verifikasi);
                 	$("#ijinUjian #input-verifikasi").css("display", "flex");
                 	$("#ijinUjian #btn-simpan").css("display", "block");
-                    $("#ijinUjian select[name='status']").val(status);
+                    $("#ijinUjian input[value='"+ status +"']").prop("checked", true);
                 }
 
                 if(status == 'setuju'){
@@ -529,6 +545,8 @@ Pengajuan Ijin Ujian Skripsi
                 // $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
                 $("#ijinUjian input[name='permohonan_surat_id']").val(permohonan_surat_id);
                 $("#ijinUjian input[name='urutan']").val(urutan);
+                $("#ijinUjian input[name='kode_layanan']").val(kode_layanan);
+
             });
 	});
 </script>

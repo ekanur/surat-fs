@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Surat Pengajuan Judul Skripsi-{{ $verifikasi->mahasiswa->nama }}</title>
+    <title>Surat Pengajuan Judul Skripsi-{{ $permohonan_surat->mahasiswa->nama }}</title>
 </head>
 <body  @if($print == "print") onload="window.print();" @endif>
     <div id="header">
@@ -30,7 +30,7 @@
             <tr>
                 <td style="text-align:center; padding-bottom:30px" colspan="3">
                     <h1 style="font-weight:bolder; font-size: 1.25em;margin:0px;">PENGAJUAN JUDUL SKRIPSI</h1>
-                    Mahasiswa Jurusan {{ $verifikasi->mahasiswa->jurusan }} Fakultas Sastra
+                    Mahasiswa Jurusan {{ $permohonan_surat->mahasiswa->jurusan }} Fakultas Sastra
                 </td>
             </tr>
             
@@ -39,7 +39,7 @@
                     NAMA & NO. HP
                 </td>
 				<td>
-					: {{ $verifikasi->mahasiswa->nama }}
+					: {{ $permohonan_surat->mahasiswa->nama }}
 				</td>
 				<td>
 					No. HP ........................
@@ -50,7 +50,7 @@
 					NIM/OFF
 				</td>
 				<td>
-					: {{ $verifikasi->mahasiswa->nim }}
+					: {{ $permohonan_surat->mahasiswa->nim }}
 				</td>
 				<td>
 					Offering .......................
@@ -112,12 +112,12 @@
 								<td width="60%"></td>
 								<td width="40%">
 									<p>
-									Malang, {{ $verifikasi->permohonan_surat->created_at->format("d") }} {{ bulan($verifikasi->permohonan_surat->created_at->format("m")) }} {{ $verifikasi->permohonan_surat->created_at->format("Y") }}
+									Malang, {{ $permohonan_surat->created_at->format("d") }} {{ bulan($permohonan_surat->created_at->format("m")) }} {{ $permohonan_surat->created_at->format("Y") }}
 									</p>
 									Ketua Jurusan <br/><br/><br/><br/><br/><br/>
 
-									{{ $kajur["nama"] }}<br/>
-									NIP. {{ $kajur["nip"] }}
+									{{ $pejabat["nama"] }}<br/>
+									NIP. {{ $pejabat["nip"] }}
 								</td>
 							</tr>
 							<tr>

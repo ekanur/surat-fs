@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Surat Ijin Penelitian-{{ $verifikasi->mahasiswa->nama }}</title>
+    <title>Surat Ijin Penelitian-{{ $permohonan_surat->mahasiswa->nama }}</title>
 </head>
 <body @if($print == "print") onload="window.print();" @endif>
     <div id="header">
@@ -30,12 +30,12 @@
             <tr>
                 <td>Nomor</td>
                 <td>:</td>
-                <td>{{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.{{ $verifikasi->permohonan_surat->nomor_surat }}/UN32.2.1/DK/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }}<span style="float:right">{{ $verifikasi->permohonan_surat->updated_at->format("d") }} {{ bulan($verifikasi->permohonan_surat->updated_at->format("m")) }} {{ $verifikasi->permohonan_surat->updated_at->format("Y") }}  </span></td>
+                <td>{{ $permohonan_surat->updated_at->format("d") }}.{{ $permohonan_surat->updated_at->format("m") }}.{{ $permohonan_surat->nomor_surat }}/UN32.2.1/DK/{{ $permohonan_surat->updated_at->format("Y") }}<span style="float:right">{{ $permohonan_surat->updated_at->format("d") }} {{ bulan($permohonan_surat->updated_at->format("m")) }} {{ $permohonan_surat->updated_at->format("Y") }}  </span></td>
             </tr>
             <tr>
                 <td>Hal</td>
                 <td>:</td>
-                <td>Izin Mengadakan Observasi</td>
+                <td>Izin mengadakan penelitian</td>
             </tr>
             <tr>
                 <td style="vertical-align:top">
@@ -53,23 +53,20 @@
                 <td colspan="2"></td>
                 <td>
                     Dengan hormat kami beritahukan bahwa,<br/><br/>
-                    <table border="1" width="90%" style="border-collapse:collapse;border-spacing:3px">
+                    <table>
                         <tr>
-                            <td>No</td>
-                            <td>NIM</td>
                             <td>Nama</td>
+                            <td>:</td>
+                            <td>{{ $permohonan_surat->mahasiswa->nama }}</td>
                         </tr>
                         <tr>
-                            @php
-                                $i=1;
-                            @endphp
-                            <td width="5%">{{ $i++ }}</td>
-                            <td width="25%">{{ $verifikasi->mahasiswa->nim }}</td>
-                            <td width="60%">{{ $verifikasi->mahasiswa->nama }}</td>
+                            <td>NIM</td>
+                            <td>:</td>
+                            <td>{{ $permohonan_surat->mahasiswa->nim }}</td>
                         </tr>
                     </table>
-                    <p>adalah mahasiswa Fakultas Sastra Universitas Negeri Malang {{ $verifikasi->mahasiswa->jurusan }}, Program Studi {{ $verifikasi->mahasiswa->prodi }}.</p>
-                    <p>Dalam rangka menyelesaikan {{ $konten->matakuliah }} pada semester {{ semester() }} yang bersangkutan memerlukan seperangkat data yang akan diperoleh melalui Observasi dengan ketentuan sebagai berikut.</p>
+                    <p>adalah mahasiswa Fakultas Sastra Universitas Negeri Malang {{ $permohonan_surat->mahasiswa->jurusan }}, Program Studi {{ $permohonan_surat->mahasiswa->prodi }}.</p>
+                    <p>Dalam rangka menyelesaikan {{ $konten->matakuliah }} pada semester {{ semester() }} yang bersangkutan memerlukan seperangkat data yang akan diperoleh melalui penelitian dengan ketentuan sebagai berikut.</p>
                     <table>
                         <tr>
                             <td style="vertical-align:top">Judul</td>
@@ -104,13 +101,13 @@
                                     <td width="60%"></td>
                                     <td width="40%">
                                         a.n Dekan<br>Wakil Dekan 1, <br/>
-                                        @if($verifikasi->permohonan_surat->status == 'siap_cetak')
-                                            <img id="tfoto" class="t s3_1" src="{{ Storage::url($wd1["ttd"]) }}">
+                                        @if($permohonan_surat->siap_cetak)
+                                            <img id="tfoto" class="t s3_1" src="{{ Storage::url($pejabat["ttd"]) }}">
                                         
                                         @endif<br>
                                         <strong>
-                                            {{ $wd1["nama"] }}<br/>
-                                            NIP {{ $wd1["nip"] }}
+                                            {{ $pejabat["nama"] }}<br/>
+                                            NIP {{ $pejabat["nip"] }}
                                         </strong>
                                     </td>
                                 </tr>
@@ -122,8 +119,7 @@
                 <td colspan="3">
                     Tembusan :
                     <ol start="1" style="margin-top:0; padding-left:18px">
-                        <li>Ketua Jurusan {{ $verifikasi->mahasiswa->jurusan }} FS UM</li>
-                        <li>Dosen Pembina Matakuliah</li>
+                        <li>Ketua Jurusan {{ $permohonan_surat->mahasiswa->jurusan }} FS UM</li>
                         <li>Yang bersangkutan</li>
                     </ol>
                 </td>

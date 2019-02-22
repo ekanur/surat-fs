@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Surat Keterangan Aktif Kuliah-{{ $verifikasi->mahasiswa->nama }}</title>
+    <title>Surat Keterangan Aktif Kuliah-{{ $permohonan_surat->mahasiswa->nama }}</title>
 </head>
 <body  @if($print == "print") onload="window.print();" @endif>
     <div id="header">
@@ -30,7 +30,7 @@
             <tr>
                 <td style="text-align:center; padding-bottom:50px">
                     <h1 style="font-weight:bolder; font-size: 1.25em;margin:0px;">SURAT KETERANGAN</h1>
-                    Nomor : {{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.{{ $verifikasi->permohonan_surat->nomor_surat or null }}/UN.32.2.1/KM/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }}
+                    Nomor : {{ $permohonan_surat->updated_at->format("d") }}.{{ $permohonan_surat->updated_at->format("m") }}.{{ $permohonan_surat->nomor_surat or null }}/UN.32.2.1/KM/{{ $permohonan_surat->updated_at->format("Y") }}
                 </td>
             </tr>
             
@@ -41,15 +41,15 @@
                         <tr>
                             <td>Nama</td>
                             <td>:</td>
-                            <td>{{ $verifikasi->mahasiswa->nama }}</td>
+                            <td>{{ $permohonan_surat->mahasiswa->nama }}</td>
                         </tr>
                         <tr>
                             <td>NIM</td>
                             <td>:</td>
-                            <td>{{ $verifikasi->mahasiswa->nim }}</td>
+                            <td>{{ $permohonan_surat->mahasiswa->nim }}</td>
                         </tr>
                     </table>
-                    <p>pada semester {{ semester() }} terdaftar sebagai mahasiswa Program Studi  {{ $verifikasi->mahasiswa->prodi }}, Jurusan {{ $verifikasi->mahasiswa->jurusan }} Universitas Negeri Malang </p>
+                    <p>pada semester {{ semester() }} terdaftar sebagai mahasiswa Program Studi  {{ $permohonan_surat->mahasiswa->prodi }}, Jurusan {{ $permohonan_surat->mahasiswa->jurusan }} Universitas Negeri Malang </p>
                     <p>Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
 
                     <table width="100%" border="0">
@@ -57,17 +57,17 @@
                                     <td width="60%"></td>
                                     <td width="40%">
                                         <p>
-                                        {{ $verifikasi->permohonan_surat->updated_at->format("d") }} {{ bulan($verifikasi->permohonan_surat->updated_at->format("m")) }} {{ $verifikasi->permohonan_surat->updated_at->format("Y") }}
+                                        {{ $permohonan_surat->updated_at->format("d") }} {{ bulan($permohonan_surat->updated_at->format("m")) }} {{ $permohonan_surat->updated_at->format("Y") }}
                                         </p>
                                         a.n Dekan<br>Wakil Dekan 1, <br/>
-                                        @if($verifikasi->permohonan_surat->status == 'siap_cetak')
-                                            <img id="tfoto" class="t s3_1" src="{{ Storage::url($wd1["ttd"]) }}">
+                                        @if($permohonan_surat->siap_cetak)
+                                            <img id="tfoto" class="t s3_1" src="{{ Storage::url($pejabat["ttd"]) }}">
                                         @endif<br>
                                         <strong>
-                                            {{ $wd1["nama"] }}
+                                            {{ $pejabat["nama"] }}
                                             
                                         </strong><br/>
-                                        NIP {{ $wd1["nip"] }}
+                                        NIP {{ $pejabat["nip"] }}
                                     </td>
                                 </tr>
                     </table>

@@ -11,4 +11,8 @@ class Layanan_surat extends Model
     function permohonan_surat(){
     	return $this->hasMany("App\Permohonan_surat");
     }
+
+    function verifikator(){
+        return $this->hasMany("App\Verifikator");
+    }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Surat Ijin Penelitian-{{ $verifikasi->mahasiswa->nama }}</title>
+    <title>Surat Ijin Penelitian-{{ $permohonan_surat->mahasiswa->nama }}</title>
 </head>
 <body @if($print == "print") onload="window.print();" @endif>
     <div id="header">
@@ -30,7 +30,7 @@
             <tr>
                 <td width="15%">Nomor</td>
                 <td>:</td>
-                <td>{{ $verifikasi->permohonan_surat->updated_at->format("d") }}.{{ $verifikasi->permohonan_surat->updated_at->format("m") }}.{{ $verifikasi->permohonan_surat->nomor_surat }}/UN32.2.1/KM/{{ $verifikasi->permohonan_surat->updated_at->format("Y") }}<span style="float:right">{{ $verifikasi->permohonan_surat->updated_at->format("d") }} {{ bulan($verifikasi->permohonan_surat->updated_at->format("m")) }} {{ $verifikasi->permohonan_surat->updated_at->format("Y") }}  </span></td>
+                <td>{{ $permohonan_surat->updated_at->format("d") }}.{{ $permohonan_surat->updated_at->format("m") }}.{{ $permohonan_surat->nomor_surat }}/UN32.2.1/KM/{{ $permohonan_surat->updated_at->format("Y") }}<span style="float:right">{{ $permohonan_surat->updated_at->format("d") }} {{ bulan($permohonan_surat->updated_at->format("m")) }} {{ $permohonan_surat->updated_at->format("Y") }}  </span></td>
             </tr>
             <tr>
                 <td>Lamp.</td>
@@ -71,7 +71,7 @@
                         <tr>
                             <td width="30%">Nama Mahasiswa (NIM)</td>
                             <td>:</td>
-                            <td width="70%">{{ $verifikasi->mahasiswa->nama }} ({{ $verifikasi->mahasiswa->nim }})</td>
+                            <td width="70%">{{ $permohonan_surat->mahasiswa->nama }} ({{ $permohonan_surat->mahasiswa->nim }})</td>
                         </tr>
                         <tr>
                             <td style="vertical-align:top">Judul Skripsi</td>
@@ -110,12 +110,12 @@
                             <tr>
                                     <td width="60%"></td>
                                     <td width="40%">
-                                        Ketua Jurusan {{ $verifikasi->mahasiswa->jurusan }}  <br/>
-                                        @if($verifikasi->permohonan_surat->status == 'siap_cetak')
-                                            <img id="tfoto" class="t s3_1" src="{{ Storage::url($kajur["ttd"]) }}">
+                                        Ketua Jurusan {{ $permohonan_surat->mahasiswa->jurusan }}  <br/>
+                                        @if($permohonan_surat->siap_cetak)
+                                            <img id="tfoto" class="t s3_1" src="{{ Storage::url($pejabat["ttd"]) }}">
                                         @endif<br>
-                                            {{ $kajur["nama"] }}<br/>
-                                            NIP {{ $kajur["nip"] }}
+                                            {{ $pejabat["nama"] }}<br/>
+                                            NIP {{ $pejabat["nip"] }}
                                     </td>
                                 </tr>
                     </table>
@@ -130,7 +130,7 @@
                         <li>Kasubbag Pendidikan</li>
                         <li>Kasubbag Keuangan dan kepegawaian</li>
                         <li>Kasubbag Umum dan perlengkapan </li>
-                        <li>Kalab. {{ $verifikasi->mahasiswa->jurusan }}</li>
+                        <li>Kalab. {{ $permohonan_surat->mahasiswa->jurusan }}</li>
                         <li>Mahasiswa yang bersangkutan</li>
                     </ol>
                 </td>

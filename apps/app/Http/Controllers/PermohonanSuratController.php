@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -40,7 +39,7 @@ class PermohonanSuratController extends Controller
             }
 
             return $next($request);
-        })->except(["getKonten", "getDosen"]);
+        })->except("getDosen");
     }
 
     public function simpan(Request $request){
@@ -55,13 +54,13 @@ class PermohonanSuratController extends Controller
         // $permohonan_surat->status = ($request->layanan_surat_id == '1')? "verifikasi":"siap_cetak";
     	$permohonan_surat->save();
 
-    	$is_created = $this->kirimVerifikasi($permohonan_surat->id);
+    	// $is_created = $this->kirimVerifikasi($permohonan_surat->id);
 
     	// dd($is_created);
-        if($is_created){
+        // if($is_created){
             Session::flash("message", "Berhasil, permohonan anda akan diproses.");
             Session::flash("status", "success");
-        }
+        // }
 
     	return redirect()->back();
     }
@@ -133,9 +132,9 @@ class PermohonanSuratController extends Controller
     	return Verifikasi::insert($data_verifikasi);
     }
 
-    function getKonten($id){
-        $permohonan_surat = Permohonan_surat::select("konten")->where("id", $id)->firstOrFail();
-        return response()->json($permohonan_surat->konten);
-    }
+    // function getKonten($id){
+    //     $permohonan_surat = Permohonan_surat::select("konten")->where("id", $id)->firstOrFail();
+    //     return response()->json($permohonan_surat->konten);
+    // }
 
 }
