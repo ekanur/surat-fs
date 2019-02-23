@@ -19,11 +19,11 @@
                         <table class="table table-hover datatable">
                             <thead>
                                 <tr>
-                                    <th width="15%">Tanggal</th>
+                                    <th width="15%">Tanggal Pengajuan</th>
                                     <th width="30%">Surat</th>
                                     <th width="30%">Pemohon</th>
                                     <th width="10%">Status</th>
-                                    <th width="10%">Usia Surat</th>
+                                    <th width="10%">Usia Surat (hari)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,7 +31,7 @@
                                     <tr>
                                         <td>{{ $permohonan_surat->created_at }}</td>
                                         <td class="text-left">
-                                        <a href="" data-toggle="modal" data-target="#{{ camel_case($permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $permohonan_surat->id }}" data-kode-layanan="{{ $permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $permohonan_surat->bisa_verifikasi }}" data-status="{{ $permohonan_surat->verifikasi[0]->status or null }}" data-urutan="{{ $permohonan_surat->urutan }}">{{ $permohonan_surat->layanan_surat->judul }}</a>
+                                        <a href="" data-toggle="modal" data-target="#{{ camel_case($permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $permohonan_surat->id }}" data-kode-layanan="{{ $permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $permohonan_surat->bisa_verifikasi }}"  data-status="@if(count($permohonan_surat->verifikasi)>0) {{ $permohonan_surat->verifikasi[0]->status }}  @endif" data-urutan="{{ $permohonan_surat->urutan }}">{{ $permohonan_surat->layanan_surat->judul }}</a>
                                         </td>
                                         <td>
                                             {{ $permohonan_surat->mahasiswa->nama }}
@@ -40,7 +40,7 @@
                                             {{ $permohonan_surat->status }}
                                         </td>
                                         <td class="td-actions text-right">
-                                            {{ usia_surat($permohonan_surat->created_at) }} hari
+                                            {{ usia_surat($permohonan_surat->created_at) }} 
                                         </td>
                                     </tr>
                                 @endforeach
