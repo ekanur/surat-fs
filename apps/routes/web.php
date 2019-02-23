@@ -26,7 +26,9 @@ Route::post("/keluhan", "KeluhanController@simpan");
 
 Route::post("/permohonan-surat", "PermohonanSuratController@simpan")->name("simpan.permohonan_surat");
 
-Route::get("/permohonan-surat/konten/{id}", "SuratController@getKonten")->name("permohonan_surat.konten");
+Route::get("/permohonan-surat/konten/{permohonan_surat}", function(App\Permohonan_surat $permohonan_surat){
+    return response()->json($permohonan_surat->konten);
+})->name("permohonan_surat.konten");
 Route::get('/ijin-penelitian/{permohonan_surat_id}/{print}', "SuratController@view")->name("cetak.ijin_kuliah");
 Route::get('/ijin-penelitian/{permohonan_surat_id}/', "SuratController@view")->name("lihat.ijin_kuliah");
 
