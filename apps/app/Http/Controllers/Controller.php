@@ -50,7 +50,7 @@ class Controller extends BaseController
         return redirect()->back();
     }
 
-    function isSiapCetak(int $permohonan_surat_id, \Illuminate\Support\Collection $verifikator){
+    function isSiapCetak($permohonan_surat_id, \Illuminate\Support\Collection $verifikator){
         $user_tipe = array();
         foreach($verifikator as $verifikator){
             $user_tipe[] = $verifikator->user_tipe;
