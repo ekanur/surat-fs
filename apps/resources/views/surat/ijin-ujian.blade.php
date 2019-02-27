@@ -14,7 +14,7 @@
                 <img src="{{ asset("img/logo_um.jpg")}}" width="75%" height="30%">
                 </td>
                 <td width="80%" style="text-align:center;padding:0px;vertical-align:text-top">
-                
+
                         <h1 style="font-size:1em;margin:0px; font-weight: lighter">KEMENTERIAN RISET, TEKNOLOGI, DAN PENDIDIKAN TINGGI</h1>
                         <h1 style="font-size:1em;margin:0px; font-weight: lighter">UNIVERSITAS NEGERI MALANG (UM)</h1>
                         <h1 style="font-weight:bolder; font-size: 1em;margin:0px;">FAKULTAS SASTRA</h1>
@@ -51,7 +51,7 @@
                 </td>
                 <td style="vertical-align:top">:</td>
                 <td>
-                    
+
                 </td>
             </tr>
             <tr>
@@ -100,7 +100,7 @@
                             </td>
                             <td style="vertical-align:top">:</td>
                             <td style="vertical-align:top">
-                                @if(isset($konten->tanggal)) {{ $konten->tanggal->format("d")." ".bulan($konten->tanggal->format("m"))." ".$konten->tanggal->format("Y") }}  @endif, @if(isset($konten->waktu)) Pukul{{ $konten->waktu }} @endif <br/>
+                                @if(isset($konten->tanggal)) {{ $konten->tanggal->format("d")." ".bulan($konten->tanggal->format("m"))." ".$konten->tanggal->format("Y") }}  @endif, @if(isset($konten->waktu)) Pukul {{ $konten->waktu }} @endif <br/>
                                 @if(isset($konten->ruang)) Ruang {{ $konten->ruang }} @endif
                             </td>
                         </tr>
@@ -121,7 +121,7 @@
                     </table>
                 </td>
             </tr>
-            
+
             <tr>
                 <td colspan="3">
                     Tembusan :
