@@ -14,7 +14,7 @@
                     <img src="{{ asset("img/logo_um_warna.jpg")}}" alt="Universitas Negeri Malang" srcset="" width="90%" height="15%">
                 </td>
                 <td width="80%" style="text-align:center;padding:0px;vertical-align:text-top">
-                
+
                         <h1 style="font-size:1em;margin:0px; font-weight: lighter">KEMENTERIAN RISET, TEKNOLOGI, DAN PENDIDIKAN TINGGI</h1>
                         <h1 style="font-size:1em;margin:0px; font-weight: lighter">UNIVERSITAS NEGERI MALANG (UM)</h1>
                         <h1 style="font-weight:bolder; font-size: 1em;margin:0px;">FAKULTAS SASTRA</h1>
@@ -33,7 +33,7 @@
                     Mahasiswa Jurusan {{ $permohonan_surat->mahasiswa->jurusan }} Fakultas Sastra
                 </td>
             </tr>
-            
+
             <tr>
                 <td>
                     NAMA & NO. HP
@@ -61,7 +61,7 @@
 			</tr>
 			<tr>
 				<td>
-					Tanda tangan 
+					Tanda tangan
 				</td>
 				<td colspan="2">:</td>
 			</tr>
@@ -99,7 +99,7 @@
 
 							</td>
 							<td>
-								
+
 							</td>
 						</tr>
 					</table>
@@ -114,17 +114,20 @@
 									<p>
 									Malang, {{ $permohonan_surat->created_at->format("d") }} {{ bulan($permohonan_surat->created_at->format("m")) }} {{ $permohonan_surat->created_at->format("Y") }}
 									</p>
-									Ketua Jurusan <br/><br/><br/><br/><br/><br/>
+									Ketua Jurusan
+                  @if($permohonan_surat->siap_cetak)
+                      <img id="tfoto" class="t s3_1" width="70%" height="10%" src="{{ Storage::url($pejabat["ttd"]) }}">
 
+                  @endif<br>
 									{{ $pejabat["nama"] }}<br/>
 									NIP. {{ $pejabat["nip"] }}
 								</td>
 							</tr>
 							<tr>
 								<td colspan="2">
-								Catatan : 
+								Catatan :
 								<p>Setelah diisi dan ditandatangani Kaprodi dan Kajur.<br/> Form ini difotocopy 1x, dan diserahkan :</p>
-								<ol start=1 style="margin-top:0; padding-left:18px"> 
+								<ol start=1 style="margin-top:0; padding-left:18px">
 									<li>
 									Lembar aslinya ke Kaprodi
 									</li>

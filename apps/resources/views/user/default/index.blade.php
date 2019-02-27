@@ -31,7 +31,7 @@
                                     <tr>
                                         <td>{{ $permohonan_surat->created_at }}</td>
                                         <td class="text-left">
-                                        <a href="" data-toggle="modal" data-target="#{{ camel_case($permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $permohonan_surat->id }}" data-kode-layanan="{{ $permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $permohonan_surat->bisa_verifikasi }}"  data-status="@if(count($permohonan_surat->verifikasi)>0) {{ $permohonan_surat->verifikasi[0]->status }}  @endif" data-urutan="{{ $permohonan_surat->urutan }}">{{ $permohonan_surat->layanan_surat->judul }}</a>
+                                        <a href="" data-toggle="modal" data-target="#{{ camel_case($permohonan_surat->layanan_surat->kode_layanan) }}" data-permohonan_surat_id="{{ $permohonan_surat->id }}" data-kode-layanan="{{ $permohonan_surat->layanan_surat->kode_layanan }}" data-fitur-verifikasi="{{ $permohonan_surat->bisa_verifikasi }}"  data-status="@if(count($permohonan_surat->verifikasi)>0){{str_replace(" ", "", $permohonan_surat->verifikasi[0]->status)}}@endif" data-urutan="{{ $permohonan_surat->urutan }}">{{ $permohonan_surat->layanan_surat->judul }}</a>
                                         </td>
                                         <td>
                                             {{ $permohonan_surat->mahasiswa->nama }}
@@ -40,7 +40,7 @@
                                             {{ $permohonan_surat->status }}
                                         </td>
                                         <td class="td-actions text-right">
-                                            {{ usia_surat($permohonan_surat->created_at) }} 
+                                            {{ usia_surat($permohonan_surat->created_at) }}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -65,7 +65,7 @@
                     </div>
             </div>
         </div>
-        
+
 	</div>
 </div>
 
@@ -91,7 +91,7 @@ Verifikasi Surat Aktif Kuliah
 <input type="hidden" name="kode_layanan">
 <input type="hidden" name="urutan">
 <div id="iframe_container embed-responsive embed-responsive-1by1">
-<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>	
+<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>
 </div>
 {{-- <div class="form-group row" id="input-verifikasi" style="display: none">
     <label for="verifikasi" class="col-sm-2 col-form-label">Setuju/Tolak</label>
@@ -128,7 +128,7 @@ Verifikasi Surat Ijin Observasi
 <input type="hidden" name="kode_layanan">
 
 <div id="iframe_container embed-responsive embed-responsive-1by1">
-<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>  
+<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>
 </div>
 {{-- <div class="form-group row" id="input-verifikasi" style="display: none">
     <label for="verifikasi" class="col-sm-2 col-form-label">Setuju/Tolak</label>
@@ -164,7 +164,7 @@ Verifikasi Surat Ijin Penelitian
 <input type="hidden" name="kode_layanan">
 <input type="hidden" name="urutan">
 <div id="iframe_container embed-responsive embed-responsive-1by1">
-<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>  
+<iframe frameborder="0" src="" class="embed-responsive-item" frameborder="0" id="detail_surat" style="" width="770px" height="800px"></iframe>
 </div>
 {{-- <div class="form-group row" id="input-verifikasi" style="display: none">
     <label for="verifikasi" class="col-sm-2 col-form-label">Setuju/Tolak</label>
@@ -204,7 +204,7 @@ Pengajuan Judul Skripsi
             <li class="list-inline-item"><a disabled="" id="lihat" class="btn btn-info" href="" target="_blank">Lihat</a></li>
         </ul>
     </div>
-    
+
 </div>
 <input type="hidden" name="permohonan_surat_id">
 <input type="hidden" name="kode_layanan">
@@ -240,7 +240,7 @@ Pengajuan Judul Skripsi
     <div class="col-sm-10">
     	<select name="pilih_pembimbing[]" id="pilih_pembimbing1" class="form-control">
             @foreach($dosen as $data_dosen)
-                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option> 
+                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option>
             @endforeach
     	</select>
     </div>
@@ -251,7 +251,7 @@ Pengajuan Judul Skripsi
     <div class="col-sm-10">
     	<select name="pilih_pembimbing[]" id="pilih_pembimbing2" class="form-control">
     		@foreach($dosen as $data_dosen)
-                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option> 
+                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option>
             @endforeach
     	</select>
     </div>
@@ -287,7 +287,7 @@ Pengajuan Ijin Ujian Skripsi
             <li class="list-inline-item"><a disabled="" id="lihat" class="btn btn-info" href="" target="_blank">Lihat</a></li>
         </ul>
     </div>
-    
+
 </div>
 <input type="hidden" name="permohonan_surat_id">
 <input type="hidden" name="kode_layanan">
@@ -315,7 +315,7 @@ Pengajuan Ijin Ujian Skripsi
     <div class="col-sm-10">
     	<select name="penguji[]" id="penguji1" class="form-control">
             @foreach($dosen as $data_dosen)
-                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option> 
+                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option>
             @endforeach
     	</select>
     </div>
@@ -326,7 +326,7 @@ Pengajuan Ijin Ujian Skripsi
     <div class="col-sm-10">
     	<select name="penguji[]" id="penguji2" class="form-control">
     		@foreach($dosen as $data_dosen)
-                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option> 
+                <option value="{{ $data_dosen["id"] }}">{{ $data_dosen["nama"] }}</option>
             @endforeach
     	</select>
     </div>
@@ -447,7 +447,7 @@ Pengajuan Ijin Ujian Skripsi
                 // alert(bisa_verifikasi);
                 	$("#pengajuanSkripsi #input-verifikasi").css("display", "flex");
                 	$("#pengajuanSkripsi #btn-simpan").css("display", "block");
-                    $("#pengajuanSkripsi input[value='"+ status +"']").prop("checked", true);
+                  $("#pengajuanSkripsi input[value='"+ status +"']").prop("checked", true);
                 }
 
                 if(status == 'setuju'){
@@ -456,7 +456,7 @@ Pengajuan Ijin Ujian Skripsi
                     $("#pengajuanSkripsi a#cetak").attr("href", "{{ url("pengajuan-skripsi") }}/"+permohonan_surat_id+"/print");
                     $("#pengajuanSkripsi a#lihat").attr("href", "{{ url("pengajuan-skripsi") }}/"+permohonan_surat_id);
                 }
-                
+
 
                 $("#pembimbing").empty();
                 $("#judul").empty();
@@ -466,7 +466,7 @@ Pengajuan Ijin Ujian Skripsi
                 	console.log(data);
                     let konten = JSON.parse(data);
                     $("#pengajuanSkripsi input[name='judul']").val(JSON.stringify(konten.judul));
-                    
+
                     $("#pengajuanSkripsi input[name='dosen']").val(JSON.stringify(konten.dosen));
                     for (var i = 0; i <= konten.dosen.length - 1; i++) {
                         $("#pengajuanSkripsi #pembimbing").append("<li>"+ konten.dosen[i].nama +"</li>");
@@ -480,15 +480,13 @@ Pengajuan Ijin Ujian Skripsi
                     $("#pilih_pembimbing1").val(konten.dosen_disetujui[0].id);
                     // $("#pilih_pembimbing2").val(konten.dosen_disetujui[1].id);
                     $("select[name='pilih_judul']").val(konten.judul_disetujui);
-
-
                 });
 
                 // $("iframe#detail_surat").attr("src", url+"/"+permohonan_surat_id);
                 $("#pengajuanSkripsi input[name='permohonan_surat_id']").val(permohonan_surat_id);
                 $("#pengajuanSkripsi input[name='urutan']").val(urutan);
                 $("#pengajuanSkripsi input[name='kode_layanan']").val(kode_layanan);
-                
+
             });
 
 		$("#ijinUjian").on("show.bs.modal", function (event) {
@@ -514,16 +512,16 @@ Pengajuan Ijin Ujian Skripsi
                     $("#ijinUjian a#cetak").attr("href", "{{ url("ijin-ujian") }}/"+permohonan_surat_id+"/print");
                     $("#ijinUjian a#lihat").attr("href", "{{ url("ijin-ujian") }}/"+permohonan_surat_id);
                 }
-                
+
 
                 $("#ijinUjian #pembimbing").empty();
                 $("#ijinUjian #judul").empty();
 
                 $.get('{{ url("permohonan-surat/konten") }}/'+permohonan_surat_id, function(data, status){
-                	// console.log(data);
+                	console.log(data);
                     let konten = JSON.parse(data);
                     $("#ijinUjian input[name='judul']").val(JSON.stringify(konten.judul));
-                    
+
                     $("#ijinUjian input[name='dosen']").val(JSON.stringify(konten.dosen));
                     for (var i = 0; i <= konten.dosen.length - 1; i++) {
                         $("#ijinUjian #pembimbing").append("<li>"+ konten.dosen[i].nama +"</li>");

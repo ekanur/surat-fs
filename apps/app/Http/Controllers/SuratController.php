@@ -20,20 +20,25 @@ class SuratController extends Controller
             $user = User::with("dosen")->select("id", "tipe", "scan_ttd", "dosen_id")->where("tipe", "!=", "admin")->get();
             // dd($user);
             foreach ($user as $pejabat) {
-                $this->pejabat[$pejabat->tipe]["nama"] = $pejabat->dosen->nama;
-                $this->pejabat[$pejabat->tipe]["nip"] = $pejabat->dosen->nip;
-                $this->pejabat[$pejabat->tipe]["ttd"] = $pejabat->scan_ttd;
-            }
+                if($pejabat->tipe == 'kajur'){
+                  $this->pejabat[$pejabat->tipe."_".$pejabat->dosen->getOriginal("jurusan")]["nama"] = $pejabat->dosen->nama;
+                  $this->pejabat[$pejabat->tipe."_".$pejabat->dosen->getOriginal("jurusan")]["nip"] = $pejabat->dosen->nip;
+                  $this->pejabat[$pejabat->tipe."_".$pejabat->dosen->getOriginal("jurusan")]["ttd"] = $pejabat->scan_ttd;
+                }else{
+                  $this->pejabat[$pejabat->tipe]["nama"] = $pejabat->dosen->nama;
+                  $this->pejabat[$pejabat->tipe]["nip"] = $pejabat->dosen->nip;
+                  $this->pejabat[$pejabat->tipe]["ttd"] = $pejabat->scan_ttd;
 
-            // dd($this->pejabat);
+                }
+            }
             return $next($request);
 
         }]);
     }
 
     function view($permohonan_surat_id, $print = null){
-        $permohonan_surat = Permohonan_surat::with("layanan_surat.verifikator", "mahasiswa")->findOrFail($permohonan_surat_id);  
-        $permohonan_surat->siap_cetak = $this->isSiapCetak($permohonan_surat->id, $permohonan_surat->layanan_surat->verifikator->sortBy("urutan"));      
+        $permohonan_surat = Permohonan_surat::with("layanan_surat.verifikator", "mahasiswa")->findOrFail($permohonan_surat_id);
+        $permohonan_surat->siap_cetak = $this->isSiapCetak($permohonan_surat->id, $permohonan_surat->layanan_surat->verifikator->sortBy("urutan"));
         // dd($permohonan_surat);
         // if(auth()->user()->tipe == 'admin'){
         //     $verifikasi = Verifikasi::with("permohonan_surat", "mahasiswa", "user.dosen")->where("permohonan_surat_id", $permohonan_surat_id)->firstOrFail();
@@ -42,14 +47,14 @@ class SuratController extends Controller
         // // dd($verifikasi);
         // }
         $konten = $this->getKonten($permohonan_surat);
-        $pejabat = $this->getPejabat($permohonan_surat->layanan_surat->kode_layanan);
+        $pejabat = $this->getPejabat($permohonan_surat->layanan_surat->kode_layanan, $permohonan_surat->mahasiswa->getOriginal("jurusan"));
         // $wd1 = $this->pejabat["wd1"];
 
         // dd($pejabat);
 
         return view("surat/".$permohonan_surat->layanan_surat->kode_layanan, compact('permohonan_surat', 'konten', 'print', "pejabat"));
     }
-    
+
     function getKonten(Permohonan_surat $permohonan_surat){
         $konten = json_decode($permohonan_surat->konten);
         switch ($permohonan_surat->layanan_surat->kode_layanan) {
@@ -71,12 +76,12 @@ class SuratController extends Controller
         return $konten;
     }
 
-    function getPejabat($kode_layanan){
+    function getPejabat($kode_layanan, $jurusan){
         if ($kode_layanan == 'aktif-kuliah' || $kode_layanan == 'ijin-penelitian' || $kode_layanan == 'ijin-observasi') {
             return $this->pejabat["wd1"];
         }elseif($kode_layanan == 'pengajuan-skripsi' || $kode_layanan == 'ijin-ujian'){
-            return $this->pejabat["kajur"];
+            return $this->pejabat["kajur_".$jurusan];
         }
     }
-    
+
 }

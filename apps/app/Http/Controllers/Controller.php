@@ -32,10 +32,10 @@ class Controller extends BaseController
         // dd($request);
         // $verifikator = Verifikator::where("layanan_surat_id", $request->layanan_surat_id)->get();
         // dd($verifikator);
-        $verifikasi = Verifikasi::updateOrCreate(["permohonan_surat_id" => $request->permohonan_surat_id, "user_tipe"=> auth()->user()->tipe, "urutan" => $request->urutan], ["status" => $request->status, "updated_at" => date("Y-m-d")]);
-          
+        $verifikasi = Verifikasi::updateOrCreate(["permohonan_surat_id" => $request->permohonan_surat_id, "user_tipe"=> auth()->user()->tipe, "urutan" => $request->urutan], ["status" => str_replace(" ", "", $request->status), "updated_at" => date("Y-m-d")]);
+
         $permohonan_surat = Permohonan_surat::find($request->permohonan_surat_id);
-        // if($request->status == 'tolak'){            
+        // if($request->status == 'tolak'){
             $permohonan_surat->status = ($request->status == 'tolak')? 'ditolak': 'verifikasi';
         // }
         $permohonan_surat->save();
@@ -44,7 +44,7 @@ class Controller extends BaseController
             // if($request->urutan == Verifikator::where([['layanan_surat_id', $permohonan_surat->layanan_surat_id]])->get()->count()){
                 // $permohonan_surat->status = 'siap_cetak' ;
             // }
-            
+
         // }
 
         return redirect()->back();
